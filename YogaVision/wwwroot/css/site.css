@@ -415,22 +415,20 @@ section
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 }
-.logo a
-{
+.logo a {
 	line-height: 0.75;
-	color: #404040;
+	color: #0000FF;
 	font-size: 24px;
 	font-weight: 700;
 	text-transform: uppercase;
 }
-.logo a span
-{
-	position: relative;
-	font-size: 36px;
-	color: #BA55D3;
-	line-height: 0.75;
-	vertical-align: text-top;
-}
+	.logo a span {
+		position: relative;
+		font-size: 36px;
+		color: #0000CD;
+		line-height: 0.75;
+		vertical-align: text-top;
+	}
 .header_top_nav ul li
 {
 	position: relative;

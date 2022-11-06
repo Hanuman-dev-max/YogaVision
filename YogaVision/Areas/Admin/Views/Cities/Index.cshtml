@@ -1,0 +1,40 @@
+﻿@model YogaVision.Core.Models.Cities.CitiesListViewModel
+@using YogaVision.Common
+@{
+    this.ViewData["Title"] = "Cities";
+}
+
+<h2>
+    Всички Градове (@Model.Cities.Count())
+    <span>
+        <a class="btn btn-info" asp-area="Admin" asp-controller="Cities" asp-action="AddCity">Добави Нов Град</a>
+    </span>
+</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Име</th>
+            <th scope="col">Студия</th>
+            <th scope="col">Бутон за изтриване</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var city in this.Model.Cities)
+        {
+            <tr>
+                <th scope="row">@city.Name</th>
+                <td>@city.StudiosCount</td>
+                <td>
+                     <form method="post">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    asp-area="Admin" asp-controller="Cities" asp-action="DeleteCity" asp-route-id="@city.Id">
+                                Изтрий
+                            </button>
+                        </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

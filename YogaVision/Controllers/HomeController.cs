@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using YogaVision.Models;
-
-namespace YogaVision.Controllers
+﻿namespace YogaVision.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using System.Diagnostics;
+    using YogaVision.Models;
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

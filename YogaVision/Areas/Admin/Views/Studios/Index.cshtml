@@ -1,0 +1,48 @@
+﻿@model YogaVision.Core.Models.Studios.StudiosListViewModel
+@{
+    this.ViewData["Title"] = "Студия";
+}
+
+<h2>
+    Студия (@Model.Studios.Count())
+    <span>
+        <a class="btn btn-info" asp-area="Admin" asp-controller="Studios" asp-action="AddStudio">Добави Ново Студио</a>
+    </span>
+</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Име</th>
+            <th scope="col">Изображение</th>
+            <th scope="col">Град</th>
+            <th scope="col">Адрес</th>
+            <th scope="col">Бутон за Изтриване</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var salon in this.Model.Studios)
+        {
+            <tr>
+                <th scope="row">@salon.Name</th>
+                <td>
+                    <img class="align-self-center" src="@salon.ImageUrl" style="width:180px;height:120px;">
+                </td>
+                
+                <td>@salon.CityName</td>
+                <td>@salon.Address</td>
+                
+                
+                <td>
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    asp-area="Admin" asp-controller="Studios" asp-action="DeleteStudio" asp-route-id="@salon.Id">
+                                Изтриване
+                            </button>
+                        </form>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

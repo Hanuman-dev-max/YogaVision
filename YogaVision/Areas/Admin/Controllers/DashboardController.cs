@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace YogaVision.Areas.Admin.Controllers
+﻿namespace YogaVision.Areas.Admin.Controllers
 {
-   
+    using Microsoft.AspNetCore.Mvc;
+
     public class DashboardController : AdministrationController
     {
         public IActionResult Index()

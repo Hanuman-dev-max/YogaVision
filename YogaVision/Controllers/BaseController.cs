@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace YogaVision.Controllers
+﻿namespace YogaVision.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
     public class BaseController : Controller
     {
        
