@@ -9,7 +9,7 @@ namespace YogaVision.Infrastructure.Data.Common.Mapping
     using System.Reflection;
 
     using AutoMapper;
-    using AutoMapper.Configuration;
+    
 
     public static class AutoMapperConfig
     {

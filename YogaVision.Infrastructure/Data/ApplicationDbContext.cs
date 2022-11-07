@@ -10,7 +10,7 @@ namespace YogaVision.Data
         public DbSet<BlogPost> BlogPosts { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Studio> Studios { get; set; }
-        public DbSet<Studio> Instructors { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
         public DbSet<FoodRecipe> FoodRecipes { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

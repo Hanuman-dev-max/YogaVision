@@ -8,6 +8,8 @@ namespace YogaVision.Controllers
     using YogaVision.Infrastructure.Data.Identity;
     using YogaVision.Models.User;
     [Authorize]
+    
+
     public class UserController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;

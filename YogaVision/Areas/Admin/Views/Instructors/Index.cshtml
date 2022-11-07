@@ -1,0 +1,74 @@
+﻿@model YogaVision.Core.Models.Instructors.InstructorsListViewModel
+@using YogaVision.Common
+@{
+    this.ViewData["Title"] = "Инструктори";
+}
+
+<h2>
+    Всички Инструктори (@Model.Instructors.Count())
+    <span>
+        <a class="btn btn-info" asp-area="Admin" asp-controller="Instructors" asp-action="AddInstructor">Добави Нов Инструктор</a>
+    </span>
+</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Псевдоним</th>
+            <th scope="col">Изображение</th>
+            <th scope="col">Описание</th>
+            <th scope="col">Име</th>
+            <th scope="col">Фамилия</th>
+           <th scope="col">Бутон за изтриване</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instructor in this.Model.Instructors)
+        {
+            <tr>
+                <th scope="row">@instructor.NickName</th>
+                <td>
+                    <img class="align-self-center" src="@instructor.ImageUrl" style="width:180px;height:120px;">
+                </td>
+                <td>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#instructor-@instructor.Id">
+                        Покажи Цялото Съдаржание
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="instructor-@instructor.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">@instructor.NickName</h5>
+                                    
+                                    
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    @instructor.Description
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Затвори</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>@instructor.FirstName</td>
+                <td>@instructor.LastName</td>
+                <td>
+                    <form method="post">
+                        <button type="submit" class="btn btn-danger btn-sm"
+                            asp-area="Admin" asp-controller="BlogPosts" asp-action="DeleteInstructor" asp-route-id="@instructor.Id">
+                             Изтрий
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
