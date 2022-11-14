@@ -5,7 +5,6 @@
     using YogaVision.Core.Contracts;
     using YogaVision.Core.Models.BlogPosts;
     using YogaVision.Core.Models.Instructors;
-    using YogaVision.Core.Services.Cloadinary;
     public class InstructorsController : AdministrationController
     {
         private readonly IInstructorsService instructorsService;

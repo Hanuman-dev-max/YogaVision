@@ -38,8 +38,6 @@
         [DataType(DataType.Upload)]
         [ValidateImageFile(ErrorMessage = GlobalConstants.ErrorMessages.Image)]
         public IFormFile Image { get; set; }
-
-
     }
 }
 

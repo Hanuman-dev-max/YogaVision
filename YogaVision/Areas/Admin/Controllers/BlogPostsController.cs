@@ -3,13 +3,12 @@
 namespace YogaVision.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-   
+
     using YogaVision.Common;
     using YogaVision.Core.Contracts;
     using YogaVision.Core.Models.BlogPosts;
-    using YogaVision.Core.Services.Cloadinary;
 
-   public class BlogPostsController : AdministrationController
+    public class BlogPostsController : AdministrationController
     {
             private readonly IBlogPostsService blogPostsService;
             private readonly ICloudinaryService cloudinaryService;

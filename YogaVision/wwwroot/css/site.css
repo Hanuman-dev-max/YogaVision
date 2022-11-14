@@ -135,9 +135,8 @@ p a:hover::after
 {
 	opacity: 0.2;
 }
-::selection
-{
-	background: #BA55D3;
+::selection {
+	background: #9FC5E8;
 	color: #FFFFFF;
 }
 p::selection

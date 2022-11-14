@@ -12,6 +12,7 @@ using YogaVision.Infrastructure.Data.Common;
 using YogaVision.Infrastructure.Data.Common.Mapping;
 using YogaVision.Models;
 using System.Reflection;
+using YogaVision.Core.Services.DateTimeParser;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +41,8 @@ builder.Services.AddScoped<ICitiesService, CitiesService>();
 builder.Services.AddScoped<IStudiosService, StudiosService>();
 builder.Services.AddScoped<IFoodRecipesService, FoodRecipesService>();
 builder.Services.AddScoped<IInstructorsService, InstructorsService>();
+builder.Services.AddScoped<IYogaEventsService, YogaEventsService>();
+builder.Services.AddScoped<IDateTimeParserService, DateTimeParserService>();
 
 
 builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YogaVision.Data;
 
@@ -11,9 +12,10 @@ using YogaVision.Data;
 namespace YogaVision.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221114162141_AddYogaEvent")]
+    partial class AddYogaEvent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -464,7 +466,10 @@ namespace YogaVision.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("StudioId")
+                    b.Property<int>("StudioId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StudioId1")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -472,7 +477,7 @@ namespace YogaVision.Data.Migrations
 
                     b.HasIndex("InstructorId");
 
-                    b.HasIndex("StudioId");
+                    b.HasIndex("StudioId1");
 
                     b.ToTable("YogaEvent");
                 });
@@ -549,7 +554,7 @@ namespace YogaVision.Data.Migrations
 
                     b.HasOne("YogaVision.Infrastructure.Data.Models.Studio", "Studio")
                         .WithMany("YogaEvents")
-                        .HasForeignKey("StudioId")
+                        .HasForeignKey("StudioId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

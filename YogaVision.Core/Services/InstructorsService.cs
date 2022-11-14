@@ -20,7 +20,7 @@
             IQueryable<Instructor> query =
                 this.instructorRepository
                 .All()
-                .OrderByDescending(x => x.CreatedOn);
+                .OrderByDescending(x => x.Id);
             if (count.HasValue)
             {
                 query = query.Take(count.Value);

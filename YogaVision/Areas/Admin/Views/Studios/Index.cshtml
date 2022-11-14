@@ -28,19 +28,19 @@
                 <td>
                     <img class="align-self-center" src="@salon.ImageUrl" style="width:180px;height:120px;">
                 </td>
-                
+
                 <td>@salon.CityName</td>
                 <td>@salon.Address</td>
-                
-                
+
+
                 <td>
-                        <form method="post">
-                            <button type="submit" class="btn btn-danger btn-sm"
-                                    asp-area="Admin" asp-controller="Studios" asp-action="DeleteStudio" asp-route-id="@salon.Id">
-                                Изтриване
-                            </button>
-                        </form>
-                    
+                    <form method="post">
+                        <button type="submit" class="btn btn-danger btn-sm"
+                            asp-area="Admin" asp-controller="Studios" asp-action="DeleteStudio" asp-route-id="@salon.Id">
+                            Изтриване
+                        </button>
+                    </form>
+
                 </td>
             </tr>
         }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YogaVision.Core.Contracts;
 
 namespace YogaVision.Core.Services.Cloadinary
 {

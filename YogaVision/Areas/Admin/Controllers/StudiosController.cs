@@ -8,7 +8,6 @@ namespace YogaVision.Areas.Admin.Controllers
     using YogaVision.Core.Contracts;
     using YogaVision.Core.Models.Cities;
     using YogaVision.Core.Models.Studios;
-    using YogaVision.Core.Services.Cloadinary;
     public class StudiosController : AdministrationController
     {
         private readonly IStudiosService studiosService;

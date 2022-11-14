@@ -1,7 +1,4 @@
-﻿
-
-
-namespace YogaVision.Core.Services.Cloadinary
+﻿namespace YogaVision.Core.Contracts
 {
     using Microsoft.AspNetCore.Http;
     public interface ICloudinaryService

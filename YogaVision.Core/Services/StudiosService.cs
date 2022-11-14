@@ -18,12 +18,12 @@ namespace YogaVision.Core.Services
 
         public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
-            var salons =
+            var studio =
                 await this.studiosRepository
                 .All()
                 .OrderBy(x => x.Name)
                 .To<T>().ToListAsync();
-            return salons;
+            return studio;
         }
 
         public async Task<IEnumerable<T>> GetAllWithSortingFilteringAndPagingAsync<T>(

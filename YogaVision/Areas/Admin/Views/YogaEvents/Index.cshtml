@@ -1,0 +1,45 @@
+﻿@model YogaVision.Core.Models.YogaEvents.YogaEventsListViewModel
+@using YogaVision.Common
+@{
+    this.ViewData["Title"] = "Йога Събития";
+}
+
+<h2>
+    Всички Блог Статии (@Model.YogaEvents.Count())
+    <span>
+        <a class="btn btn-info" asp-area="Admin" asp-controller="YogaEvents" asp-action="AddYogaEvent">Добави Новo Йога Събитие</a>
+    </span>
+</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Дата</th>
+            <th scope="col">Продължителност</th>
+            <th scope="col">Описание</th>
+            <th scope="col">Водещ</th>
+            <th scope="col">Студио</th>
+            <th scope="col">Бутон за изтриване</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var yogaEvent in this.Model.YogaEvents)
+        {
+            <tr>
+                <th scope="row">@yogaEvent.DateTime</th>
+                <td>@yogaEvent.Duration</td>
+                <td>@yogaEvent.Description</td>
+                <td>@yogaEvent.InstructorNickname</td>
+                <td>@yogaEvent.StudioName</td>
+                <td>
+                    <form method="post">
+                        <button type="submit" class="btn btn-danger btn-sm"
+                            asp-area="Admin" asp-controller="BlogPosts" asp-action="DeleteYogaEvent" asp-route-id="@yogaEvent.Id">
+                            Изтрий
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

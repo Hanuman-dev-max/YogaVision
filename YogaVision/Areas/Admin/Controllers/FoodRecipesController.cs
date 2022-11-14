@@ -6,7 +6,6 @@ namespace YogaVision.Areas.Admin.Controllers
     using YogaVision.Common;
     using YogaVision.Core.Contracts;
     using YogaVision.Core.Models.FoodRecipes;
-    using YogaVision.Core.Services.Cloadinary;
     public class FoodRecipesController : AdministrationController
     {
         private readonly IFoodRecipesService foodRecipesService;

@@ -1,9 +1,9 @@
 ﻿
 @{
-    this.ViewData["Title"] = "Admin Dashboard";
+    this.ViewData["Title"] = "Табло";
 }
 
-<h3>Welcome to Admin Dashboard!</h3>
+<h3>Добре Дошли в Администратор Таблото</h3>
 
 <div>
     <a asp-area="Admin" asp-controller="BlogPosts" asp-action="Index"
@@ -39,6 +39,13 @@
 
     <div class="ml-5 my-2">
         <a class="btn btn-outline-info btn-sm" asp-area="Admin" asp-controller="Studios" asp-action="AddStudio">Добави Ново Студио</a>
+    </div>
+
+    <a asp-area="Admin" asp-controller="YogaEvents" asp-action="Index"
+       class="list-group-item list-group-item-action bg-light">Йога Събития</a>
+
+    <div class="ml-5 my-2">
+        <a class="btn btn-outline-info btn-sm" asp-area="Admin" asp-controller="YogaEvents" asp-action="AddYogaEvent">Добави Ново Йога Събитие</a>
     </div>
 
     

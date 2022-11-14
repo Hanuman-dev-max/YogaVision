@@ -8,6 +8,10 @@ namespace YogaVision.Infrastructure.Data.Models
     using YogaVision.Infrastructure.Data.Common.Models;
     public class Instructor : BaseDeletableModel<int>
     {
+        public Instructor()
+        {
+            YogaEvents = new HashSet<YogaEvent>();
+        }
         [Required]
         [MaxLength(GlobalConstants.DataValidations.NameMaxLength)]
         public string FirstName { get; set; }
@@ -25,5 +29,6 @@ namespace YogaVision.Infrastructure.Data.Models
 
         [Required]
         public string ImageUrl { get; set; }
+        public ICollection<YogaEvent> YogaEvents { get; set; }
     }
 }
