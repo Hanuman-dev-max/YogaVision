@@ -19,6 +19,8 @@ namespace YogaVision.Core.Models.YogaEvents
 
         public string StudioName { get; set; }
 
+        public int Seats { get; set; }
+
     }
 
 }

@@ -105,7 +105,7 @@
      
         <div class="form-group row">
                
-            <label class="col-sm-2 col-form-label">Date</label>
+            <label class="col-sm-2 col-form-label">Дата</label>
             <div class="col-sm-10">
                 <div id="selectedDate" asp-for="@Model.Date" class="form-control" hidden></div>
                 <input asp-for="@Model.Date" value="" class="form-control" required readonly />
@@ -113,7 +113,7 @@
             </div>
         </div>
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Time</label>
+            <label class="col-sm-2 col-form-label">Час</label>
             <div class="col-sm-10">
                 <div id="selectedTime" asp-for="@Model.Time" class="form-control" hidden></div>
                 <input asp-for="@Model.Time" value="" class="form-control" required readonly />
@@ -128,13 +128,19 @@
                 </div>
         </div>
             <div class="form-group row">
-                <label class="col-sm-4 col-form-label">Продължителност</label>
-                <div class="col-sm-8">
+                <label class="col-sm-2 col-form-label">Продължителност</label>
+                <div class="col-sm-10">
                    <input class="html-duration-picker" data-hide-seconds asp-for="@Model.Duration" class="form-control" required="required">
                     <span asp-validation-for="Duration" class="text-danger"></span>
                 </div>
             </div>
-        
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Места</label>
+                <div class="col-sm-10">
+                    <input type="number" min="1" max="30" asp-for="@Model.Seats" class="form-control" required="required">
+                    <span asp-validation-for="Seats" class="text-danger"></span>
+                </div>
+            </div>
         
         
         

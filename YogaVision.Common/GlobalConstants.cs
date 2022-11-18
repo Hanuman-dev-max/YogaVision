@@ -43,7 +43,11 @@
                 public const int AddressMaxLength = 100;
 
                 public const int AddressMinLength = 5;
-            }
+
+                public const int SeatMinLength = 1;
+
+                public const int SeatMaxLength = 30;
+        }
 
             public static class ErrorMessages
             {

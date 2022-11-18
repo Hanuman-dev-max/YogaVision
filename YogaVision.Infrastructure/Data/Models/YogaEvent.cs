@@ -23,5 +23,7 @@ namespace YogaVision.Infrastructure.Data.Models
         public Instructor Instructor { get; set; }
         public string StudioId { get; set; }
         public Studio Studio { get; set; }
+
+        public int Seats { get; set; }
     }
 }

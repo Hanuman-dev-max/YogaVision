@@ -12,6 +12,7 @@ namespace YogaVision.Data
         public DbSet<Studio> Studios { get; set; }
         public DbSet<Instructor> Instructors { get; set; }
         public DbSet<FoodRecipe> FoodRecipes { get; set; }
+        public DbSet<YogaEvent> YogaEvents { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

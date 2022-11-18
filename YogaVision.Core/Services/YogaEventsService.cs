@@ -22,7 +22,7 @@ namespace YogaVision.Core.Services
         {
             this.yogaEventsRepository = yogaEventsRepository; 
         }
-        public async Task AddAsync(string studioId, int instructorId,  DateTime datetime, string description, string duration)
+        public async Task AddAsync(string studioId, int instructorId,  DateTime datetime, string description, string duration, int seats)
         {
             await this.yogaEventsRepository.AddAsync(new YogaEvent
             {
@@ -31,10 +31,11 @@ namespace YogaVision.Core.Services
                 InstructorId = instructorId,
                 StudioId = studioId,
                 Description = description,
-                 CreatedOn = DateTime.Now,
-                  Duration = duration,
-                   
-            });
+                CreatedOn = DateTime.Now,
+                Duration = duration,
+                Seats = seats,
+
+            }); ;
             await this.yogaEventsRepository.SaveChangesAsync();
         }
 

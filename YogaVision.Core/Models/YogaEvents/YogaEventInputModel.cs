@@ -29,6 +29,10 @@ namespace YogaVision.Core.Models.YogaEvents
         [Required]
         public string Duration { get; set; }
 
+        [Required]
+        [Range(GlobalConstants.DataValidations.SeatMinLength, GlobalConstants.DataValidations.SeatMaxLength)]
+        public int Seats { get; set; }
+
 
 
     }

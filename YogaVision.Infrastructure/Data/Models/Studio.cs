@@ -25,6 +25,8 @@
         [MaxLength(GlobalConstants.DataValidations.AddressMaxLength)]
         public string Address { get; set; }
 
+       
+
         public ICollection<YogaEvent> YogaEvents { get; set; }
     }
 }

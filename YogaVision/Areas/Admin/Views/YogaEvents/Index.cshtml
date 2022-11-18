@@ -17,6 +17,7 @@
             <th scope="col">Дата</th>
             <th scope="col">Продължителност</th>
             <th scope="col">Описание</th>
+            <th scope="col">Места</th>
             <th scope="col">Водещ</th>
             <th scope="col">Студио</th>
             <th scope="col">Бутон за изтриване</th>
@@ -29,12 +30,13 @@
                 <th scope="row">@yogaEvent.DateTime</th>
                 <td>@yogaEvent.Duration</td>
                 <td>@yogaEvent.Description</td>
+                <td>@yogaEvent.Seats</td>
                 <td>@yogaEvent.InstructorNickname</td>
                 <td>@yogaEvent.StudioName</td>
                 <td>
                     <form method="post">
                         <button type="submit" class="btn btn-danger btn-sm"
-                            asp-area="Admin" asp-controller="BlogPosts" asp-action="DeleteYogaEvent" asp-route-id="@yogaEvent.Id">
+                            asp-area="Admin" asp-controller="YogaEvents" asp-action="DeleteYogaEvent" asp-route-id="@yogaEvent.Id">
                             Изтрий
                         </button>
                     </form>

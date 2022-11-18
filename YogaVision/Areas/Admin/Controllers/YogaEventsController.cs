@@ -79,7 +79,7 @@ namespace YogaVision.Areas.Admin.Controllers
             {
                 return this.RedirectToAction("AddYogaEvent");
             }
-            await this.yogaEventsService.AddAsync(input.StudioId, input.InstructorId, dateTime, input.Description, input.Duration);
+            await this.yogaEventsService.AddAsync(input.StudioId, input.InstructorId, dateTime, input.Description, input.Duration, input.Seats);
             return this.RedirectToAction("Index");
         }
         [HttpPost]

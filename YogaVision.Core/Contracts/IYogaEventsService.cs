@@ -13,7 +13,7 @@
 
         Task<T> GetByIdAsync<T>(string id);
 
-        Task AddAsync(string studioId, int instructorId, DateTime datetime, string description, string duration);
+        Task AddAsync(string studioId, int instructorId, DateTime datetime, string description, string duration, int seats);
 
         Task DeleteAsync(string id);
     }
