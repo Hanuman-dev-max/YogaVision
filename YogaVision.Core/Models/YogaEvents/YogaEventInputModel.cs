@@ -22,9 +22,9 @@ namespace YogaVision.Core.Models.YogaEvents
         
         [Required]
         [StringLength(
-           GlobalConstants.DataValidations.DescriptionMaxLength,
+           GlobalConstants.DataValidations.EventDescriptionMaxLength,
            ErrorMessage = GlobalConstants.ErrorMessages.Description,
-           MinimumLength = GlobalConstants.DataValidations.DescriptionMinLength)]
+           MinimumLength = GlobalConstants.DataValidations.EventDescriptionMinLength)]
         public string Description { get; set; }
         [Required]
         public string Duration { get; set; }

@@ -11,13 +11,14 @@ namespace YogaVision.Core.Models.YogaEvents
         public string Description { get; set; }
         public DateTime DateTime { get; set; }
 
-       
+        
 
         public string Duration { get; set; }
 
         public string InstructorNickname { get; set; }
 
         public string StudioName { get; set; }
+        public string StudioCityName { get; set; }
 
         public int Seats { get; set; }
 

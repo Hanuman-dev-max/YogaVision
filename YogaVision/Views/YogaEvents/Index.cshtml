@@ -1,0 +1,51 @@
+﻿@model YogaVision.Core.Models.YogaEvents.YogaEventsListViewModel
+@{
+    this.ViewData["Title"] = "График";
+}
+
+<div>
+    @await Component.InvokeAsync("CitiesSimpleList")
+</div>
+
+
+
+@if (@Model.YogaEvents.Count() > 0)
+{
+   
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Дата и час</th>
+                <th scope="col">Продължителност</th>
+                <th scope="col">Описание</th>
+                <th scope="col">Свободни места</th>
+                <th scope="col">Град</th>
+                <th scope="col">Студио</th>
+                <th scope="col">Инструктор</th>
+                <th scope="col">Резервирай</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var yogaEvent in this.Model.YogaEvents)
+            {
+                <tr>
+                    <th scope="row">@yogaEvent.DateTime.ToString("dd/MM/yyyy hh:mm")</th>
+                    <td>@yogaEvent.Duration</td>
+                    <td >@yogaEvent.Description</td>
+                    <td>@yogaEvent.Seats</td>
+                    <td>@yogaEvent.StudioCityName</td>
+                    <td>@yogaEvent.StudioName</td>
+                    <td>@yogaEvent.InstructorNickname</td>
+                    <td>
+                        <div class="button elements_button">
+                            <a asp-area="" asp-controller="Appointments" asp-action="MakeAnAppointment">
+                                <span>Резервирай</span><span>Резервирай</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

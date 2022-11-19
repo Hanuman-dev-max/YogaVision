@@ -12,6 +12,7 @@
         Task<int> GetCountForPaginationAsync();
 
         Task<T> GetByIdAsync<T>(string id);
+        Task<IEnumerable<T>> GetByCityIdAsync<T>(int cityId);
 
         Task AddAsync(string studioId, int instructorId, DateTime datetime, string description, string duration, int seats);
 

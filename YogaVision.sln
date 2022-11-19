@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YogaVision.Core", "YogaVisi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YogaVision.Infrastructure", "YogaVision.Infrastructure\YogaVision.Infrastructure.csproj", "{1D99D097-82FE-4F04-AB59-5622F74DFF25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YogaVision.Common", "YogaVision.Common\YogaVision.Common.csproj", "{CCF573C5-E165-4FAC-B1DA-BDD82D7FC7A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YogaVision.Common", "YogaVision.Common\YogaVision.Common.csproj", "{CCF573C5-E165-4FAC-B1DA-BDD82D7FC7A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

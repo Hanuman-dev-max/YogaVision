@@ -43,5 +43,16 @@
             this.citiesRepository.Delete(city);
             await this.citiesRepository.SaveChangesAsync();
         }
+
+
+        public async Task<T> GetByIdAsync<T>(int id)
+        {
+            var city =
+                await this.citiesRepository
+                .All()
+                .Where(x => x.Id == id)
+                .To<T>().FirstOrDefaultAsync();
+            return city;
+        }
     }
 }

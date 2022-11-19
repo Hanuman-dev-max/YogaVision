@@ -12,7 +12,7 @@ namespace YogaVision.Infrastructure.Data.Models
     public class YogaEvent: BaseDeletableModel<string>
     {
         [Required]
-        [MaxLength(GlobalConstants.DataValidations.DescriptionMaxLength)]
+        [MaxLength(GlobalConstants.DataValidations.EventDescriptionMaxLength)]
         public string Description { get; set; }
         [Required]
         public DateTime DateTime { get; set; }

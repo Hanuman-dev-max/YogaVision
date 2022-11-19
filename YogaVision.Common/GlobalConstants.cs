@@ -47,6 +47,10 @@
                 public const int SeatMinLength = 1;
 
                 public const int SeatMaxLength = 30;
+
+                public const int EventDescriptionMaxLength = 50;
+                
+            public const int EventDescriptionMinLength = 10; 
         }
 
             public static class ErrorMessages
@@ -81,7 +85,7 @@
 
             public static class Images
             {
-                public const string Index = "https://res.cloudinary.com/beauty-booking/image/upload/v1586874219/index_iyfzwc.jpg";
+                public const string Index = "https://res.cloudinary.com/dig1baxyv/image/upload/v1668750032/YogaVision/kike-vega-F2qh3yjz6Jk-unsplash_h3u7qc.jpg";
 
                 public const string CoverBackground = "https://res.cloudinary.com/beauty-booking/image/upload/v1586874218/cover-bg_nnwh6d.jpg";
 

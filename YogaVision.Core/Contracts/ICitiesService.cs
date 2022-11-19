@@ -13,5 +13,6 @@ namespace YogaVision.Core.Contracts
         Task AddAsync(string name);
 
         Task DeleteAsync(int id);
+        Task<T> GetByIdAsync<T>(int id);
     }
 }

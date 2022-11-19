@@ -1,0 +1,23 @@
+﻿@model YogaVision.Core.Models.Cities.CitiesListViewModel
+@{
+    this.ViewData["Title"] = "Default";
+}
+
+<div class="btn-group dropright ml-5">
+    <button type="button"  class="btn btn-outline-secondary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Търсене по Град
+    </button>
+    <div class="dropdown-menu">
+        @foreach (var city in Model.Cities)
+        {
+            <a class="dropdown-item"
+           asp-area="" asp-controller="YogaEvents" asp-action="Index" asp-route-sortId="@city.Id">
+                @city.Name 
+            </a>
+        }
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" asp-area="" asp-controller="YogaEvents" asp-action="Index">Всички градове</a>
+    </div>
+</div>
+
+<hr class="bg-dark m-4" style="height: 6px;" />

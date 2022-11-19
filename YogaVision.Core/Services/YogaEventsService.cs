@@ -55,7 +55,7 @@ namespace YogaVision.Core.Services
             var yogaEvent =
                await this.yogaEventsRepository
                .All()
-               .OrderByDescending(x => x.DateTime)
+               .OrderBy(x => x.DateTime)
                .To<T>().ToListAsync();
             return yogaEvent;
         }
@@ -65,10 +65,23 @@ namespace YogaVision.Core.Services
             throw new NotImplementedException();
         }
 
+        public async Task<IEnumerable<T>> GetByCityIdAsync<T>(int cityId)
+        {
+            var yogaEvent =
+               await this.yogaEventsRepository
+               .All()
+               .Where(x => x.Studio.CityId == cityId)
+               .OrderBy(x => x.DateTime)
+               .To<T>().ToListAsync();
+            return yogaEvent;
+        }
+
         public Task<T> GetByIdAsync<T>(string id)
         {
             throw new NotImplementedException();
         }
+
+        
 
         public Task<int> GetCountForPaginationAsync()
         {

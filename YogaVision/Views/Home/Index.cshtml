@@ -1,8 +1,26 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@{
+    this.ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+
+<hr class="bg-dark mx-4" style="height: 6px;" />
+
+
+
+            <!-- Latest News -->
+            <div class="col-lg-5">
+                <div class="news-grey">
+                    <div class="news_title">Latest Blog Posts</div>
+                    <div class="news_container">
+                        <div>
+                            @await Component.InvokeAsync("LatestBlogPosts", 4)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+ 
+
+<hr class="bg-dark mx-4" style="height: 6px;" />
