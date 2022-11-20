@@ -3,6 +3,7 @@
     public interface IYogaEventsService
     {
         Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
+        Task<IEnumerable<T>> GetAllByDateAsync<T>(DateTime dateTime, int? count = null);
 
         Task<IEnumerable<T>> GetAllWithPagingAsync<T>(
             int? sortId,
@@ -12,7 +13,7 @@
         Task<int> GetCountForPaginationAsync();
 
         Task<T> GetByIdAsync<T>(string id);
-        Task<IEnumerable<T>> GetByCityIdAsync<T>(int cityId);
+        Task<IEnumerable<T>> GetByCityIdAsync<T>(int cityId, DateTime dateTime);
 
         Task AddAsync(string studioId, int instructorId, DateTime datetime, string description, string duration, int seats);
 

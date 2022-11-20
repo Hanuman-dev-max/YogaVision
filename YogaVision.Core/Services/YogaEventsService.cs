@@ -1,28 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YogaVision.Common;
-using YogaVision.Core.Contracts;
-using static YogaVision.Common.GlobalConstants;
-using YogaVision.Core.Models.Common;
-using YogaVision.Infrastructure.Data.Common;
-using YogaVision.Infrastructure.Data.Models;
-using Microsoft.EntityFrameworkCore;
-using YogaVision.Infrastructure.Data.Common.Mapping;
+﻿
 
 namespace YogaVision.Core.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using YogaVision.Core.Contracts;
+    using YogaVision.Infrastructure.Data.Common;
+    using YogaVision.Infrastructure.Data.Models;
+    using Microsoft.EntityFrameworkCore;
+    using YogaVision.Infrastructure.Data.Common.Mapping;
     public class YogaEventsService : IYogaEventsService
     {
         private readonly IDeletableEntityRepository<YogaEvent> yogaEventsRepository;
         public YogaEventsService(IDeletableEntityRepository<YogaEvent> yogaEventsRepository)
         {
-            this.yogaEventsRepository = yogaEventsRepository; 
+            this.yogaEventsRepository = yogaEventsRepository;
         }
-        public async Task AddAsync(string studioId, int instructorId,  DateTime datetime, string description, string duration, int seats)
+        public async Task AddAsync(string studioId, int instructorId, DateTime datetime, string description, string duration, int seats)
         {
             await this.yogaEventsRepository.AddAsync(new YogaEvent
             {
@@ -60,17 +56,28 @@ namespace YogaVision.Core.Services
             return yogaEvent;
         }
 
+        public async Task<IEnumerable<T>> GetAllByDateAsync<T>(DateTime dateTime, int? count = null)
+        {
+            var yogaEvent =
+               await this.yogaEventsRepository
+               .All()
+               .Where(x => x.DateTime >= dateTime)
+               .OrderBy(x => x.DateTime)
+               .To<T>().ToListAsync();
+            return yogaEvent;
+        }
+
         public Task<IEnumerable<T>> GetAllWithPagingAsync<T>(int? sortId, int pageSize, int pageIndex)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<T>> GetByCityIdAsync<T>(int cityId)
+        public async Task<IEnumerable<T>> GetByCityIdAsync<T>(int cityId, DateTime dateTime)
         {
             var yogaEvent =
                await this.yogaEventsRepository
                .All()
-               .Where(x => x.Studio.CityId == cityId)
+               .Where(x => x.Studio.CityId == cityId && x.DateTime >= dateTime)
                .OrderBy(x => x.DateTime)
                .To<T>().ToListAsync();
             return yogaEvent;
@@ -81,7 +88,7 @@ namespace YogaVision.Core.Services
             throw new NotImplementedException();
         }
 
-        
+
 
         public Task<int> GetCountForPaginationAsync()
         {

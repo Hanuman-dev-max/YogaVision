@@ -5,9 +5,9 @@ namespace YogaVision.Controllers
 
     using Microsoft.AspNetCore.Mvc;
     using YogaVision.Core.Contracts;
-   
+
     using YogaVision.Core.Models.YogaEvents;
-  
+
     using YogaVision.Infrastructure.Data.Models;
     public class YogaEventsController : BaseController
     {
@@ -25,38 +25,33 @@ namespace YogaVision.Controllers
             //this.citiesService = citiesService;
             this.dateTimeParserService = dateTimeParserService;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? sortId)
         {
-            var viewModel = new YogaEventsListViewModel
+
+
+
+            if (sortId != null)
             {
-                YogaEvents = await this.yogaEventsService.GetAllAsync<YogaEventViewModel>()
-            };
-            return this.View(viewModel);
+                var model = new YogaEventsListViewModel()
+                {
+                    YogaEvents = await this.yogaEventsService
+                    .GetByCityIdAsync<YogaEventViewModel>(sortId.Value, DateTime.Now)
+                };
+                return View(model);
+            }
+            else
+            {
+                var model = new YogaEventsListViewModel()
+                {
+                    YogaEvents = await this.yogaEventsService.GetAllByDateAsync<YogaEventViewModel>(DateTime.Now)
+                };
+                return View(model);
+            }
+
+
+
+
+
         }
-        //int? sortId   // CityId
-         
-        //{
-        //    if (sortId != null)
-        //    {
-        //        var yogaEvents = await this.yogaEventsService
-        //            .GetByCityIdAsync<YogaEventViewModel>(sortId.Value);
-        //        if (yogaEvents == null)
-        //        {
-        //            return new StatusCodeResult(404);
-        //        }
-
-        //        var city = await citiesService.GetByIdAsync<City>(sortId.Value);
-        //        this.ViewData["CityName"] = city.Name;
-        //    }
-        //    else
-        //    {
-        //        var yogaEvents =
-        //                await this.yogaEventsService.GetAllAsync<YogaEventViewModel>()
-                
-                
-        //    }
-
-           
-      
     }
 }
