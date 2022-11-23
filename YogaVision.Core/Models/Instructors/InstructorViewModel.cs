@@ -14,7 +14,14 @@ namespace YogaVision.Core.Models.Instructors
 
         public string Description { get; set; }
 
+        public string FacebookLink { get; set; }
         public string ImageUrl { get; set; }
+
+        public string ImageUrlFirst { get; set; }
+
+        public string ImageUrlSecond { get; set; }
+
+        public string ImageUrlThird { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

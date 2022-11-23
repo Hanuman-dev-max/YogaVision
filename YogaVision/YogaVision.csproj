@@ -21,6 +21,7 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\FoodRecipes\" />
+    <Folder Include="wwwroot\img\" />
     <Folder Include="wwwroot\plugins\" />
   </ItemGroup>
 

@@ -71,7 +71,7 @@
             return instructor;
         }
 
-        public async Task AddAsync(string firstName, string lastName, string description, string nickName, string imageUrl)
+        public async Task AddAsync(string firstName, string lastName, string description, string nickName, string imageUrl, string imageUrlFirst , string imageUrlSecond, string imageUrlThird, string facebookLink)
         {
             await this.instructorRepository.AddAsync(new Instructor
             {
@@ -80,6 +80,11 @@
                   LastName = lastName,
                    Nickname = nickName,
                 ImageUrl = imageUrl,
+                ImageUrlFirst = imageUrlFirst,
+                ImageUrlSecond = imageUrlSecond,
+                ImageUrlThird = imageUrlThird,
+
+                FacebookLink = facebookLink
             });
             await this.instructorRepository.SaveChangesAsync();
         }

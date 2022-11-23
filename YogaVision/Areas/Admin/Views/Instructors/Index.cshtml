@@ -16,10 +16,14 @@
         <tr>
             <th scope="col">Псевдоним</th>
             <th scope="col">Изображение</th>
+            <th scope="col">Изображение1</th>
+            <th scope="col">Изображение2</th>
+            <th scope="col">Изображение3</th>
             <th scope="col">Описание</th>
             <th scope="col">Име</th>
             <th scope="col">Фамилия</th>
-           <th scope="col">Бутон за изтриване</th>
+            <th scope="col">Facebook</th>
+            <th scope="col">Бутон за изтриване</th>
         </tr>
     </thead>
     <tbody>
@@ -28,7 +32,16 @@
             <tr>
                 <th scope="row">@instructor.NickName</th>
                 <td>
-                    <img class="align-self-center" src="@instructor.ImageUrl" style="width:180px;height:120px;">
+                    <img class="align-self-center" src="@instructor.ImageUrl" style="width:120px;height:90px;">
+                </td>
+                <td>
+                    <img class="align-self-center" src="@instructor.ImageUrlFirst" style="width:120px;height:90px;">
+                </td>
+                <td>
+                    <img class="align-self-center" src="@instructor.ImageUrlSecond" style="width:120px;height:90px;">
+                </td>
+                <td>
+                    <img class="align-self-center" src="@instructor.ImageUrlThird" style="width:120px;height:90px;">
                 </td>
                 <td>
                     <!-- Button trigger modal -->
@@ -42,8 +55,6 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLongTitle">@instructor.NickName</h5>
-                                    
-                                    
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -60,6 +71,7 @@
                 </td>
                 <td>@instructor.FirstName</td>
                 <td>@instructor.LastName</td>
+                 <td>@instructor.FacebookLink</td>
                 <td>
                     <form method="post">
                         <button type="submit" class="btn btn-danger btn-sm"

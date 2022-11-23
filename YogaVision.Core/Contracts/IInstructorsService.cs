@@ -15,7 +15,7 @@ namespace YogaVision.Core.Contracts
 
         Task<T> GetByIdAsync<T>(int id);
 
-        Task AddAsync(string firstName, string lastName, string description, string nickName, string imageUrl);
+        Task AddAsync(string firstName, string lastName, string description, string nickName, string imageUrl, string imageUrlFirst, string imageUrlSecond, string imageUrlThird, string facebookLink);
 
         Task DeleteAsync(int id);
 

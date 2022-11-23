@@ -27,13 +27,32 @@
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
         </div>
-        
-        
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Image</label>
+            <label class="col-sm-2 col-form-label">Главна Снимка</label>
             <div class="col-sm-10">
                 <input type="file" asp-for="@Model.Image" class="form-control-file image-upload" required="required" />
                 <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Снимка 1</label>
+            <div class="col-sm-10">
+                <input type="file" asp-for="@Model.ImageFirst" class="form-control-file image-upload" required="required" />
+                <span asp-validation-for="ImageFirst" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Снимка 2</label>
+            <div class="col-sm-10">
+                <input type="file" asp-for="@Model.ImageSecond" class="form-control-file image-upload" required="required" />
+                <span asp-validation-for="ImageSecond" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Снимка 3</label>
+            <div class="col-sm-10">
+                <input type="file" asp-for="@Model.ImageThird" class="form-control-file image-upload" required="required" />
+                <span asp-validation-for="ImageThird" class="text-danger"></span>
             </div>
         </div>
         <div class="form-group row">
@@ -43,6 +62,14 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
         </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Facebook страница</label>
+            <div class="col-sm-10">
+                <textarea type="text" asp-for="@Model.FacebookLink" class="form-control" required="required"></textarea>
+                <span asp-validation-for="FacebookLink" class="text-danger"></span>
+            </div>
+        </div>
+        
         
         <div class="form-group row">
             <div class="col-sm-6 text-right">

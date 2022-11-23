@@ -29,6 +29,13 @@
 
         [Required]
         [StringLength(
+            GlobalConstants.DataValidations.FacebookLinkMaxLength,
+            ErrorMessage = GlobalConstants.ErrorMessages.Facebook,
+            MinimumLength = GlobalConstants.DataValidations.FacebookLinkMinLength)]
+        public string FacebookLink { get; set; }
+
+        [Required]
+        [StringLength(
             GlobalConstants.DataValidations.NameMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Name,
             MinimumLength = GlobalConstants.DataValidations.NameMinLength)]
@@ -38,6 +45,22 @@
         [DataType(DataType.Upload)]
         [ValidateImageFile(ErrorMessage = GlobalConstants.ErrorMessages.Image)]
         public IFormFile Image { get; set; }
+
+        [Required]
+        [DataType(DataType.Upload)]
+        [ValidateImageFile(ErrorMessage = GlobalConstants.ErrorMessages.Image)]
+        public IFormFile ImageFirst { get; set; }
+
+        [Required]
+        [DataType(DataType.Upload)]
+        [ValidateImageFile(ErrorMessage = GlobalConstants.ErrorMessages.Image)]
+        public IFormFile ImageSecond { get; set; }
+
+        [Required]
+        [DataType(DataType.Upload)]
+        [ValidateImageFile(ErrorMessage = GlobalConstants.ErrorMessages.Image)]
+        public IFormFile ImageThird { get; set; }
     }
 }
+
 

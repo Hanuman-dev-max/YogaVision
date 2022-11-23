@@ -20,7 +20,14 @@ namespace YogaVision.Controllers
                 Instructors = await instructorsService.GetAllAsync<InstructorViewModel>()
             };
             return View(model);
+        }
 
+        public async Task<IActionResult> Details(int id)
+        {
+            var instructor = await instructorsService.GetByIdAsync<InstructorViewModel>(id);
+            return View(instructor);
+
+        
         }
     }
 }

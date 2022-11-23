@@ -3,21 +3,19 @@
     
         public static class GlobalConstants
         {
-            public const string SystemName = "BeautyBooking";
+            public const string SystemName = "YogaVision";
 
             public const string AdministratorRoleName = "Administrator";
 
-            public const string SalonManagerRoleName = "Manager";
+           
 
-            public const string CloudName = "beauty-booking";
+            
 
             public static class AccountsSeeding
             {
                 public const string Password = "123456";
 
                 public const string AdminEmail = "admin@admin.com";
-
-                public const string SalonManagerEmail = "manager@manager.com";
 
                 public const string UserEmail = "user@user.com";
             }
@@ -48,13 +46,18 @@
 
                 public const int SeatMaxLength = 30;
 
+                public const int FacebookLinkMaxLength = 100;
+                public const int FacebookLinkMinLength = 10;
+
+
                 public const int EventDescriptionMaxLength = 50;
                 
-            public const int EventDescriptionMinLength = 10; 
+                public const int EventDescriptionMinLength = 10; 
         }
 
             public static class ErrorMessages
             {
+            public const string Facebook = "Facebook link must be between 10 and 100 characters";
                 public const string Title = "Title must be between 5 and 60 characters.";
 
                 public const string Content = "Content must be between 700 and 3500 characters.";
@@ -69,7 +72,7 @@
 
                 public const string Image = "Please select a JPG, JPEG or PNG image smaller than 1MB.";
 
-                public const string DateTime = "Please select a valid DATE and TIME from the datepicker calendar on the left.";
+                public const string DateTime = "Please select a valid DATE and TIME from the datepicker calendar";
 
                 public const string Rating = "Please choose a valid number of stars from 1 to 5.";
             }
@@ -155,20 +158,7 @@
                 public const string Body3 = "https://res.cloudinary.com/beauty-booking/image/upload/v1587257301/Salons/body-3_x95ezf.jpg";
             }
 
-            public static class SeededDataCounts
-            {
-                public const int BlogPosts = 4;
-
-                public const int Categories = 6;
-
-                public const int Services = 55;
-
-                public const int Cities = 2;
-
-                public const int Salons = 18;
-
-                public const int Appointments = 54;
-            }
+            
         }
     }
 

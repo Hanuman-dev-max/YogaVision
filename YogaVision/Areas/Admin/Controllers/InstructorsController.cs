@@ -50,9 +50,40 @@
                 //In case of missing Cloudinary configuration from appsettings.json
                imageUrl = GlobalConstants.Images.CloudinaryMissing;
             }
+            string imageUrlFirst;
+            try
+            {
+                imageUrlFirst = await this.cloudinaryService.UploadPictureAsync(input.ImageFirst, input.Nickname+"1");
+            }
+            catch (System.Exception)
+            {
+                //In case of missing Cloudinary configuration from appsettings.json
+                imageUrlFirst = GlobalConstants.Images.CloudinaryMissing;
+            }
+            string imageUrlSecond;
+            try
+            {
+                imageUrlSecond = await this.cloudinaryService.UploadPictureAsync(input.ImageSecond, input.Nickname+"2");
+            }
+            catch (System.Exception)
+            {
+                //In case of missing Cloudinary configuration from appsettings.json
+                imageUrlSecond = GlobalConstants.Images.CloudinaryMissing;
+            }
+            string imageUrlThird;
+            try
+            {
+                imageUrlThird = await this.cloudinaryService.UploadPictureAsync(input.ImageThird, input.Nickname+"3");
+            }
+            catch (System.Exception)
+            {
+                //In case of missing Cloudinary configuration from appsettings.json
+                imageUrlThird = GlobalConstants.Images.CloudinaryMissing;
+            }
             var createdOn = DateTime.Now;
             //Task AddAsync(string firstName, string lastName, string description, string nickName, string imageUrl);
-            await this.instructorsService.AddAsync(input.FirstName,input.LastName, input.Description, input.Nickname, imageUrl);
+            await this.instructorsService.AddAsync(input.FirstName,input.LastName, input.Description, input.Nickname, imageUrl,
+                imageUrlFirst, imageUrlSecond, imageUrlThird, input.FacebookLink);
             return this.RedirectToAction("Index");
         }
 

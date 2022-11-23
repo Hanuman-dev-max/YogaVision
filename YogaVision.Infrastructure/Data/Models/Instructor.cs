@@ -24,11 +24,24 @@ namespace YogaVision.Infrastructure.Data.Models
         public string Description { get; set; }
 
         [Required]
+        [MaxLength(GlobalConstants.DataValidations.FacebookLinkMaxLength)]
+        public string FacebookLink { get; set; }
+
+        [Required]
         [MaxLength(GlobalConstants.DataValidations.NameMaxLength)]
         public string Nickname { get; set; }
 
         [Required]
         public string ImageUrl { get; set; }
+
+        [Required]
+        public string ImageUrlFirst { get; set; }
+
+        [Required]
+        public string ImageUrlSecond { get; set; }
+
+        [Required]
+        public string ImageUrlThird { get; set; }
         public ICollection<YogaEvent> YogaEvents { get; set; }
     }
 }

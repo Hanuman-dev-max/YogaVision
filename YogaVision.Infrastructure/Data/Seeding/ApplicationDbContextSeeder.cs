@@ -30,7 +30,9 @@ namespace YogaVision.Infrastructure.Data.Seeding
                           {
                               new RolesSeeder(),
                               new AccountsSeeder(),
-                             
+                              new CitiesSeeder(),
+                              new InstructorsSeeder(),
+                              new StudiosSeeder(),
                           };
 
             foreach (var seeder in seeders)

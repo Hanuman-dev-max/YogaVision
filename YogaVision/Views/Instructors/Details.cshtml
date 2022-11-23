@@ -1,0 +1,127 @@
+﻿@model YogaVision.Core.Models.Instructors.InstructorViewModel
+@{
+    this.ViewData["Title"] = Model.FirstName + " " + Model.LastName;
+}
+<div class="container text-center col-lg-6">
+    
+<div class="news_post">
+    <div class="news_post_image"><img src="@Model.ImageUrl" alt=""></div>
+    <div class="news_post_content">
+       <div class="news_post_text">
+            <p>@Model.Description</p>
+        </div>
+    </div>
+</div>
+</div>
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+         <div class="row">
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 1-->
+                <div class="portfolio-item">
+                    <button class="portfolio-link" data-toggle="modal" data-target="#instructor1-@Model.Id">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fa fa-plus"></i></div>
+                        </div>
+                        <img class="img-fluid" src=@Model.ImageUrlFirst alt="..." />
+                    </button>
+                </div>
+            </div>
+             <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 2-->
+                <div class="portfolio-item">
+                    <button class="portfolio-link" data-toggle="modal" data-target="#instructor2-@Model.Id">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fa fa-plus"></i></div>
+                        </div>
+                        <img class="img-fluid" src=@Model.ImageUrlSecond alt="..." />
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item 3-->
+                <div class="portfolio-item">
+                    <button class="portfolio-link" data-toggle="modal" data-target="#instructor3-@Model.Id">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fa fa-plus"></i></div>
+                        </div>
+                        <img class="img-fluid" src=@Model.ImageUrlThird alt="..." />
+                    </button>
+                </div>
+            </div>
+         </div>
+    </div>
+</section>
+
+<!-- Portfolio Modals-->
+        <!-- Portfolio item 1 modal popup-->
+        <div class="portfolio-modal modal fade" id="instructor1-@Model.Id" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="~/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                  
+                                    <img class="img-fluid d-block mx-auto" src=@Model.ImageUrlFirst alt="..." />
+                                   <button class="btn btn-primary btn-xl text-uppercase" data-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Затвори
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- Portfolio Modals-->
+<!-- Portfolio item 2 modal popup-->
+<div class="portfolio-modal modal fade" id="instructor2-@Model.Id" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal"><img src="~/img/close-icon.svg" alt="Close modal" /></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <!-- Project details-->
+
+                            <img class="img-fluid d-block mx-auto" src=@Model.ImageUrlSecond alt="..." />
+                            <button class="btn btn-primary btn-xl text-uppercase" data-dismiss="modal" type="button">
+                                <i class="fas fa-xmark me-1"></i>
+                                Затвори
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Portfolio Modals-->
+<!-- Portfolio item 2 modal popup-->
+<div class="portfolio-modal modal fade" id="instructor3-@Model.Id" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal"><img src="~/img/close-icon.svg" alt="Close modal" /></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <!-- Project details-->
+
+                            <img class="img-fluid d-block mx-auto" src=@Model.ImageUrlThird alt="..." />
+                            <button class="btn btn-primary btn-xl text-uppercase" data-dismiss="modal" type="button">
+                                <i class="fas fa-xmark me-1"></i>
+                                Затвори
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
