@@ -1,10 +1,9 @@
-﻿
-
-namespace YogaVision.Core.Services
+﻿namespace YogaVision.Core.Services
 {
     using Microsoft.EntityFrameworkCore;
-   
+
     using YogaVision.Core.Contracts;
+    using YogaVision.Core.Models.Tags;
     using YogaVision.Infrastructure.Data.Common;
     using YogaVision.Infrastructure.Data.Common.Mapping;
     using YogaVision.Infrastructure.Data.Models;
@@ -12,9 +11,11 @@ namespace YogaVision.Core.Services
     {
         private readonly IDeletableEntityRepository<BlogPost> blogPostsRepository;
 
-        public BlogPostsService(IDeletableEntityRepository<BlogPost> blogPostsRepository)
+
+        public BlogPostsService(IDeletableEntityRepository<BlogPost> blogPostsRepository, ITagService tagService)
         {
             this.blogPostsRepository = blogPostsRepository;
+
         }
 
         public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
@@ -28,7 +29,7 @@ namespace YogaVision.Core.Services
                 query = query.Take(count.Value);
             }
 
-            
+
 
             return await query.To<T>().ToListAsync();
         }
@@ -73,17 +74,21 @@ namespace YogaVision.Core.Services
             return blogPost;
         }
 
-        public async Task AddAsync(string title, string content, string author, string imageUrl, DateTime createdOn)
+        public async Task<int> AddAsync(string title, string content, string author, string imageUrl)
         {
-            await this.blogPostsRepository.AddAsync(new BlogPost
+           
+            var blogPost = new BlogPost()
             {
                 Title = title,
                 Content = content,
                 Author = author,
                 ImageUrl = imageUrl,
-                CreatedOn = createdOn,
-            });
+            };
+
+            await this.blogPostsRepository.AddAsync(blogPost);
             await this.blogPostsRepository.SaveChangesAsync();
+            return blogPost.Id;
+
         }
 
         public async Task DeleteAsync(int id)

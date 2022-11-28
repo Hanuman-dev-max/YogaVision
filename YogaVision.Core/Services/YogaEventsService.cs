@@ -35,6 +35,18 @@ namespace YogaVision.Core.Services
             await this.yogaEventsRepository.SaveChangesAsync();
         }
 
+        public async Task AddSeat(string yogaEventId)
+        {
+            var yogaEvent =
+                await this.yogaEventsRepository
+                .All()
+                .Where(x => x.Id == yogaEventId).
+                FirstOrDefaultAsync();
+
+            yogaEvent.Seats += 1;
+            await this.yogaEventsRepository.SaveChangesAsync();
+        }
+
         public async Task DeleteAsync(string id)
         {
             var yogaEvent =
@@ -83,9 +95,14 @@ namespace YogaVision.Core.Services
             return yogaEvent;
         }
 
-        public Task<T> GetByIdAsync<T>(string id)
+        public async Task<T> GetByIdAsync<T>(string id)
         {
-            throw new NotImplementedException();
+            var yogaEvent =
+                await this.yogaEventsRepository
+                .All()
+                .Where(x => x.Id == id)
+                .To<T>().FirstOrDefaultAsync();
+            return yogaEvent;
         }
 
 
@@ -93,6 +110,18 @@ namespace YogaVision.Core.Services
         public Task<int> GetCountForPaginationAsync()
         {
             throw new NotImplementedException();
+        }
+
+        public async Task SubstarctSeat(string yogaEventId)
+        {
+            var yogaEvent =
+                await this.yogaEventsRepository
+                .All()
+                .Where(x => x.Id == yogaEventId).
+                FirstOrDefaultAsync();
+
+            yogaEvent.Seats -= 1;
+            await this.yogaEventsRepository.SaveChangesAsync();
         }
     }
 }

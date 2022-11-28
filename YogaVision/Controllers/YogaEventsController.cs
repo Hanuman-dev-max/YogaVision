@@ -1,35 +1,31 @@
-﻿
-
-namespace YogaVision.Controllers
+﻿namespace YogaVision.Controllers
 {
 
     using Microsoft.AspNetCore.Mvc;
     using YogaVision.Core.Contracts;
 
     using YogaVision.Core.Models.YogaEvents;
+    using YogaVision.Extensions;
 
-    using YogaVision.Infrastructure.Data.Models;
     public class YogaEventsController : BaseController
     {
         private readonly IYogaEventsService yogaEventsService;
         //private readonly ICitiesService citiesService;
-
+        private readonly IYogaEventApplicationUserService yogaEventApplicationUserService;
 
         private readonly IDateTimeParserService dateTimeParserService;
-        public YogaEventsController(IYogaEventsService yogaEventsService, IDateTimeParserService dateTimeParserService)
-        //(IYogaEventsService yogaEventsService,
-        //    ICitiesService citiesService,
-        //    IDateTimeParserService dateTimeParserService)
+        public YogaEventsController(IYogaEventsService yogaEventsService,
+            IYogaEventApplicationUserService yogaEventApplicationUserService,
+            IDateTimeParserService dateTimeParserService)
+
         {
             this.yogaEventsService = yogaEventsService;
-            //this.citiesService = citiesService;
+            this.yogaEventApplicationUserService = yogaEventApplicationUserService;
             this.dateTimeParserService = dateTimeParserService;
         }
         public async Task<IActionResult> Index(int? sortId)
         {
-
-
-
+            ViewData["sortId"] = sortId;
             if (sortId != null)
             {
                 var model = new YogaEventsListViewModel()
@@ -48,10 +44,31 @@ namespace YogaVision.Controllers
                 return View(model);
             }
 
-
-
-
-
         }
+        [HttpPost]
+        public async Task<IActionResult> Reserve(string yogaEventId, int? sortId)
+        {
+            var userid = User.Id();
+
+            await yogaEventApplicationUserService.AddAsync(yogaEventId, userid);
+
+            await yogaEventsService.SubstarctSeat(yogaEventId);
+
+            return RedirectToAction("Index", new { sortId = sortId });
+        }
+        [HttpPost]
+        public async Task<IActionResult> Unreserve(string yogaEventId, int? sortId)
+        {
+            var userid = User.Id();
+
+            await yogaEventApplicationUserService.DeleteAsync(yogaEventId, userid);
+
+            await yogaEventsService.AddSeat(yogaEventId);
+
+            return RedirectToAction("Index", new { sortId = sortId });
+        }
+
+
+
     }
 }

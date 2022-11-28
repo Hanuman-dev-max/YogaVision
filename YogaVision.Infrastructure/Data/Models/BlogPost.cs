@@ -2,11 +2,16 @@
 
 namespace YogaVision.Infrastructure.Data.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using YogaVision.Common;
     using YogaVision.Infrastructure.Data.Common.Models;
     public class BlogPost : BaseDeletableModel<int>
     {
+        public BlogPost()
+        {
+            Tags = new HashSet<Tag>();
+        }
         [Required]
         [MaxLength(GlobalConstants.DataValidations.TitleMaxLength)]
         public string Title { get; set; }
@@ -23,5 +28,7 @@ namespace YogaVision.Infrastructure.Data.Models
 
         [Required]
         public string ImageUrl { get; set; }
+
+        public ICollection<Tag> Tags { get; set; }
     }
 }

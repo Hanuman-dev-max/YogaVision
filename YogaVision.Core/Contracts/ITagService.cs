@@ -1,13 +1,7 @@
-﻿
-
-namespace YogaVision.Core.Contracts
+﻿namespace YogaVision.Core.Contracts
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    public interface IBlogPostsService
+    using YogaVision.Infrastructure.Data.Models;
+    public interface ITagService
     {
         Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
 
@@ -19,8 +13,10 @@ namespace YogaVision.Core.Contracts
         Task<int> GetCountForPaginationAsync();
 
         Task<T> GetByIdAsync<T>(int id);
+        Task<T> GetByNameAsync<T>(string name);
+        Task<int> AddAsync(string name);
 
-        Task<int> AddAsync(string title, string content, string author, string imageUrl);
+        Task<List<int>> AddRangeAsync(List<string> tags);
 
         Task DeleteAsync(int id);
     }

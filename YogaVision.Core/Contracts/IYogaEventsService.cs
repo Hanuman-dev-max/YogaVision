@@ -15,8 +15,15 @@
         Task<T> GetByIdAsync<T>(string id);
         Task<IEnumerable<T>> GetByCityIdAsync<T>(int cityId, DateTime dateTime);
 
+        Task SubstarctSeat(string yogaEventId);
+
+        Task AddSeat(string yogaEventId);
+
         Task AddAsync(string studioId, int instructorId, DateTime datetime, string description, string duration, int seats);
 
+        // Task AddUserToEvent(string yogaEventId, string userId);
         Task DeleteAsync(string id);
+
+
     }
 }

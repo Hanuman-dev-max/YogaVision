@@ -51,7 +51,10 @@ builder.Services.AddScoped<IStudiosService, StudiosService>();
 builder.Services.AddScoped<IFoodRecipesService, FoodRecipesService>();
 builder.Services.AddScoped<IInstructorsService, InstructorsService>();
 builder.Services.AddScoped<IYogaEventsService, YogaEventsService>();
+builder.Services.AddScoped<IYogaEventApplicationUserService, YogaEventApplicationUserService>();
 builder.Services.AddScoped<IDateTimeParserService, DateTimeParserService>();
+builder.Services.AddScoped<ITagService, TagService>();
+builder.Services.AddScoped<ITagBlogPostsService, TagBlogPostsService>();
 
 
 builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();

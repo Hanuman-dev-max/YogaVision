@@ -1,6 +1,5 @@
 ﻿
 namespace YogaVision.Core.Models.BlogPosts
-
 {
     using Microsoft.AspNetCore.Http;
     using System.ComponentModel.DataAnnotations;
@@ -28,6 +27,7 @@ namespace YogaVision.Core.Models.BlogPosts
             ErrorMessage = GlobalConstants.ErrorMessages.Author,
             MinimumLength = GlobalConstants.DataValidations.NameMinLength)]
         public string Author { get; set; }
+        public List<string> Tags { get; set; } = new List<string>();
 
         [Required]
         [DataType(DataType.Upload)]
