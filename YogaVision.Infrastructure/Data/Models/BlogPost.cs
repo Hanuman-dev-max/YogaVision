@@ -20,6 +20,10 @@ namespace YogaVision.Infrastructure.Data.Models
         [MaxLength(GlobalConstants.DataValidations.ContentMaxLength)]
         public string Content { get; set; }
 
+        [Required]
+        [MaxLength(GlobalConstants.DataValidations.ShortContentMaxLength)]
+        public string ShortContent { get; set; }
+
         // BlogPost can be created only in the Admin Dashboard
         // so the Author is not a User, just a string for name
         [Required]

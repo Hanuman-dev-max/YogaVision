@@ -1,9 +1,43 @@
 ﻿@model YogaVision.Core.Models.BlogPosts.BlogPostsPaginatedListViewModel
 @{
-    this.ViewData["Title"] = "Blog";
+    this.ViewData["Title"] = "Публикации";
 }
 
-<div class="row">
+<section class="page-section bg-light" id="team">
+    <div class="container">
+
+        <div class="card-deck">
+
+            @foreach (var blogPost in Model.BlogPosts)
+            {
+                
+                    <div class="card" style="width: 25rem;">
+                        <img class="card-img-top" src="@blogPost.ImageUrl" alt="Card image cap">
+                    <h5 class="card-header"><strong>@blogPost.Title</strong></h5>
+                       
+                        <div class="card-body">
+                            
+                            <p class="card-text">@blogPost.ShortContent</p>
+                            <a href="#" class="btn btn-info">Go somewhere</a>
+                        </div>
+                    </div>
+            }
+
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+@*<div class="row">
     <!-- News Posts -->
     <div class="col-lg-8">
         <div class="news_posts">
@@ -77,3 +111,4 @@
         </div>
     </div>
 }
+*@

@@ -28,9 +28,6 @@
             {
                 query = query.Take(count.Value);
             }
-
-
-
             return await query.To<T>().ToListAsync();
         }
 
@@ -74,12 +71,13 @@
             return blogPost;
         }
 
-        public async Task<int> AddAsync(string title, string content, string author, string imageUrl)
+        public async Task<int> AddAsync(string title, string shortContent, string content, string author, string imageUrl)
         {
            
             var blogPost = new BlogPost()
             {
                 Title = title,
+                ShortContent = shortContent,
                 Content = content,
                 Author = author,
                 ImageUrl = imageUrl,

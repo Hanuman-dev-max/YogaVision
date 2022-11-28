@@ -23,6 +23,13 @@ namespace YogaVision.Core.Models.BlogPosts
 
         [Required]
         [StringLength(
+           GlobalConstants.DataValidations.ShortContentMaxLength,
+           ErrorMessage = GlobalConstants.ErrorMessages.ShortContent,
+           MinimumLength = GlobalConstants.DataValidations.ShortContentMinLength)]
+        public string ShortContent { get; set; }
+
+        [Required]
+        [StringLength(
             GlobalConstants.DataValidations.NameMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Author,
             MinimumLength = GlobalConstants.DataValidations.NameMinLength)]

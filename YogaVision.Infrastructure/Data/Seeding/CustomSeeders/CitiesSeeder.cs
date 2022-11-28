@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YogaVision.Data;
-using YogaVision.Infrastructure.Data.Models;
+﻿
 
 namespace YogaVision.Infrastructure.Data.Seeding.CustomSeeders
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using YogaVision.Data;
+    using YogaVision.Infrastructure.Data.Models;
     public class CitiesSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)

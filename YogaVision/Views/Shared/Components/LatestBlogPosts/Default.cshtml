@@ -1,6 +1,7 @@
-﻿@model YogaVision.Core.Models.BlogPosts.BlogPostsListViewModel
+﻿@using System.Globalization
+@model YogaVision.Core.Models.BlogPosts.BlogPostsListViewModel
 @{
-    this.ViewData["Title"] = "Default";
+    this.ViewData["Title"] = "Последни публикации";
 }
 
 @foreach (var blogPost in Model.BlogPosts)
@@ -14,12 +15,12 @@
             </div>
             <div class="latest_info">
                 <ul class="d-flex flex-row align-items-start justify-content-start">
-                    <li><a>by @blogPost.Author</a></li>
-                    <li><a>@blogPost.CreatedOn.Date.ToString("D")</a></li>
+                    <li><a>от @blogPost.Author</a></li>
+                    <li><a>@blogPost.CreatedOn.Date.ToString("dd/MM/yyyy")</a></li>
                 </ul>
             </div>
             <div class="latest_comments">
-                <a asp-area="" asp-controller="BlogPosts" asp-action="Index" asp-route-sortId="@blogPost.Id">Read</a>
+                <a asp-area="" asp-controller="BlogPosts" asp-action="Index" asp-route-sortId="@blogPost.Id">Прочети</a>
             </div>
         </div>
     </div>

@@ -64,7 +64,7 @@ namespace YogaVision.Areas.Admin.Controllers
 
 
 
-            var blodId = await this.blogPostsService.AddAsync(input.Title, input.Content, input.Author, imageUrl);
+            var blodId = await this.blogPostsService.AddAsync(input.Title,input.ShortContent, input.Content, input.Author, imageUrl);
             var tagIds = await this.tagService.AddRangeAsync(input.Tags);
             await this.tagBlogPostsService.AddAsync(blodId, tagIds);
             return this.RedirectToAction("Index");

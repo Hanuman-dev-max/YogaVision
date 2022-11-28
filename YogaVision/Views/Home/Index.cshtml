@@ -7,20 +7,34 @@
 
 <hr class="bg-dark mx-4" style="height: 6px;" />
 
-
+<div class="container">
+    <div class="row">
 
             <!-- Latest News -->
-            <div class="col-lg-5">
+            <div class="col-lg-6">
                 <div class="news-grey">
-                    <div class="news_title">Latest Blog Posts</div>
+                    <div class="news_title">Последни публикации</div>
                     <div class="news_container">
                         <div>
-                            @await Component.InvokeAsync("LatestBlogPosts", 4)
+                            @await Component.InvokeAsync("LatestBlogPosts",3)
                         </div>
                     </div>
                 </div>
             </div>
-
+             <!-- Latest News -->
+            <div class="col-lg-6">
+                <div class="news-grey">
+                    <div class="news_title">Последни публикации</div>
+                    <div class="news_container">
+                        <div>
+                            @await Component.InvokeAsync("LatestBlogPosts",3)
+                        </div>
+                    </div>
+                </div>
+            </div>
+ 
+        </div>
+</div>
  
 
 <hr class="bg-dark mx-4" style="height: 6px;" />

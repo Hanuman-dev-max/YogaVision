@@ -7,6 +7,6 @@ namespace YogaVision.Core.Models.Pagination
     {
 
         public const int FoodRecipess = 1;
-        public const int BlogPosts = 1;
+        public const int BlogPosts = 3;
     }
 }

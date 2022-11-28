@@ -22,13 +22,17 @@
 
             public static class DataValidations
             {
-                public const int TitleMaxLength = 60;
+                public const int TitleMaxLength = 150;
 
                 public const int TitleMinLength = 5;
 
                 public const int ContentMaxLength = 3500;
 
                 public const int ContentMinLength = 200;
+
+                public const int ShortContentMaxLength = 400;
+                
+                public const int ShortContentMinLength = 10;
 
                 public const int NameMaxLength = 40;
 
@@ -47,8 +51,8 @@
                 public const int SeatMaxLength = 30;
 
                 public const int FacebookLinkMaxLength = 100;
+                
                 public const int FacebookLinkMinLength = 10;
-
 
                 public const int EventDescriptionMaxLength = 50;
                 
@@ -57,10 +61,13 @@
 
             public static class ErrorMessages
             {
-            public const string Facebook = "Facebook link must be between 10 and 100 characters";
-                public const string Title = "Title must be between 5 and 60 characters.";
+            public const string Facebook = "Facebook линкът трябва да е между 10 и 60 символа";
 
-                public const string Content = "Content must be between 700 and 3500 characters.";
+                public const string Title = "Заглавието трябва да е между 5 и 60 символа";
+
+                public const string Content = "Съдържанието трябва да е между 700 и 3500 ";
+                
+                public const string ShortContent = "Краткото съдържание трябва да е между 10 и 400";
 
                 public const string Author = "Author name must be between 2 and 40 characters.";
 
