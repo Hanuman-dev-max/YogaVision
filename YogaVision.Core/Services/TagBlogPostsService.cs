@@ -2,8 +2,11 @@
 
 namespace YogaVision.Core.Services
 {
+    using Microsoft.EntityFrameworkCore;
+    using System.Collections.Generic;
     using YogaVision.Core.Contracts;
     using YogaVision.Infrastructure.Data.Common;
+    using YogaVision.Infrastructure.Data.Common.Mapping;
     using YogaVision.Infrastructure.Data.Models;
     public class TagBlogPostsService : ITagBlogPostsService
     {
@@ -27,6 +30,16 @@ namespace YogaVision.Core.Services
                 await this.tagBlogPostRepository.AddAsync(tagBlogPost);
             }
             await this.tagBlogPostRepository.SaveChangesAsync();
+        }
+
+        public async Task<List<string>> GetTagByPostId(int postID)
+        {
+            var tags =
+                await this.tagBlogPostRepository
+                .All()
+                .Where(x => x.BlogPostId == postID)
+               .Select(x => x.Tag.Name).ToListAsync();
+            return tags;
         }
     }
 }

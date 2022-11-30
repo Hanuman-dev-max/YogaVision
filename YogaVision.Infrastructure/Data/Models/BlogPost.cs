@@ -10,7 +10,7 @@ namespace YogaVision.Infrastructure.Data.Models
     {
         public BlogPost()
         {
-            Tags = new HashSet<Tag>();
+            Tags = new HashSet<TagBlogPost>();
         }
         [Required]
         [MaxLength(GlobalConstants.DataValidations.TitleMaxLength)]
@@ -33,6 +33,8 @@ namespace YogaVision.Infrastructure.Data.Models
         [Required]
         public string ImageUrl { get; set; }
 
-        public ICollection<Tag> Tags { get; set; }
+        public ICollection<TagBlogPost> Tags{ get; set; }
+
+
     }
 }

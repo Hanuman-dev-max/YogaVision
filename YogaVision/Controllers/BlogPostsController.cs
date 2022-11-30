@@ -1,17 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using YogaVision.Core.Contracts;
-using YogaVision.Core.Models.BlogPosts;
-using YogaVision.Core.Models.Pagination;
+﻿
 
 namespace YogaVision.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using System.Globalization;
+    using YogaVision.Core.Contracts;
+    using YogaVision.Core.Models.BlogPosts;
+    using YogaVision.Core.Models.Pagination;
+    using YogaVision.Core.Models.TagBlogPosts;
+    using YogaVision.Core.Models.Tags;
+
     public class BlogPostsController : BaseController
     {
         private readonly IBlogPostsService blogPostsService;
+        private readonly ITagBlogPostsService tagBlogPostsService;
 
-        public BlogPostsController(IBlogPostsService blogPostsService)
+        public BlogPostsController(IBlogPostsService blogPostsService, ITagBlogPostsService tagBlogPostsService)
         {
             this.blogPostsService = blogPostsService;
+            this.tagBlogPostsService = tagBlogPostsService;
         }
 
         public async Task<IActionResult> Index(
@@ -45,6 +52,26 @@ namespace YogaVision.Controllers
             };
 
             return this.View(viewModel);
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+          
+            var blog = await blogPostsService.GetByIdAsync<BlogPostViewModel>(id);
+
+            var tags = await tagBlogPostsService.GetTagByPostId(id);
+
+
+
+            var model = new BlogDetailViewModel()
+            {
+                blog = blog,
+                tags = tags
+            };
+
+            return View(model);
+
+        
         }
     }
 }

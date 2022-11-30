@@ -16,4 +16,8 @@
     <ProjectReference Include="..\YogaVision.Common\YogaVision.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

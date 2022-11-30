@@ -3,11 +3,11 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using YogaVision.Infrastructure.Data.Models;
-    public class TagsBlogPostsConfiguration : IEntityTypeConfiguration<TagBlogPost>
+    public class TagBlogPostConfiguration : IEntityTypeConfiguration<TagBlogPost>
     {
-        public void Configure(EntityTypeBuilder<TagBlogPost> tagsBlogPosts)
+        public void Configure(EntityTypeBuilder<TagBlogPost> tagBlogPosts)
         {
-            tagsBlogPosts.HasKey(tb => new { tb.TagId, tb.BlogPostId });
+            tagBlogPosts.HasKey(tb => new { tb.TagId, tb.BlogPostId });
         }
     }
 }

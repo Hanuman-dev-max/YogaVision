@@ -22,21 +22,6 @@ namespace YogaVision.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("BlogPostTag", b =>
-                {
-                    b.Property<int>("BlogPostsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TagsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BlogPostsId", "TagsId");
-
-                    b.HasIndex("TagsId");
-
-                    b.ToTable("BlogPostTag");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
@@ -572,7 +557,7 @@ namespace YogaVision.Infrastructure.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("TagBlogPost");
+                    b.ToTable("TagBlogPosts");
                 });
 
             modelBuilder.Entity("YogaVision.Infrastructure.Data.Models.YogaEvent", b =>
@@ -657,21 +642,6 @@ namespace YogaVision.Infrastructure.Migrations
                     b.ToTable("YogaEventApplicationsUser");
                 });
 
-            modelBuilder.Entity("BlogPostTag", b =>
-                {
-                    b.HasOne("YogaVision.Infrastructure.Data.Models.BlogPost", null)
-                        .WithMany()
-                        .HasForeignKey("BlogPostsId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("YogaVision.Infrastructure.Data.Models.Tag", null)
-                        .WithMany()
-                        .HasForeignKey("TagsId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("YogaVision.Infrastructure.Data.Identity.ApplicationRole", null)
@@ -741,13 +711,13 @@ namespace YogaVision.Infrastructure.Migrations
             modelBuilder.Entity("YogaVision.Infrastructure.Data.Models.TagBlogPost", b =>
                 {
                     b.HasOne("YogaVision.Infrastructure.Data.Models.BlogPost", "BlogPost")
-                        .WithMany()
+                        .WithMany("Tags")
                         .HasForeignKey("BlogPostId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("YogaVision.Infrastructure.Data.Models.Tag", "Tag")
-                        .WithMany()
+                        .WithMany("BlogPosts")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -800,6 +770,11 @@ namespace YogaVision.Infrastructure.Migrations
                     b.Navigation("Roles");
                 });
 
+            modelBuilder.Entity("YogaVision.Infrastructure.Data.Models.BlogPost", b =>
+                {
+                    b.Navigation("Tags");
+                });
+
             modelBuilder.Entity("YogaVision.Infrastructure.Data.Models.City", b =>
                 {
                     b.Navigation("Studios");
@@ -813,6 +788,11 @@ namespace YogaVision.Infrastructure.Migrations
             modelBuilder.Entity("YogaVision.Infrastructure.Data.Models.Studio", b =>
                 {
                     b.Navigation("YogaEvents");
+                });
+
+            modelBuilder.Entity("YogaVision.Infrastructure.Data.Models.Tag", b =>
+                {
+                    b.Navigation("BlogPosts");
                 });
 #pragma warning restore 612, 618
         }

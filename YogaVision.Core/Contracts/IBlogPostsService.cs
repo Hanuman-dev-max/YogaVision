@@ -10,6 +10,7 @@ namespace YogaVision.Core.Contracts
     public interface IBlogPostsService
     {
         Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
+        Task<IEnumerable<T>> GetSimilarByTagAsync<T>(List<string> tags, int blogId);
 
         Task<IEnumerable<T>> GetAllWithPagingAsync<T>(
             int? sortId,

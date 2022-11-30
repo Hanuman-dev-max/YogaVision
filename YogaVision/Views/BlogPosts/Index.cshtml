@@ -18,7 +18,7 @@
                         <div class="card-body">
                             
                             <p class="card-text">@blogPost.ShortContent</p>
-                            <a href="#" class="btn btn-info">Go somewhere</a>
+                        <a asp-controller="BlogPosts" asp-action="Details" asp-route-id="@blogPost.Id" class="btn btn-info">Прочети</a>
                         </div>
                     </div>
             }

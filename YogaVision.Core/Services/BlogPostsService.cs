@@ -1,7 +1,7 @@
 ﻿namespace YogaVision.Core.Services
 {
     using Microsoft.EntityFrameworkCore;
-
+    using System.Collections.Generic;
     using YogaVision.Core.Contracts;
     using YogaVision.Core.Models.Tags;
     using YogaVision.Infrastructure.Data.Common;
@@ -98,6 +98,21 @@
                 .FirstOrDefaultAsync();
             this.blogPostsRepository.Delete(blogPost);
             await this.blogPostsRepository.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetSimilarByTagAsync<T>(List<string> tags , int blogId)
+        {
+            
+            var blogPosts =
+                await this.blogPostsRepository
+                .All()
+                .Where(x => x.Tags.Any(t => tags.Contains(t.Tag.Name)) && x.Id!=blogId)
+                .OrderByDescending(x => x.CreatedOn)
+                .To<T>().ToListAsync();
+            return blogPosts;
+
+
+
         }
     }
 }

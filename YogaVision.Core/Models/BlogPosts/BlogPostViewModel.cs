@@ -1,6 +1,7 @@
 ﻿
 namespace YogaVision.Core.Models.BlogPosts
 {
+    using YogaVision.Core.Models.Tags;
     using YogaVision.Infrastructure.Data.Common.Mapping;
     using YogaVision.Infrastructure.Data.Models;
     public class BlogPostViewModel : IMapFrom<BlogPost>
@@ -18,5 +19,7 @@ namespace YogaVision.Core.Models.BlogPosts
         public string ImageUrl { get; set; }
 
         public DateTime CreatedOn { get; set; }
+
+       
     }
 }

@@ -7,10 +7,10 @@
     {
         public Tag()
         {
-            BlogPosts = new HashSet<BlogPost>();
+            BlogPosts = new HashSet<TagBlogPost>();
         }
         [Required]
         public string Name { get; set; }
-        public ICollection<BlogPost> BlogPosts { get; set; }
+        public ICollection<TagBlogPost> BlogPosts { get; set; }
     }
 }
