@@ -3,13 +3,13 @@ namespace YogaVision.ViewComponents
 {
     using Microsoft.AspNetCore.Mvc;
     using YogaVision.Core.Contracts;
-    using YogaVision.Core.Models.BlogPosts;
+    using YogaVision.Core.Models.BlogPost;
 
     public class LatestBlogPostsViewComponent : ViewComponent
     {
-        private readonly IBlogPostsService blogPostsService;
+        private readonly IBlogPostService blogPostsService;
 
-        public LatestBlogPostsViewComponent(IBlogPostsService blogPostsService)
+        public LatestBlogPostsViewComponent(IBlogPostService blogPostsService)
         {
             this.blogPostsService = blogPostsService;
         }

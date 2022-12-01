@@ -33,31 +33,8 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => {
     options.Password.RequiredLength = 6; })
     .AddRoles<ApplicationRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
-builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
-
-
-Cloudinary cloudinary = new Cloudinary(new Account("dig1baxyv",
-               "138278377333434", "Nn_Wy3hy1-lSym_M-toCWwY2jHY"));
-builder.Services.AddSingleton(cloudinary);
-
-// Application services
-
-builder.Services.AddScoped<IBlogPostsService, BlogPostsService>();
-builder.Services.AddScoped<ICitiesService, CitiesService>();
-builder.Services.AddScoped<IStudiosService, StudiosService>();
-builder.Services.AddScoped<IFoodRecipesService, FoodRecipesService>();
-builder.Services.AddScoped<IInstructorsService, InstructorsService>();
-builder.Services.AddScoped<IYogaEventsService, YogaEventsService>();
-builder.Services.AddScoped<IYogaEventApplicationUserService, YogaEventApplicationUserService>();
-builder.Services.AddScoped<IDateTimeParserService, DateTimeParserService>();
-builder.Services.AddScoped<ITagService, TagService>();
-builder.Services.AddScoped<ITagBlogPostsService, TagBlogPostsService>();
-
-
-builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
+builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 

@@ -1,14 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YogaVision.Data;
-using YogaVision.Infrastructure.Data.Common.Models;
+﻿
 
 namespace YogaVision.Infrastructure.Data.Common
 {
+    using Microsoft.EntityFrameworkCore;
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using YogaVision.Data;
+    using YogaVision.Infrastructure.Data.Common.Models;
     public class EfDeletableEntityRepository<TEntity> : EfRepository<TEntity>, IDeletableEntityRepository<TEntity>
         where TEntity : class, IDeletableEntity
     {

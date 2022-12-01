@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using YogaVision.Core.Contracts;
-using YogaVision.Core.Models.Cities;
+using YogaVision.Core.Models.City;
 
 namespace YogaVision.ViewComponents
 {
     public class CitiesSimpleListViewComponent :ViewComponent
     {
-        private readonly ICitiesService citiesService;
+        private readonly ICityService citiesService;
 
-        public CitiesSimpleListViewComponent(ICitiesService citiesService)
+        public CitiesSimpleListViewComponent(ICityService citiesService)
         {
             this.citiesService = citiesService;
         }

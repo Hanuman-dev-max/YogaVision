@@ -1,4 +1,4 @@
-﻿@model YogaVision.Core.Models.Cities.CitiesListViewModel
+﻿@model YogaVision.Core.Models.City.CitiesListViewModel
 @{
     this.ViewData["Title"] = "Default";
 }
@@ -11,12 +11,12 @@
         @foreach (var city in Model.Cities)
         {
             <a class="dropdown-item"
-           asp-area="" asp-controller="YogaEvents" asp-action="Index" asp-route-sortId="@city.Id">
+           asp-area="" asp-controller="YogaEvent" asp-action="Index" asp-route-sortId="@city.Id">
                 @city.Name 
             </a>
         }
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" asp-area="" asp-controller="YogaEvents" asp-action="Index">Всички градове</a>
+        <a class="dropdown-item" asp-area="" asp-controller="YogaEvent" asp-action="Index">Всички градове</a>
     </div>
 </div>
 

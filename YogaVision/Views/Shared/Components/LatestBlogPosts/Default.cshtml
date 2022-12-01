@@ -1,5 +1,5 @@
 ﻿@using System.Globalization
-@model YogaVision.Core.Models.BlogPosts.BlogPostsListViewModel
+@model YogaVision.Core.Models.BlogPost.BlogPostsListViewModel
 @{
     this.ViewData["Title"] = "Последни публикации";
 }
@@ -11,7 +11,7 @@
         <div><div class="latest_image"><img src="@blogPost.ImageUrl" alt=""></div></div>
         <div class="latest_content">
             <div class="latest_title">
-                <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-Id="@blogPost.Id">@blogPost.Title</a>
+                <a asp-area="" asp-controller="BlogPost" asp-action="Details" asp-route-Id="@blogPost.Id">@blogPost.Title</a>
             </div>
             <div class="latest_info">
                 <ul class="d-flex flex-row align-items-start justify-content-start">
@@ -20,7 +20,7 @@
                 </ul>
             </div>
             <div class="latest_comments">
-                <a asp-area="" asp-controller="BlogPosts" asp-action="Details" asp-route-Id="@blogPost.Id">Прочети</a>
+                <a asp-area="" asp-controller="BlogPost" asp-action="Details" asp-route-Id="@blogPost.Id">Прочети</a>
             </div>
         </div>
     </div>

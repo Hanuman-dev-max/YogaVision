@@ -1,0 +1,19 @@
+﻿@model YogaVision.Core.Models.Studio.StudiosListViewModel
+@{
+    this.ViewData["Title"] = "Студия";
+}
+
+<div class="row row-eq-height">
+    @foreach (var studio in Model.Studios)
+    {
+            <div class="col-xl-3 col-md-6">
+                <div class="doctor">
+                    <div class="doctor_image"><img src="@studio.ImageUrl" alt=""></div>
+                    <div class="doctor_content">
+                        <div class="doctor_title"><strong>@studio.Name</strong></div>
+                        <div class="doctor_title">@studio.CityName, @studio.Address</div>
+                    </div>
+                </div>
+            </div>
+    }
+</div>

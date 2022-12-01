@@ -1,0 +1,86 @@
+﻿@model YogaVision.Core.Models.BlogPost.BlogPostInputModel
+@{
+    this.ViewData["Title"] = "Добави Блог Статия";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<div class="col-lg-6">
+    <h2>New Blog Post</h2>
+    <form method="post" enctype="multipart/form-data" class="pt-4">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Заглавие</label>
+            <div class="col-sm-10">
+                <input type="text" asp-for="@Model.Title" class="form-control" required="required">
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Автор</label>
+            <div class="col-sm-10">
+                <input type="text" asp-for="@Model.Author" class="form-control" required="required">
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Изображение</label>
+            <div class="col-sm-10">
+                <input type="file" asp-for="@Model.Image" class="form-control-file image-upload" required="required" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Кратко съдържание</label>
+            <div class="col-sm-10">
+                <textarea type="text" asp-for="@Model.ShortContent" class="form-control" required="required"></textarea>
+                <span asp-validation-for="ShortContent" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Съдържание</label>
+            <div class="col-sm-10">
+                <textarea type="text" asp-for="@Model.Content" class="form-control" required="required"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+        </div>
+         <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Тагове</label>
+            <div class="col-sm-10">
+                <select asp-for="@Model.Tags" class="form-control js-example-tokenizer" multiple style="width: 100%"></select>
+                <span asp-validation-for="Tags" class="text-danger"></span>
+            </div>
+        </div>
+        
+        
+        <div class="form-group row">
+            <div class="col-sm-6 text-right">
+                <button type="submit" class="btn btn-success"
+                        asp-area="Admin" asp-controller="BlogPost" asp-action="AddBlogPost">
+                    Добави Блог Статия
+                </button>
+            </div>
+            <div class="col-sm-6">
+                <a class="btn btn-danger" asp-area="Admin" asp-controller="BlogPost" asp-action="Index">Отмени</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/upload-image.js" asp-append-version="true"></script>
+ 
+}
+ <script>$(".js-example-tokenizer").select2({
+    placeholder: "Choose tags",
+	tags: true,
+    tokenSeparators: [',', ' '],
+	"language": {
+       "noResults": function(){
+           return "";
+       }
+   },
+})
+</script>
+

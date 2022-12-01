@@ -4,15 +4,15 @@ namespace YogaVision.ViewComponents
 {
     using Microsoft.AspNetCore.Mvc;
     using YogaVision.Core.Contracts;
-    using YogaVision.Core.Models.BlogPosts;
+    using YogaVision.Core.Models.BlogPost;
   
       
 
     public class SimilarBlogPostsViewComponent : ViewComponent
     {
-        private readonly IBlogPostsService blogPostsService;
+        private readonly IBlogPostService blogPostsService;
 
-        public SimilarBlogPostsViewComponent(IBlogPostsService blogPostsService)
+        public SimilarBlogPostsViewComponent(IBlogPostService blogPostsService)
         {
             this.blogPostsService = blogPostsService;
         }

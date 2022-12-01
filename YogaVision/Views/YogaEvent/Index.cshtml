@@ -1,0 +1,77 @@
+﻿@model YogaVision.Core.Models.YogaEvent.YogaEventsListViewModel
+@inject IYogaEventApplicationUserService YogaEventApplicationUserService
+
+@{
+    this.ViewData["Title"] = "График";
+}
+
+<div>
+    @await Component.InvokeAsync("CitiesSimpleList")
+</div>
+
+@if (@Model.YogaEvents.Any())
+{
+
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Дата и час</th>
+                <th scope="col">Продължителност</th>
+                <th scope="col">Описание</th>
+                <th scope="col">Свободни места</th>
+                <th scope="col">Град</th>
+                <th scope="col">Студио</th>
+                <th scope="col">Инструктор</th>
+                <th scope="col">Резервирай</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var yogaEvent in this.Model.YogaEvents)
+            {
+
+                <tr>
+                    <th scope="row">@yogaEvent.DateTime.ToString("dd/MM/yyyy hh:mm")</th>
+                    <td>@yogaEvent.Duration</td>
+                    <td>@yogaEvent.Description</td>
+                    <td>@yogaEvent.Seats</td>
+                    <td>@yogaEvent.StudioCityName</td>
+                    <td>@yogaEvent.StudioName</td>
+                    <td>@yogaEvent.InstructorNickname</td>
+                    <td>
+                        @if (YogaEventApplicationUserService.CheckUserInEvent(@yogaEvent.Id, User.Id()))
+                        {
+                            <form method="post">
+                                <button type="submit" class="btn btn-danger"
+                            asp-area="" asp-controller="YogaEvent" asp-action="Unreserve" asp-route-sortId="@ViewData["sortId"]" asp-route-yogaEventId="@yogaEvent.Id">
+                                    Отписване
+                                </button>
+                            </form>
+                        }
+
+                        else if (@yogaEvent.Seats > 0 && User.Id() != null)
+                        {
+                            <form method="post">
+                                <button type="submit" class="btn btn-success"
+                            asp-area="" asp-controller="YogaEvent" asp-action="Reserve" asp-route-sortId="@ViewData["sortId"]" asp-route-yogaEventId="@yogaEvent.Id">
+                                    Резервиране
+                                </button>
+                            </form>
+                        }
+
+                        else if (@yogaEvent.Seats > 0 && User.Id() == null)
+                        {
+                            <p>Моля, регистрарайте се</p>
+                        }
+
+                        else if (@yogaEvent.Seats == 0)
+                        {
+                            <p>Запълнено</p>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

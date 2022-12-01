@@ -2,7 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using YogaVision.Core.Contracts;
-    using YogaVision.Core.Models.Tags;
+    using YogaVision.Core.Models.Tag;
     using YogaVision.Infrastructure.Data.Common;
     using YogaVision.Infrastructure.Data.Common.Mapping;
     using YogaVision.Infrastructure.Data.Models;
