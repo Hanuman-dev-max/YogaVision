@@ -19,7 +19,7 @@
 
         Task AddSeat(string yogaEventId);
 
-        Task AddAsync(string studioId, int instructorId, DateTime datetime, string description, string duration, int seats);
+        Task AddAsync(int studioId, int instructorId, DateTime datetime, string description, string duration, int seats);
 
         // Task AddUserToEvent(string yogaEventId, string userId);
         Task DeleteAsync(string id);

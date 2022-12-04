@@ -6,7 +6,7 @@ namespace YogaVision.Core.Models.Studio
     using YogaVision.Infrastructure.Data.Models;
     public class StudioViewModel : IMapFrom<Studio>
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 

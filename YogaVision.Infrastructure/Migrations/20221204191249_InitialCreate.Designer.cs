@@ -12,7 +12,7 @@ using YogaVision.Data;
 namespace YogaVision.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221130210755_InitialCreate")]
+    [Migration("20221204191249_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -274,8 +274,8 @@ namespace YogaVision.Infrastructure.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasMaxLength(3500)
-                        .HasColumnType("nvarchar(3500)");
+                        .HasMaxLength(10000)
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -357,8 +357,8 @@ namespace YogaVision.Infrastructure.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasMaxLength(3500)
-                        .HasColumnType("nvarchar(3500)");
+                        .HasMaxLength(10000)
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -458,8 +458,11 @@ namespace YogaVision.Infrastructure.Migrations
 
             modelBuilder.Entity("YogaVision.Infrastructure.Data.Models.Studio", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -597,9 +600,8 @@ namespace YogaVision.Infrastructure.Migrations
                     b.Property<int>("Seats")
                         .HasColumnType("int");
 
-                    b.Property<string>("StudioId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("StudioId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

@@ -7,7 +7,7 @@ namespace YogaVision.Core.Models.YogaEvent
     public class YogaEventInputModel
     {
         [Required]
-        public string StudioId { get; set; }
+        public int StudioId { get; set; }
 
         [Required]
         public int InstructorId { get; set; }

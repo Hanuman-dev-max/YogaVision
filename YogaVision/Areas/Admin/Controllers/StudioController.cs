@@ -80,7 +80,7 @@ namespace YogaVision.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteStudio(string id)
+        public async Task<IActionResult> DeleteStudio(int id)
         {
          
 

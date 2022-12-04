@@ -1,20 +1,12 @@
-using CloudinaryDotNet;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
+
 using Microsoft.EntityFrameworkCore;
-using YogaVision.Common;
-using YogaVision.Core.Contracts;
-using YogaVision.Core.Services.Cloadinary;
-using YogaVision.Core.Services;
 using YogaVision.Data;
 using YogaVision.Infrastructure.Data.Identity;
-using YogaVision.Infrastructure.Data.Common;
 using YogaVision.Infrastructure.Data.Common.Mapping;
 using YogaVision.Models;
 using System.Reflection;
-using YogaVision.Core.Services.DateTimeParser;
 using YogaVision.Infrastructure.Data.Seeding;
-using Microsoft.Extensions.Options;
+using CloudinaryDotNet;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,11 +26,15 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => {
     .AddRoles<ApplicationRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+Cloudinary cloudinary = new Cloudinary(new Account(builder.Configuration["Cloudinary:CloudName"],
+               builder.Configuration["Cloudinary:ApiKey"],
+               builder.Configuration["Cloudinary:ApiSecret"]));
+builder.Services.AddSingleton(cloudinary);
 builder.Services.AddApplicationServices();
 
 var app = builder.Build();
 
-AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
+
 
 
 

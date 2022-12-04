@@ -18,7 +18,7 @@ namespace YogaVision.Core.Services
         {
             this.yogaEventsRepository = yogaEventsRepository;
         }
-        public async Task AddAsync(string studioId, int instructorId, DateTime datetime, string description, string duration, int seats)
+        public async Task AddAsync(int studioId, int instructorId, DateTime datetime, string description, string duration, int seats)
         {
             await this.yogaEventsRepository.AddAsync(new YogaEvent
             {

@@ -73,7 +73,7 @@ namespace YogaVision.Core.Services
 
 
 
-        public async Task<T> GetByIdAsync<T>(string id)
+        public async Task<T> GetByIdAsync<T>(int id)
         {
             var studio =
                 await this.studiosRepository
@@ -83,11 +83,11 @@ namespace YogaVision.Core.Services
             return studio;
         }
 
-        public async Task<string> AddAsync(string name, int cityId, string address, string imageUrl)
+        public async Task<int> AddAsync(string name, int cityId, string address, string imageUrl)
         {
             var studio = new Studio
             {
-                Id = Guid.NewGuid().ToString(),
+               
                 Name = name,
 
                 CityId = cityId,
@@ -100,7 +100,7 @@ namespace YogaVision.Core.Services
             return studio.Id;
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(int id)
         {
             var studio =
                 await this.studiosRepository

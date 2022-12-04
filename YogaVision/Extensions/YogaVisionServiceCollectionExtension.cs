@@ -4,6 +4,9 @@ using YogaVision.Core.Services.Cloadinary;
 using YogaVision.Core.Services.DateTimeParser;
 using YogaVision.Core.Services;
 using YogaVision.Infrastructure.Data.Common;
+using YogaVision.Infrastructure.Data.Common.Mapping;
+using YogaVision.Models;
+using System.Reflection;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -14,9 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 services.AddControllersWithViews();
                 services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
                 services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
-                Cloudinary cloudinary = new Cloudinary(new Account("dig1baxyv",
-                       "138278377333434", "Nn_Wy3hy1-lSym_M-toCWwY2jHY"));
-                services.AddSingleton(cloudinary);
+               
 
             // Application services
 
@@ -31,6 +32,8 @@ namespace Microsoft.Extensions.DependencyInjection
                 services.AddScoped<ITagService, TagService>();
                 services.AddScoped<ITagBlogPostService, TagBlogPostService>();
                 services.AddScoped<ICloudinaryService, CloudinaryService>();
+            
+                AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
             return services;
             }

@@ -3,7 +3,7 @@
     using System.ComponentModel.DataAnnotations;
     using YogaVision.Common;
     using YogaVision.Infrastructure.Data.Common.Models;
-    public class Studio : BaseDeletableModel<string>
+    public class Studio : BaseDeletableModel<int>
     {
         public Studio()
         {

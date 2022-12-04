@@ -33,6 +33,9 @@ namespace YogaVision.Infrastructure.Data.Seeding
                               new CitiesSeeder(),
                               new InstructorsSeeder(),
                               new StudiosSeeder(),
+                              new TagSeader(),
+                              new BlogPostsSeeder(),
+                              new YogaEventSeeder()
                           };
 
             foreach (var seeder in seeders)

@@ -18,11 +18,11 @@ namespace YogaVision.Core.Contracts
 
         Task<int> GetCountForPaginationAsync(string searchString, int? sortId);
 
-        Task<T> GetByIdAsync<T>(string id);
+        Task<T> GetByIdAsync<T>(int id);
 
-        Task<string> AddAsync(string name, int cityId, string address, string imageUrl);
+        Task<int> AddAsync(string name, int cityId, string address, string imageUrl);
 
-        Task DeleteAsync(string id);
+        Task DeleteAsync(int id);
 
         
     }

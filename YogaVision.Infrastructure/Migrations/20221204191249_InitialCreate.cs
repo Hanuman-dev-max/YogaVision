@@ -63,7 +63,7 @@ namespace YogaVision.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(3500)", maxLength: 3500, nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", maxLength: 10000, nullable: false),
                     ShortContent = table.Column<string>(type: "nvarchar(400)", maxLength: 400, nullable: false),
                     Author = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -101,7 +101,7 @@ namespace YogaVision.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(3500)", maxLength: 3500, nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", maxLength: 10000, nullable: false),
                     Author = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -272,7 +272,8 @@ namespace YogaVision.Infrastructure.Migrations
                 name: "Studios",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CityId = table.Column<int>(type: "int", nullable: false),
@@ -331,7 +332,7 @@ namespace YogaVision.Infrastructure.Migrations
                     DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Duration = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InstructorId = table.Column<int>(type: "int", nullable: false),
-                    StudioId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    StudioId = table.Column<int>(type: "int", nullable: false),
                     Seats = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),

@@ -28,7 +28,30 @@
     </div>
 </section>
 
+@{
+    var prevDisabled = !Model.BlogPosts.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.BlogPosts.HasNextPage ? "disabled" : "";
+}
 
+@if (ViewData["CurrentSort"] == null)
+{
+    <div class="row ml-5">
+        <div class="m-5">
+            <a asp-action="Index"
+           asp-route-pageNumber="@(Model.BlogPosts.PageIndex - 1)"
+           style="color: #BA55D3" class="btn btn-outline-secondary btn-lg @prevDisabled">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+        </div>
+        <div class="m-5">
+            <a asp-action="Index"
+           asp-route-pageNumber="@(Model.BlogPosts.PageIndex + 1)"
+           style="color: #BA55D3" class="btn btn-outline-secondary btn-lg @nextDisabled">
+                <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+}
 
 
 

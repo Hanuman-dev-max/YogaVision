@@ -10,6 +10,6 @@
             $("#" + id).css("background-image", "url(" + this.result + ")");
         }
     } else {
-        alert("Upload an image");
+        alert("Качете изображение");
     }
 });
