@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection;
-using YogaVision.Infrastructure.Data;
-using YogaVision.Infrastructure.Data.Common.Models;
-using YogaVision.Infrastructure.Data.Identity;
-using YogaVision.Infrastructure.Data.Models;
-
-namespace YogaVision.Data
+﻿namespace YogaVision.Data
 {
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
+    using System.Reflection;
+    using YogaVision.Infrastructure.Data;
+    using YogaVision.Infrastructure.Data.Common.Models;
+    using YogaVision.Infrastructure.Data.Identity;
+    using YogaVision.Infrastructure.Data.Models;
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         private static readonly MethodInfo SetIsDeletedQueryFilterMethod =

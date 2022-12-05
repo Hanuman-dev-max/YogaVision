@@ -6,11 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using YogaVision.Common;
 using YogaVision.Infrastructure.Data.Common.Models;
+using YogaVision.Infrastructure.Data.Identity;
 
 namespace YogaVision.Infrastructure.Data.Models
 {
     public class YogaEvent: BaseDeletableModel<string>
     {
+        public YogaEvent()
+        {
+            Users = new HashSet<YogaEventApplicationsUser>(); 
+        }
+        
         [Required]
         [MaxLength(GlobalConstants.DataValidations.EventDescriptionMaxLength)]
         public string Description { get; set; }
@@ -25,5 +31,7 @@ namespace YogaVision.Infrastructure.Data.Models
         public Studio Studio { get; set; }
 
         public int Seats { get; set; }
+
+        public ICollection<YogaEventApplicationsUser> Users { get; set; } 
     }
 }

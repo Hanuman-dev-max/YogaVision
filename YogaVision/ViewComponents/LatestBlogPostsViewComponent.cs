@@ -4,7 +4,9 @@ namespace YogaVision.ViewComponents
     using Microsoft.AspNetCore.Mvc;
     using YogaVision.Core.Contracts;
     using YogaVision.Core.Models.BlogPost;
-
+    /// <summary>
+    /// Display the latest blog posts
+    /// </summary>
     public class LatestBlogPostsViewComponent : ViewComponent
     {
         private readonly IBlogPostService blogPostsService;

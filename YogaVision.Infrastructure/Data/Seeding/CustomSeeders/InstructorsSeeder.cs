@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YogaVision.Data;
-using YogaVision.Infrastructure.Data.Models;
-using static System.Net.WebRequestMethods;
-
-namespace YogaVision.Infrastructure.Data.Seeding.CustomSeeders
+﻿namespace YogaVision.Infrastructure.Data.Seeding.CustomSeeders
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using YogaVision.Data;
+    using YogaVision.Infrastructure.Data.Models;
+    
     public class InstructorsSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)

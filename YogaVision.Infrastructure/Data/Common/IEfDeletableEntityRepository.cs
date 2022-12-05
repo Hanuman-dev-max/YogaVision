@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YogaVision.Infrastructure.Data.Common.Models;
-
-namespace YogaVision.Infrastructure.Data.Common
+﻿namespace YogaVision.Infrastructure.Data.Common
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+    using YogaVision.Infrastructure.Data.Common.Models;
     public interface IDeletableEntityRepository<TEntity> : IRepository<TEntity>
        where TEntity : class, IDeletableEntity
     {

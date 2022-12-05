@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YogaVision.Common;
-using YogaVision.Core.Contracts;
+﻿
 
 namespace YogaVision.Core.Services.DateTimeParser
 {
+    using System;
+    using System.Globalization;
+    using YogaVision.Common;
+    using YogaVision.Core.Contracts;
     public class DateTimeParserService : IDateTimeParserService
     {
         public DateTime ConvertStrings(string date, string time)

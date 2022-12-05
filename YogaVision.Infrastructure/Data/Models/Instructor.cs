@@ -1,6 +1,4 @@
-﻿
-
-namespace YogaVision.Infrastructure.Data.Models
+﻿namespace YogaVision.Infrastructure.Data.Models
 {
 
     using System.ComponentModel.DataAnnotations;

@@ -1,15 +1,9 @@
-﻿
-
-
-namespace YogaVision.Infrastructure.Data.Seeding
+﻿namespace YogaVision.Infrastructure.Data.Seeding
 {
 
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-
-   
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
     using YogaVision.Common;

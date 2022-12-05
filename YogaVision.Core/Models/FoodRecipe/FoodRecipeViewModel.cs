@@ -10,6 +10,8 @@
 
         public string Author { get; set; }
 
+        public string RequiredProducts { get; set; }
+
         public string Content { get; set; }
 
         public string ImageUrl { get; set; }

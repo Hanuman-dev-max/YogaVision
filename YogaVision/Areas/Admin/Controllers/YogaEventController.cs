@@ -1,17 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using YogaVision.Common;
-using YogaVision.Core.Contracts;
+﻿
 
 
 namespace YogaVision.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc.Rendering;
     using System;
-    using YogaVision.Core.Models.City;
     using YogaVision.Core.Models.Instructor;
     using YogaVision.Core.Models.Studio;
     using YogaVision.Core.Models.YogaEvent;
-    using YogaVision.Infrastructure.Data.Models;
+    using Microsoft.AspNetCore.Mvc;
+    using YogaVision.Core.Contracts;
 
     public class YogaEventController : AdministrationController
     {

@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Identity;
     using System.ComponentModel.DataAnnotations;
     using YogaVision.Infrastructure.Data.Common.Models;
+    using YogaVision.Infrastructure.Data.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -10,7 +11,7 @@
         {
             this.Id = Guid.NewGuid().ToString();
             this.Roles = new HashSet<IdentityUserRole<string>>();
-
+            YogaEvents = new HashSet<YogaEventApplicationsUser>();
 
         }
 
@@ -26,6 +27,7 @@
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
+        public ICollection<YogaEventApplicationsUser> YogaEvents { get; set; }
     }
        
 }

@@ -1,6 +1,4 @@
-﻿
-
-namespace YogaVision.Infrastructure.Data.Seeding.CustomSeeders
+﻿namespace YogaVision.Infrastructure.Data.Seeding.CustomSeeders
 {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;

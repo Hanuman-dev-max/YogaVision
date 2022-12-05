@@ -1,7 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace YogaVision.Models.User
+﻿namespace YogaVision.Models.User
 {
+    using System.ComponentModel.DataAnnotations;
     public class RegisterViewModel
     {
         [Required]

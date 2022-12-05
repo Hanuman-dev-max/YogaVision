@@ -7,7 +7,9 @@ namespace YogaVision.ViewComponents
     using YogaVision.Core.Models.BlogPost;
   
       
-
+    /// <summary>
+    /// Display similar blog posts based on similat tags
+    /// </summary>
     public class SimilarBlogPostsViewComponent : ViewComponent
     {
         private readonly IBlogPostService blogPostsService;

@@ -15,9 +15,16 @@
 
         [Required]
         [StringLength(
-            GlobalConstants.DataValidations.ContentMaxLength,
+            GlobalConstants.DataValidations.RequiredProductsMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Content,
-            MinimumLength = GlobalConstants.DataValidations.ContentMinLength)]
+            MinimumLength = GlobalConstants.DataValidations.RequiredProductsMinLength)]
+        public string RequiredProducts { get; set; }
+
+        [Required]
+        [StringLength(
+            GlobalConstants.DataValidations.FoodContentMaxLength,
+            ErrorMessage = GlobalConstants.ErrorMessages.Content,
+            MinimumLength = GlobalConstants.DataValidations.FoodContentMinLength)]
         public string Content { get; set; }
 
         [Required]

@@ -11,7 +11,7 @@ namespace YogaVision.Infrastructure.Data.Common
     using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
-    
+
     internal static class EfExpressionHelper
     {
         private static readonly Type StringType = typeof(string);

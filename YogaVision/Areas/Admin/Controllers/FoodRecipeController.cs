@@ -52,7 +52,7 @@ namespace YogaVision.Areas.Admin.Controllers
                 imageUrl = GlobalConstants.Images.CloudinaryMissing;
             }
             var createdOn = DateTime.Now;
-            await this.foodRecipeService.AddAsync(input.Title, input.Content, input.Author, imageUrl, createdOn);
+            await this.foodRecipeService.AddAsync(input.Title,input.RequiredProducts, input.Content, input.Author, imageUrl, createdOn);
             return this.RedirectToAction("Index");
         }
 

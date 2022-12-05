@@ -25,54 +25,6 @@ namespace YogaVision.Core.Services
                 .To<T>().ToListAsync();
             return studios;
         }
-
-        public async Task<IEnumerable<T>> GetAllWithSortingFilteringAndPagingAsync<T>(
-            string searchString,
-            int? sortId,
-            int pageSize,
-            int pageIndex)
-        {
-            IQueryable<Studio> query =
-                this.studiosRepository
-                .AllAsNoTracking()
-                .OrderBy(x => x.Name);
-
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                query = query
-                    .Where(x => x.Name.ToLower()
-                                .Contains(searchString.ToLower()));
-            }
-
-
-
-            return await query
-                .Skip((pageIndex - 1) * pageSize)
-                .Take(pageSize)
-                .To<T>().ToListAsync();
-        }
-
-        public async Task<int> GetCountForPaginationAsync(string searchString, int? sortId)
-        {
-            IQueryable<Studio> query =
-                this.studiosRepository
-                .AllAsNoTracking()
-                .OrderBy(x => x.Name);
-
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                query = query
-                    .Where(x => x.Name.ToLower()
-                                .Contains(searchString.ToLower()));
-            }
-
-
-
-            return await query.CountAsync();
-        }
-
-
-
         public async Task<T> GetByIdAsync<T>(int id)
         {
             var studio =
@@ -82,7 +34,6 @@ namespace YogaVision.Core.Services
                 .To<T>().FirstOrDefaultAsync();
             return studio;
         }
-
         public async Task<int> AddAsync(string name, int cityId, string address, string imageUrl)
         {
             var studio = new Studio
@@ -99,7 +50,6 @@ namespace YogaVision.Core.Services
             await this.studiosRepository.SaveChangesAsync();
             return studio.Id;
         }
-
         public async Task DeleteAsync(int id)
         {
             var studio =

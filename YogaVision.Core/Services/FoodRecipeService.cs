@@ -72,11 +72,12 @@
             return foodRecipe;
         }
 
-        public async Task AddAsync(string title, string content, string author, string imageUrl, DateTime createdOn)
+        public async Task AddAsync(string title,string requiredProducts, string content, string author, string imageUrl, DateTime createdOn)
         {
             await this.foodRecipesRepository.AddAsync(new FoodRecipe
             {
                 Title = title,
+                RequiredProducts = requiredProducts,
                 Content = content,
                 Author = author,
                 ImageUrl = imageUrl,

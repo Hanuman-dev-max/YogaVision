@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace YogaVision.Infrastructure.Data.Common.Models
+﻿namespace YogaVision.Infrastructure.Data.Common.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    
     public abstract class BaseModel<TKey> : IAuditInfo
     {
         [Key]

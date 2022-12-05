@@ -1,10 +1,6 @@
-
 using Microsoft.EntityFrameworkCore;
 using YogaVision.Data;
 using YogaVision.Infrastructure.Data.Identity;
-using YogaVision.Infrastructure.Data.Common.Mapping;
-using YogaVision.Models;
-using System.Reflection;
 using YogaVision.Infrastructure.Data.Seeding;
 using CloudinaryDotNet;
 
@@ -33,10 +29,6 @@ builder.Services.AddSingleton(cloudinary);
 builder.Services.AddApplicationServices();
 
 var app = builder.Build();
-
-
-
-
 
 using (var serviceScope = app.Services.CreateScope())
 {

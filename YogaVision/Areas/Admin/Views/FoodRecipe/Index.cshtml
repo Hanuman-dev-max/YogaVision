@@ -16,6 +16,7 @@
         <tr>
             <th scope="col">Заглавие</th>
             <th scope="col">Изображение</th>
+             <th scope="col">Необходими Продукти</th>
             <th scope="col">Съдаржание</th>
             <th scope="col">Автор</th>
             <th scope="col">Създаден на</th>
@@ -29,6 +30,32 @@
                 <th scope="row">@foodRecipe.Title</th>
                 <td>
                     <img class="align-self-center" src="@foodRecipe.ImageUrl" style="width:180px;height:120px;">
+                </td>
+                <td>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#foodRecipe1-@foodRecipe.Id">
+                        Покажи Цялото Съдаржание
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="foodRecipe1-@foodRecipe.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">@foodRecipe.Title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    @foodRecipe.RequiredProducts
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Затвори</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
                 <td>
                     <!-- Button trigger modal -->

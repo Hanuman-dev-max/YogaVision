@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YogaVision.Common;
-
-namespace YogaVision.Core.Models.Common
+﻿namespace YogaVision.Core.Models.Common
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.Globalization;
+    using YogaVision.Common;
     public class ValidateDateStringAttribute : RequiredAttribute
     {
         public override bool IsValid(object value)

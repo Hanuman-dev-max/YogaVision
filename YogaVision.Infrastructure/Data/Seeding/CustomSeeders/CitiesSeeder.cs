@@ -1,6 +1,4 @@
-﻿
-
-namespace YogaVision.Infrastructure.Data.Seeding.CustomSeeders
+﻿namespace YogaVision.Infrastructure.Data.Seeding.CustomSeeders
 {
     using System;
     using System.Linq;

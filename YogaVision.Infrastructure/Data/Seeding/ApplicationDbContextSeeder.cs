@@ -1,15 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YogaVision.Data;
-using YogaVision.Infrastructure.Data.Seeding.CustomSeeders;
-
-namespace YogaVision.Infrastructure.Data.Seeding
+﻿namespace YogaVision.Infrastructure.Data.Seeding
 {
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using YogaVision.Data;
+    using YogaVision.Infrastructure.Data.Seeding.CustomSeeders;
     public class ApplicationDbContextSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
@@ -35,7 +32,8 @@ namespace YogaVision.Infrastructure.Data.Seeding
                               new StudiosSeeder(),
                               new TagSeader(),
                               new BlogPostsSeeder(),
-                              new YogaEventSeeder()
+                              new YogaEventSeeder(),
+                              new FoodRecepesSeeder()
                           };
 
             foreach (var seeder in seeders)

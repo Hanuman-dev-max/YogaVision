@@ -9,6 +9,8 @@ namespace YogaVision.Controllers
     using YogaVision.Core.Models.BlogPost;
     using YogaVision.Core.Models.FoodRecipe;
     using YogaVision.Core.Models.Pagination;
+    using YogaVision.Core.Services;
+
     public class FoodRecipeController : BaseController
     {
         private readonly IFoodRecipeService foodRecipesService;
@@ -20,7 +22,7 @@ namespace YogaVision.Controllers
 
         public async Task<IActionResult> Index(
             int? sortId,
-            int? pageNumber) // blogPostId
+            int? pageNumber) 
         {
             if (sortId != null)
             {
@@ -49,6 +51,15 @@ namespace YogaVision.Controllers
             };
 
             return this.View(viewModel);
+        }
+        public async Task<IActionResult> Details(int id)
+        {
+
+            var foodRecipe = await foodRecipesService.GetByIdAsync<FoodRecipeViewModel>(id);
+
+            return View(foodRecipe);
+
+
         }
     }
 }

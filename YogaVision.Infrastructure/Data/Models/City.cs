@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YogaVision.Common;
-using YogaVision.Infrastructure.Data.Common.Models;
-
-namespace YogaVision.Infrastructure.Data.Models
+﻿namespace YogaVision.Infrastructure.Data.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using YogaVision.Common;
+    using YogaVision.Infrastructure.Data.Common.Models;
     public class City : BaseDeletableModel<int>
     {
         public City()

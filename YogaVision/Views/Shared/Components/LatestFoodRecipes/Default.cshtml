@@ -1,0 +1,26 @@
+﻿@using System.Globalization
+@model YogaVision.Core.Models.FoodRecipe.FoodRecipesListViewModel
+@{
+    this.ViewData["Title"] = "Последин кулинарни рецепти";
+}
+
+@foreach (var foodRecipe in Model.FoodRecipes)
+{
+    
+    <div class="latest d-flex flex-row align-items-start justify-content-start">
+        <div><div class="latest_image"><img src="@foodRecipe.ImageUrl" alt=""></div></div>
+        <div class="latest_content">
+            <div class="latest_title">
+               <p>@foodRecipe.Title</p>
+            </div>
+            <div class="latest_info">
+                <ul class="d-flex flex-row align-items-start justify-content-start">
+                    <li><a>от @foodRecipe.Author</a></li>
+                </ul>
+            </div>
+            <div class="latest_comments">
+                <a asp-area="" asp-controller="FoodRecipe" asp-action="Details" asp-route-Id="@foodRecipe.Id">Прочети</a>
+            </div>
+        </div>
+    </div>
+}

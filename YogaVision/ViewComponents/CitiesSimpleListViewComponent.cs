@@ -4,6 +4,9 @@ using YogaVision.Core.Models.City;
 
 namespace YogaVision.ViewComponents
 {
+    /// <summary>
+    /// Display all cities
+    /// </summary>
     public class CitiesSimpleListViewComponent :ViewComponent
     {
         private readonly ICityService citiesService;

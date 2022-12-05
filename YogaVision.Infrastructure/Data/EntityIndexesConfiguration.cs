@@ -1,11 +1,6 @@
-﻿
-
-namespace YogaVision.Infrastructure.Data
+﻿namespace YogaVision.Infrastructure.Data
 {
     using System.Linq;
-
-    
-
     using Microsoft.EntityFrameworkCore;
     using YogaVision.Infrastructure.Data.Common.Models;
 

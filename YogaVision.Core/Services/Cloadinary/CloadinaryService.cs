@@ -1,15 +1,10 @@
-﻿using CloudinaryDotNet;
-using CloudinaryDotNet.Actions;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using YogaVision.Core.Contracts;
-
-namespace YogaVision.Core.Services.Cloadinary
+﻿namespace YogaVision.Core.Services.Cloadinary
 {
+    using CloudinaryDotNet;
+    using CloudinaryDotNet.Actions;
+    using Microsoft.AspNetCore.Http;
+    using System.Threading.Tasks;
+    using YogaVision.Core.Contracts;
     public class CloudinaryService : ICloudinaryService
     {
         private readonly Cloudinary cloudinary;

@@ -1,10 +1,7 @@
-﻿
-
-using YogaVision.Data;
-using YogaVision.Infrastructure.Data.Models;
-
-namespace YogaVision.Infrastructure.Data.Seeding.CustomSeeders
+﻿namespace YogaVision.Infrastructure.Data.Seeding.CustomSeeders
 {
+    using YogaVision.Data;
+    using YogaVision.Infrastructure.Data.Models;
     public class TagSeader :ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)

@@ -15,7 +15,7 @@ namespace YogaVision.Core.Contracts
 
         Task<T> GetByIdAsync<T>(int id);
 
-        Task AddAsync(string title, string content, string author, string imageUrl, DateTime createdOn);
+        Task AddAsync(string title,string requiredProducts, string content, string author, string imageUrl, DateTime createdOn);
 
         Task DeleteAsync(int id);
 

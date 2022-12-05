@@ -1,4 +1,6 @@
-﻿namespace YogaVision.Common
+﻿using static System.Net.WebRequestMethods;
+
+namespace YogaVision.Common
 {
 
     public static class GlobalConstants
@@ -57,6 +59,14 @@
             public const int EventDescriptionMaxLength = 50;
 
             public const int EventDescriptionMinLength = 10;
+
+            public const int RequiredProductsMinLength = 10;
+            public const int RequiredProductsMaxLength = 500;
+
+            public const int FoodContentMinLength = 300;
+            
+            public const int FoodContentMaxLength = 3000;
+
         }
 
         public static class ErrorMessages
@@ -69,19 +79,19 @@
 
             public const string ShortContent = "Краткото съдържание трябва да е между 10 и 400";
 
-            public const string Author = "Author name must be between 2 and 40 characters.";
+            public const string Author = "Името на автора трябва да е между 2 и 40 символа.";
 
-            public const string Name = "Name must be between 2 and 40 characters.";
+            public const string Name = "Името трябва да е между 2 и 40 символа.";
 
-            public const string Description = "Description must be between 50 and 700 characters.";
+            public const string Description = "Описанието трябва да е между 50 и 700 символа.";
 
-            public const string Address = "Address must be between 5 and 100 characters.";
+            public const string Address = "Адресът трябва да е между 5 и 100 символа.";
 
-            public const string Image = "Please select a JPG, JPEG or PNG image smaller than 1MB.";
+            public const string Image = "Моля, изберете JPG, JPEG или PNG изображение по-малко 1MB.";
 
-            public const string DateTime = "Please select a valid DATE and TIME from the datepicker calendar";
+            public const string DateTime = "Моля, избере валиден Дата and Час от календара";
 
-            public const string Rating = "Please choose a valid number of stars from 1 to 5.";
+            public const string Rating = "Моля изберете звезда между 1 и 5.";
         }
 
         public static class DateTimeFormats
@@ -97,22 +107,11 @@
         {
             public const string Index = "https://res.cloudinary.com/dig1baxyv/image/upload/v1668750032/YogaVision/kike-vega-F2qh3yjz6Jk-unsplash_h3u7qc.jpg";
 
-            public const string CoverBackground = "https://res.cloudinary.com/beauty-booking/image/upload/v1586874218/cover-bg_nnwh6d.jpg";
+            public const string CoverBackground = "https://res.cloudinary.com/dig1baxyv/image/upload/v1670188406/YogaVision/cover-bg_v7fazl.jpg";
 
             public const string Footer = "https://res.cloudinary.com/beauty-booking/image/upload/v1586874219/footer_rvuuls.jpg";
 
-            public const string Error404 = "https://res.cloudinary.com/beauty-booking/image/upload/v1587754604/404_mcjscs.jpg";
-
-            public const string CloudinaryMissing = "https://res.cloudinary.com/beauty-booking/image/upload/v1587708556/cloudinary_veibtu.png";
-
-
-
-
-
-
-
-
-
+           public const string CloudinaryMissing = "https://res.cloudinary.com/dig1baxyv/image/upload/v1670187738/YogaVision/cloudinary_veibtu_v9znxe.png";
         }
     }
 }

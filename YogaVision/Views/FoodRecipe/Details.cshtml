@@ -1,0 +1,42 @@
+﻿@model YogaVision.Core.Models.FoodRecipe.FoodRecipeViewModel
+
+@{
+    this.ViewData["Title"] = "Кулинарни рецепти";
+}
+<div class="row justify-content-md-center">
+    <!-- News Posts -->
+    <div class="col-lg-8">
+        <div class="news_posts">
+
+            <hr class="bg-dark mx-4" style="height: 6px;" />
+
+            <!-- News Post -->
+            <div class="news_post">
+                <div class="news_post_image"><img src="@Model.ImageUrl" alt=""></div>
+                <div class="news_post_content">
+                    <div class="news_post_title">
+                        <h5>@Model.Title</h5>
+                    </div>
+                    <div class="news_post_info">
+                        <ul class="d-flex flex-row align-items-center justify-content-start">
+                            <li>
+                                <p>от @Model.Author</p>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div class="news_post_text">
+                        <p>НЕОБХОДИМИ СЪСТАВКИ:</p>
+                        <p>@Model.RequiredProducts</p>
+                        <hr class="bg-dark mx-4" style="height: 6px;" />
+                        <p>РЕЦЕПТАТА:</p>
+                        <p>@Model.Content</p>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+   

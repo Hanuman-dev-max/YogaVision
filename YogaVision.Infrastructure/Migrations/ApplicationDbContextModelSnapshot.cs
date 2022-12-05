@@ -355,8 +355,8 @@ namespace YogaVision.Infrastructure.Migrations
 
                     b.Property<string>("Content")
                         .IsRequired()
-                        .HasMaxLength(10000)
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(3000)
+                        .HasColumnType("nvarchar(3000)");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -373,6 +373,11 @@ namespace YogaVision.Infrastructure.Migrations
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("RequiredProducts")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -751,13 +756,13 @@ namespace YogaVision.Infrastructure.Migrations
             modelBuilder.Entity("YogaVision.Infrastructure.Data.Models.YogaEventApplicationsUser", b =>
                 {
                     b.HasOne("YogaVision.Infrastructure.Data.Identity.ApplicationUser", "ApplicationUser")
-                        .WithMany()
+                        .WithMany("YogaEvents")
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("YogaVision.Infrastructure.Data.Models.YogaEvent", "YogaEvent")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("YogaEventId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -770,6 +775,8 @@ namespace YogaVision.Infrastructure.Migrations
             modelBuilder.Entity("YogaVision.Infrastructure.Data.Identity.ApplicationUser", b =>
                 {
                     b.Navigation("Roles");
+
+                    b.Navigation("YogaEvents");
                 });
 
             modelBuilder.Entity("YogaVision.Infrastructure.Data.Models.BlogPost", b =>
@@ -795,6 +802,11 @@ namespace YogaVision.Infrastructure.Migrations
             modelBuilder.Entity("YogaVision.Infrastructure.Data.Models.Tag", b =>
                 {
                     b.Navigation("BlogPosts");
+                });
+
+            modelBuilder.Entity("YogaVision.Infrastructure.Data.Models.YogaEvent", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

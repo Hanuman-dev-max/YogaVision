@@ -1,9 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 using YogaVision.Core.Contracts;
 using YogaVision.Core.Services;
 using YogaVision.Data;
 using YogaVision.Infrastructure.Data.Common;
+using YogaVision.Infrastructure.Data.Common.Mapping;
+using YogaVision.Models;
 
 namespace YogaVision.Tests.UseInMemoryDatabase
 {
@@ -41,7 +44,7 @@ namespace YogaVision.Tests.UseInMemoryDatabase
             // Application services
            
             services.AddTransient<ICityService, CityService>();
-           
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
             return services;
         }
