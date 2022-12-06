@@ -1,13 +1,13 @@
-﻿
-
-namespace YogaVision.Core.Services
+﻿namespace YogaVision.Core.Services
 {
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using YogaVision.Core.Contracts;
     using YogaVision.Infrastructure.Data.Common;
-    using YogaVision.Infrastructure.Data.Common.Mapping;
     using YogaVision.Infrastructure.Data.Models;
+    /// <summary>
+    /// Service for TagBlogPost 
+    /// </summary>
     public class TagBlogPostService : ITagBlogPostService
     {
         private readonly IDeletableEntityRepository<TagBlogPost> tagBlogPostRepository;
@@ -16,9 +16,14 @@ namespace YogaVision.Core.Services
             this.tagBlogPostRepository = tagBlogPostRepository;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="blogPostId"></param>
+        /// <param name="tagIds"></param>
+        /// <returns></returns>
         public async Task AddAsync(int blogPostId, List<int> tagIds)
         {
-
             foreach (var tagId in tagIds)
             {
                 var tagBlogPost = new TagBlogPost
@@ -32,12 +37,12 @@ namespace YogaVision.Core.Services
             await this.tagBlogPostRepository.SaveChangesAsync();
         }
 
-        public async Task<List<string>> GetTagByPostId(int postID)
+        public async Task<ICollection<string>> GetTagByPostId(int postId)
         {
             var tags =
                 await this.tagBlogPostRepository
                 .All()
-                .Where(x => x.BlogPostId == postID)
+                .Where(x => x.BlogPostId == postId)
                .Select(x => x.Tag.Name).ToListAsync();
             return tags;
         }

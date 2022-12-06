@@ -5,7 +5,9 @@
     using YogaVision.Infrastructure.Data.Models;
     using YogaVision.Core.Contracts;
     using Microsoft.EntityFrameworkCore;
-
+    /// <summary>
+    /// Service for Instructor
+    /// </summary>
     public class InstructorService : IInstructorService
     {
         private readonly IDeletableEntityRepository<Instructor> instructorRepository;
@@ -15,6 +17,12 @@
             this.instructorRepository = instructorRepository;
         }
 
+        /// <summary>
+        /// Gets all instructors
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="count">The number of instructors to be taken</param>
+        /// <returns>Collection of type T</returns>
         public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
         {
             IQueryable<Instructor> query =
@@ -25,42 +33,8 @@
             {
                 query = query.Take(count.Value);
             }
-
-
-
             return await query.To<T>().ToListAsync();
         }
-
-        public async Task<IEnumerable<T>> GetAllWithPagingAsync<T>(
-            int? sortId,
-            int pageSize,
-            int pageIndex)
-        {
-            IQueryable<Instructor> query =
-                this.instructorRepository
-                .AllAsNoTracking()
-                .OrderByDescending(x => x.CreatedOn);
-
-            if (sortId != null)
-            {
-                query = query
-                    .Where(x => x.Id == sortId);
-            }
-
-            return await query
-                .Skip((pageIndex - 1) * pageSize)
-                .Take(pageSize).To<T>().ToListAsync();
-        }
-
-        public async Task<int> GetCountForPaginationAsync()
-        {
-            return await this.instructorRepository
-                .AllAsNoTracking()
-                .CountAsync();
-
-            // return await query.CountAsync();
-        }
-
         public async Task<T> GetByIdAsync<T>(int id)
         {
             var instructor =
@@ -70,7 +44,19 @@
                 .To<T>().FirstOrDefaultAsync();
             return instructor;
         }
-
+        /// <summary>
+        /// Adds Instructor to the database
+        /// </summary>
+        /// <param name="firstName"The First name of the Instructor</param>
+        /// <param name="lastName">The Last name of the Instructor</param>
+        /// <param name="description">The Description of the Instructor</param>
+        /// <param name="nickName">The Nickname of the Instructor</param>
+        /// <param name="imageUrl">The main picture of the Instructor</param>
+        /// <param name="imageUrlFirst">The First pic of the Instructor</param>
+        /// <param name="imageUrlSecond">The Second pic of the Instructor</param>
+        /// <param name="imageUrlThird">The Third poc of the Instructor</param>
+        /// <param name="facebookLink">Facebook link of the Instructor</param>
+        /// <returns></returns>
         public async Task AddAsync(string firstName, string lastName, string description, string nickName, string imageUrl, string imageUrlFirst , string imageUrlSecond, string imageUrlThird, string facebookLink)
         {
             await this.instructorRepository.AddAsync(new Instructor
@@ -88,7 +74,11 @@
             });
             await this.instructorRepository.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// Deletes Instructor by Id
+        /// </summary>
+        /// <param name="id">The Id of the Instructor</param>
+        /// <returns></returns>
         public async Task DeleteAsync(int id)
         {
             var instructor =

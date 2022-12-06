@@ -4,7 +4,9 @@
     using YogaVision.Core.Contracts;
     using YogaVision.Infrastructure.Data.Common;
     using YogaVision.Infrastructure.Data.Models;
-
+    /// <summary>
+    /// Service for YogaEventApplicationUser
+    /// </summary>
     public class YogaEventApplicationUserService : IYogaEventApplicationUserService
     {
         private readonly IDeletableEntityRepository<YogaEventApplicationsUser> yogaEventApplicationUserRepository;
@@ -13,6 +15,12 @@
         {
             this.yogaEventApplicationUserRepository = yogaEventApplicationUserRepository;
         }
+        /// <summary>
+        /// Adds YogaEventApplicationUser
+        /// </summary>
+        /// <param name="yogaEventId">The Id of YogaEvent</param>
+        /// <param name="ApplicationUserId">The Id of ApplicationUser</param>
+        /// <returns></returns>
         public async Task AddAsync(string yogaEventId, string applicationUserId)
         {
             var yogaEventApplicationsUser =
@@ -37,7 +45,12 @@
             }
 
         }
-
+        /// <summary>
+        /// Checks if User participates in YogaEvent
+        /// </summary>
+        /// <param name="yogaEventId">The Id of YogaEvent</param>
+        /// <param name="ApplicationUserId">The Id of ApplicationUser</param>
+        /// <returns></returns>
         public bool CheckUserInEvent(string yogaEventId, string ApplicationUserId)
         {
             bool result = this.yogaEventApplicationUserRepository
@@ -46,7 +59,12 @@
 
             return result;
         }
-
+        /// <summary>
+        /// Deletes  YogaEventApplicationUser
+        /// </summary>
+        /// <param name="yogaEventId">The Id of YogaEvent</param>
+        /// <param name="ApplicationUserId">The Id of ApplicationUser</param>
+        /// <returns></returns>
         public async Task DeleteAsync(string yogaEventId, string applicationUserId)
         {
             var yogaEventApplicationsUser =

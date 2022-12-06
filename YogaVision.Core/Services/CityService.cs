@@ -14,6 +14,11 @@
             this.citiesRepository = citiesRepository;
         }
 
+        /// <summary>
+        /// Get all cities
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>Collection of type T</returns>
         public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
             var cities =
@@ -23,7 +28,11 @@
                 .To<T>().ToListAsync();
             return cities;
         }
-
+        /// <summary>
+        /// Add city to the database
+        /// </summary>
+        /// <param name="name">The name of the city</param>
+        /// <returns></returns>
         public async Task AddAsync(string name)
         {
             await this.citiesRepository.AddAsync(new City
@@ -32,6 +41,11 @@
             });
             await this.citiesRepository.SaveChangesAsync();
         }
+        /// <summary>
+        /// Delete the city by Id
+        /// </summary>
+        /// <param name="id">The Id of the city</param>
+        /// <returns></returns>
 
         public async Task DeleteAsync(int id)
         {
@@ -44,7 +58,12 @@
             await this.citiesRepository.SaveChangesAsync();
         }
 
-
+        /// <summary>
+        /// Get city by Id
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<T> GetByIdAsync<T>(int id)
         {
             var city =

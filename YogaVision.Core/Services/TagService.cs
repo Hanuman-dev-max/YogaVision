@@ -6,6 +6,9 @@
     using YogaVision.Infrastructure.Data.Common;
     using YogaVision.Infrastructure.Data.Common.Mapping;
     using YogaVision.Infrastructure.Data.Models;
+    /// <summary>
+    /// Service for Tag
+    /// </summary>
     public class TagService : ITagService
     {
         private readonly IDeletableEntityRepository<Tag> tagsRepository;
@@ -14,6 +17,11 @@
             this.tagsRepository = tagsRepository;
         }
 
+        /// <summary>
+        /// Adds tag
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public async Task<int> AddAsync(string name)
         {
             var tag = new Tag()
@@ -24,8 +32,12 @@
             await this.tagsRepository.SaveChangesAsync();
             return tag.Id;
         }
-
-        public async Task<List<int>> AddRangeAsync(List<string> tags)
+        /// <summary>
+        /// Adds tags by their names
+        /// </summary>
+        /// <param name="tags">The names of the tags</param>
+        /// <returns>List of int their Ids</returns>
+        public async Task<ICollection<int>> AddRangeAsync(ICollection<string> tags)
         {
             var tagIds = new List<int>();
             foreach (var tag in tags)
@@ -43,7 +55,11 @@
             }
             return tagIds;
         }
-
+        /// <summary>
+        /// Deletes a tag by its Id
+        /// </summary>
+        /// <param name="Id">The Id of the tag</param>
+        /// <returns></returns>
         public async Task DeleteAsync(int id)
         {
             var tag =
@@ -54,8 +70,13 @@
             this.tagsRepository.Delete(tag);
             await this.tagsRepository.SaveChangesAsync();
         }
-
-        public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
+        /// <summary>
+        /// Gets by Id
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id">The Id of the tag</param>
+        /// <returns>Object of type T</returns>
+        public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
             var tags =
                 await this.tagsRepository
@@ -64,12 +85,12 @@
                 .To<T>().ToListAsync();
             return tags;
         }
-
-        public Task<IEnumerable<T>> GetAllWithPagingAsync<T>(int? sortId, int pageSize, int pageIndex)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Gets by Id
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id">The Id of the tag</param>
+        /// <returns>Object of type T</returns>
         public async Task<T> GetByIdAsync<T>(int id)
         {
             var tag =
@@ -79,7 +100,12 @@
                 .To<T>().FirstOrDefaultAsync();
             return tag;
         }
-
+        /// <summary>
+        /// Gets tag by name
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="name">The name of the tag</param>
+        /// <returns>Objecy of type T</returns>
         public async Task<T> GetByNameAsync<T>(string name)
         {
             var tag =
@@ -90,9 +116,6 @@
             return tag;
         }
 
-        public Task<int> GetCountForPaginationAsync()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

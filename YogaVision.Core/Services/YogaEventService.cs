@@ -11,6 +11,9 @@ namespace YogaVision.Core.Services
     using YogaVision.Infrastructure.Data.Models;
     using Microsoft.EntityFrameworkCore;
     using YogaVision.Infrastructure.Data.Common.Mapping;
+    /// <summary>
+    /// Service for YogaEvent
+    /// </summary>
     public class YogaEventService : IYogaEventService
     {
         private readonly IDeletableEntityRepository<YogaEvent> yogaEventsRepository;
@@ -18,6 +21,16 @@ namespace YogaVision.Core.Services
         {
             this.yogaEventsRepository = yogaEventsRepository;
         }
+        /// <summary>
+        /// Adds YogaEvent 
+        /// </summary>
+        /// <param name="studioId">The Id of the studio</param>
+        /// <param name="instructorId">The Id of the instructor</param>
+        /// <param name="datetime">The datetime on which the YogaEvent will start</param>
+        /// <param name="description">The description of the YogaEvent</param>
+        /// <param name="duration">The duration of the YogaEvent</param>
+        /// <param name="seats">The free seats of the YogaEvent</param>
+        /// <returns></returns>
         public async Task AddAsync(int studioId, int instructorId, DateTime datetime, string description, string duration, int seats)
         {
             await this.yogaEventsRepository.AddAsync(new YogaEvent
@@ -34,7 +47,11 @@ namespace YogaVision.Core.Services
             }); ;
             await this.yogaEventsRepository.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// Add seat to YogaEvent
+        /// </summary>
+        /// <param name="yogaEventId">The Id of YogaEvent</param>
+        /// <returns></returns>
         public async Task AddSeat(string yogaEventId)
         {
             var yogaEvent =
@@ -46,7 +63,11 @@ namespace YogaVision.Core.Services
             yogaEvent.Seats += 1;
             await this.yogaEventsRepository.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// Deletes YogaEvent
+        /// </summary>
+        /// <param name="id">The Id of the YogaEvent</param>
+        /// <returns></returns>
         public async Task DeleteAsync(string id)
         {
             var yogaEvent =
@@ -58,7 +79,13 @@ namespace YogaVision.Core.Services
             await this.yogaEventsRepository.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync<T>(int? count = null)
+        /// <summary>
+        /// Gets all Yoga Events
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<T>> GetAllAsync<T>()
         {
             var yogaEvent =
                await this.yogaEventsRepository
@@ -67,8 +94,13 @@ namespace YogaVision.Core.Services
                .To<T>().ToListAsync();
             return yogaEvent;
         }
-
-        public async Task<IEnumerable<T>> GetAllByDateAsync<T>(DateTime dateTime, int? count = null)
+        /// <summary>
+        /// Gets all YogaEvent after a given date
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<T>> GetAllByDateAsync<T>(DateTime dateTime)
         {
             var yogaEvent =
                await this.yogaEventsRepository
@@ -78,12 +110,13 @@ namespace YogaVision.Core.Services
                .To<T>().ToListAsync();
             return yogaEvent;
         }
-
-        public Task<IEnumerable<T>> GetAllWithPagingAsync<T>(int? sortId, int pageSize, int pageIndex)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Gets all Yoga Events by City
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="cityId">The Id of the city</param>
+        /// <param name="dateTime">The datetime after the YogaEvents will be taken</param>
+        /// <returns>Collection of type T</returns>
         public async Task<IEnumerable<T>> GetByCityIdAsync<T>(int cityId, DateTime dateTime)
         {
             var yogaEvent =
@@ -94,7 +127,12 @@ namespace YogaVision.Core.Services
                .To<T>().ToListAsync();
             return yogaEvent;
         }
-
+        /// <summary>
+        /// Gets YogaEvent by Id
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id">The Id of YogaEvent</param>
+        /// <returns></returns>
         public async Task<T> GetByIdAsync<T>(string id)
         {
             var yogaEvent =
@@ -104,14 +142,11 @@ namespace YogaVision.Core.Services
                 .To<T>().FirstOrDefaultAsync();
             return yogaEvent;
         }
-
-
-
-        public Task<int> GetCountForPaginationAsync()
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Substarct one free seat from YogaEvent
+        /// </summary>
+        /// <param name="yogaEventId">The Id of YogaEvent</param>
+        /// <returns></returns>
         public async Task SubstarctSeat(string yogaEventId)
         {
             var yogaEvent =

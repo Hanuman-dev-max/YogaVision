@@ -1,6 +1,4 @@
-﻿
-
-namespace YogaVision.Areas.Admin.Controllers
+﻿namespace YogaVision.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using YogaVision.Common;
@@ -51,8 +49,7 @@ namespace YogaVision.Areas.Admin.Controllers
                 // In case of missing Cloudinary configuration from appsettings.json
                 imageUrl = GlobalConstants.Images.CloudinaryMissing;
             }
-            var createdOn = DateTime.Now;
-            await this.foodRecipeService.AddAsync(input.Title,input.RequiredProducts, input.Content, input.Author, imageUrl, createdOn);
+            await this.foodRecipeService.AddAsync(input.Title,input.RequiredProducts, input.Content, input.Author, imageUrl);
             return this.RedirectToAction("Index");
         }
 

@@ -1,8 +1,4 @@
-﻿
-
-
-
-namespace YogaVision.Controllers
+﻿namespace YogaVision.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using YogaVision.Core.Contracts;

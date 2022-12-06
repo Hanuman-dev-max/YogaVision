@@ -7,20 +7,20 @@
     using System.Threading.Tasks;
     
     /// <summary>
-    /// Service for Blog Posts
+    /// Interface Service for Blog Posts
     /// </summary>
     public interface IBlogPostService
     {
         /// <summary>
-        /// Get all blog posts
+        /// Gets all blog posts
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="count"></param>
+        /// <param name="count">The count of the blog post to be taken</param>
         /// <returns></returns>
-        
+
         Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
         /// <summary>
-        /// Get all similat blog post based on similar tags
+        /// Gets all similat blog post based on similar tags
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="tags">List of tags</param>
@@ -28,24 +28,46 @@
         /// <returns></returns>
         Task<IEnumerable<T>> GetSimilarByTagAsync<T>(List<string> tags, int blogId);
         /// <summary>
-        /// Get all blog posts
+        /// Gets all blog posts with paging
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="sortId"></param>
-        /// <param name="pageSize"></param>
-        /// <param name="pageIndex"></param>
+        /// <param name="sortId">The id of blog post</param>
+        /// <param name="pageSize">The size of the page</param>
+        /// <param name="pageIndex">The index of the page</param>
         /// <returns></returns>
         Task<IEnumerable<T>> GetAllWithPagingAsync<T>(
             int? sortId,
             int pageSize,
             int pageIndex);
-
+        /// <summary>
+        /// Gets the count of all blog posts
+        /// </summary>
+        /// <returns></returns>
         Task<int> GetCountForPaginationAsync();
-
+        /// <summary>
+        /// Gets blog post by Id
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id">The id of the blog post</param>
+        /// <returns>Object of type T</returns>
         Task<T> GetByIdAsync<T>(int id);
+        /// <summary>
+        /// Adds blog post in the database
+        /// </summary>
+        /// <param name="title">The title of the blog post</param>
+        /// <param name="s0hortContent">The Short content of the blog post</param>
+        /// <param name="content">The Content of the blog post</param>
+        /// <param name="author">The author of the blog post</param>
+        /// <param name="imageUrl">The ImageUrl of the blog post</param>
+        /// <returns>The Id of the blog post</returns>
+        Task<int> AddAsync(string title,string shortContent, string content, string author, string imageUrl);
 
-        Task<int> AddAsync(string title,string ShortContent, string content, string author, string imageUrl);
-
+        /// <summary>
+        /// Deletes blog post by Id
+        /// </summary>
+        /// <param name="id">The Id of the blog post</param>
+        /// <returns></returns>
         Task DeleteAsync(int id);
+        
     }
 }

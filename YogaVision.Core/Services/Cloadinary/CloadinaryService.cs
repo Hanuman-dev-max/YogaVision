@@ -5,6 +5,9 @@
     using Microsoft.AspNetCore.Http;
     using System.Threading.Tasks;
     using YogaVision.Core.Contracts;
+    /// <summary>
+    /// Clodinary Service
+    /// </summary>
     public class CloudinaryService : ICloudinaryService
     {
         private readonly Cloudinary cloudinary;
@@ -14,6 +17,12 @@
             this.cloudinary = cloudinary;
         }
 
+        /// <summary>
+        /// Upload Picture
+        /// </summary>
+        /// <param name="pictureFile"></param>
+        /// <param name="fileName">The name of the file</param>
+        /// <returns></returns>
         public async Task<string> UploadPictureAsync(IFormFile pictureFile, string fileName)
         {
             byte[] destinationData;
