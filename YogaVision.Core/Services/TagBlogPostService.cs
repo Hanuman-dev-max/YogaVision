@@ -22,7 +22,7 @@
         /// <param name="blogPostId"></param>
         /// <param name="tagIds"></param>
         /// <returns></returns>
-        public async Task AddAsync(int blogPostId, List<int> tagIds)
+        public async Task AddAsync(int blogPostId, ICollection<int> tagIds)
         {
             foreach (var tagId in tagIds)
             {

@@ -5,11 +5,19 @@
     using YogaVision.Core.Contracts;
     using YogaVision.Core.Models.BlogPost;
     using YogaVision.Core.Models.Instructor;
+    /// <summary>
+    /// Controller for Instructor Model in Admin Area
+    /// </summary>
     public class InstructorController : AdministrationController
     {
         private readonly IInstructorService instructorService;
         private readonly ICloudinaryService cloudinaryService;
 
+        /// <summary>
+        /// Constructor of InstructorController
+        /// </summary>
+        /// <param name="instructorService">Object of type IInstructorService</param>
+        /// <param name="cloudinaryService">Onkect of type ICloudinaryService</param>
         public InstructorController(
             IInstructorService instructorService,
             ICloudinaryService cloudinaryService)
@@ -17,7 +25,10 @@
             this.instructorService = instructorService;
             this.cloudinaryService = cloudinaryService;
         }
-
+        /// <summary>
+        /// Displays Index View
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
             var viewModel = new InstructorsListViewModel
@@ -26,12 +37,19 @@
             };
             return this.View(viewModel);
         }
-
+        /// <summary>
+        /// Displays AddInstructor View
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AddInstructor()
         {
             return this.View();
         }
-
+        /// <summary>
+        /// HttpPost Method which handle adding of Instructor
+        /// </summary>
+        /// <param name="input">Interface of type InstructorInputModel</param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> AddInstructor(InstructorInputModel input)
         {
@@ -87,6 +105,11 @@
             return this.RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// HttpPost Method which handle deleting of Instructor
+        /// </summary>
+        /// <param name="id">The Id of Instructor</param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> DeleteInstructor(int id)
         { 

@@ -11,7 +11,7 @@
         /// <param name="blogPostId">The Id of the blogPost</param>
         /// <param name="tagsId">The Ids of the tags</param>
         /// <returns></returns>
-        Task AddAsync(int blogPostId, List<int> tagsId);
+        Task AddAsync(int blogPostId, ICollection<int> tagsId);
         /// <summary>
         /// Gets the tags of BlogPost
         /// </summary>

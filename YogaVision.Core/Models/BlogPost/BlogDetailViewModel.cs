@@ -4,6 +4,6 @@
     public class BlogDetailViewModel
     {
         public BlogPostViewModel blog = new BlogPostViewModel();
-        public List<string> tags = new List<string>();
+        public ICollection<string> tags = new List<string>();
     }
 }

@@ -4,11 +4,18 @@
     using YogaVision.Common;
     using YogaVision.Core.Contracts;
     using YogaVision.Core.Models.FoodRecipe;
+    /// <summary>
+    /// Contoller responsible for FoodRecipe model in Admin Area
+    /// </summary>
     public class FoodRecipeController : AdministrationController
     {
         private readonly IFoodRecipeService foodRecipeService;
         private readonly ICloudinaryService cloudinaryService;
-
+        /// <summary>
+        /// Contructor of FoodRecipeController
+        /// </summary>
+        /// <param name="foodRecipeService">Interface of type IFoodRecipeService</param>
+        /// <param name="cloudinaryService">Interface of typeICloudinaryService </param>
         public FoodRecipeController(
             IFoodRecipeService foodRecipeService,
             ICloudinaryService cloudinaryService)
@@ -17,6 +24,10 @@
             this.cloudinaryService = cloudinaryService;
         }
 
+        /// <summary>
+        /// Displays the Index View
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
             var viewModel = new FoodRecipesListViewModel
@@ -26,11 +37,20 @@
             return this.View(viewModel);
         }
 
+        /// <summary>
+        /// Displays AddFoodRecipe Views
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AddFoodRecipe()
         {
             return this.View();
         }
 
+        /// <summary>
+        /// HttpPost Methot which handles adding of FoodRecipe
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> AddFoodRecipe(FoodRecipeInputModel input)
         {
@@ -53,6 +73,11 @@
             return this.RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// HttpPost Method which handle deleting a FoodRecipe
+        /// </summary>
+        /// <param name="id">The Id of the FoodRecipe</param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> DeleteFoodRecipe(int id)
         {

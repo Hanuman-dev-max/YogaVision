@@ -7,14 +7,22 @@ namespace YogaVision.Areas.Admin.Controllers
     using YogaVision.Common;
     using YogaVision.Core.Contracts;
     using YogaVision.Core.Models.BlogPost;
-
+    /// <summary>
+    /// Controller which will handles BlogPosts in AdminArea 
+    /// </summary>
     public class BlogPostController : AdministrationController
     {
         private readonly IBlogPostService blogPostService;
         private readonly ITagService tagService;
         private readonly ITagBlogPostService tagBlogPostService;
         private readonly ICloudinaryService cloudinaryService;
-
+        /// <summary>
+        /// Constructor of BlogPostController
+        /// </summary>
+        /// <param name="blogPostService">Interface of type IBlogPostService</param>
+        /// <param name="cloudinaryService">Interface of type ICloudinaryService</param>
+        /// <param name="tagService">Interface of type ITagService</param>
+        /// <param name="tagBlogPostService">Interface of type ITagBlogPostService</param>
         public BlogPostController(
         IBlogPostService blogPostService,
         ICloudinaryService cloudinaryService,
@@ -26,7 +34,10 @@ namespace YogaVision.Areas.Admin.Controllers
             this.tagService = tagService;
             this.tagBlogPostService = tagBlogPostService;
         }
-
+        /// <summary>
+        /// Displays a View with all blog posts
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
             var viewModel = new BlogPostsListViewModel
@@ -35,12 +46,19 @@ namespace YogaVision.Areas.Admin.Controllers
             };
             return this.View(viewModel);
         }
-
+        /// <summary>
+        /// Displays a View for addong a BlogPost
+        /// </summary>
+        /// <returns></returns>
         public IActionResult AddBlogPost()
         {
             return this.View();
         }
-
+        /// <summary>
+        /// HttpPost Method which handles adding a BlogPost
+        /// </summary>
+        /// <param name="input">BlogPostInputModel</param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> AddBlogPost(BlogPostInputModel input)
         {
@@ -67,7 +85,11 @@ namespace YogaVision.Areas.Admin.Controllers
             await this.tagBlogPostService.AddAsync(blodId, tagIds);
             return this.RedirectToAction("Index");
         }
-
+        /// <summary>
+        /// HttpPost Method which handles deleting a BlogPost
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> DeleteBlogPost(int id)
         {
