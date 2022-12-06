@@ -8,21 +8,32 @@ namespace YogaVision.Controllers
     using YogaVision.Core.Models.BlogPost;
     using YogaVision.Core.Models.Pagination;
     
-
+    /// <summary>
+    /// Controller which handles BlogPost model 
+    /// </summary>
     public class BlogPostController : BaseController
     {
         private readonly IBlogPostService blogPostService;
         private readonly ITagBlogPostService tagBlogPostService;
-
+        /// <summary>
+        /// Constructor for BlogPostController
+        /// </summary>
+        /// <param name="blogPostService"></param>
+        /// <param name="tagBlogPostService"></param>
         public BlogPostController(IBlogPostService blogPostService, ITagBlogPostService tagBlogPostService)
         {
             this.blogPostService = blogPostService;
             this.tagBlogPostService = tagBlogPostService;
         }
-
+        /// <summary>
+        /// Display Index View
+        /// </summary>
+        /// <param name="sortId">The Id of BlogPost</param>
+        /// <param name="pageNumber">The number of page</param>
+        /// <returns></returns>
         public async Task<IActionResult> Index(
             int? sortId,
-            int? pageNumber) // blogPostId
+            int? pageNumber) 
         {
             if (sortId != null)
             {
@@ -52,16 +63,27 @@ namespace YogaVision.Controllers
 
             return this.View(viewModel);
         }
-
+        /// <summary>
+        /// Displays Details View
+        /// </summary>
+        /// <param name="id">The Id of BlogPost</param>
+        /// <returns></returns>
         public async Task<IActionResult> Details(int id)
         {
           
             var blog = await blogPostService.GetByIdAsync<BlogPostViewModel>(id);
 
+            if (blog == null)
+            {
+                return new StatusCodeResult(404);
+            }
+
             var tags = await tagBlogPostService.GetTagByPostId(id);
-
-
-
+            if (tags == null)
+            {
+                return new StatusCodeResult(404);
+            }
+            
             var model = new BlogDetailViewModel()
             {
                 blog = blog,
@@ -69,8 +91,6 @@ namespace YogaVision.Controllers
             };
 
             return View(model);
-
-        
         }
     }
 }

@@ -8,11 +8,6 @@ namespace YogaVision.Common
         public const string SystemName = "YogaVision";
 
         public const string AdministratorRoleName = "Administrator";
-
-
-
-
-
         public static class AccountsSeeding
         {
             public const string Password = "123456";
@@ -109,7 +104,7 @@ namespace YogaVision.Common
 
             public const string CoverBackground = "https://res.cloudinary.com/dig1baxyv/image/upload/v1670188406/YogaVision/cover-bg_v7fazl.jpg";
 
-            public const string Footer = "https://res.cloudinary.com/beauty-booking/image/upload/v1586874219/footer_rvuuls.jpg";
+           // public const string Footer = "https://res.cloudinary.com/beauty-booking/image/upload/v1586874219/footer_rvuuls.jpg";
 
            public const string CloudinaryMissing = "https://res.cloudinary.com/dig1baxyv/image/upload/v1670187738/YogaVision/cloudinary_veibtu_v9znxe.png";
         }

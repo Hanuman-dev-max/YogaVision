@@ -1,5 +1,4 @@
-﻿using CloudinaryDotNet;
-using YogaVision.Core.Contracts;
+﻿using YogaVision.Core.Contracts;
 using YogaVision.Core.Services.Cloadinary;
 using YogaVision.Core.Services.DateTimeParser;
 using YogaVision.Core.Services;
@@ -10,9 +9,17 @@ using System.Reflection;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-        public static class YogaVisionServiceCollectionExtension
+    /// <summary>
+    /// Extension for YogaVisionServiceCollection
+    /// </summary>
+    public static class YogaVisionServiceCollectionExtension
         {
-            public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        /// <summary>
+        /// Add Services for the Application 
+        /// </summary>
+        /// <param name="services">Collection of type IServiceCollection</param>
+        /// <returns></returns>
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
             {
                 services.AddControllersWithViews();
                 services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));

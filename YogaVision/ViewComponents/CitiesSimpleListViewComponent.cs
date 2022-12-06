@@ -11,11 +11,18 @@ namespace YogaVision.ViewComponents
     {
         private readonly ICityService citiesService;
 
+        /// <summary>
+        /// Constructor for CitiesSimpleListViewComponent
+        /// </summary>
+        /// <param name="citiesService"></param>
         public CitiesSimpleListViewComponent(ICityService citiesService)
         {
             this.citiesService = citiesService;
         }
-
+        /// <summary>
+        /// Method for invoking the ViewComponent in RazorViewPage
+        /// </summary>
+        /// <returns></returns>
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var viewModel = new CitiesListViewModel
