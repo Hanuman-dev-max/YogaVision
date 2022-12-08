@@ -26,7 +26,7 @@
         /// <param name="tags">List of tags</param>
         /// <param name="blogId">BlogId which will not be included in the result</param>
         /// <returns></returns>
-        Task<IEnumerable<T>> GetSimilarByTagAsync<T>(List<string> tags, int blogId);
+        Task<IEnumerable<T>> GetSimilarByTagAsync<T>(ICollection<string> tags, int blogId);
         /// <summary>
         /// Gets all blog posts with paging
         /// </summary>

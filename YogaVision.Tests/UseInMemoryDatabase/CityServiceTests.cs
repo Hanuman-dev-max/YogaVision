@@ -7,7 +7,7 @@
     using YogaVision.Core.Models.City;
     using YogaVision.Infrastructure.Data.Models;
 
-    public class CitiesServiceTests : BaseServiceTests
+    public class CityServiceTests : BaseServiceTests
     {
         private ICityService Service => this.ServiceProvider.GetRequiredService<ICityService>();
 
@@ -19,7 +19,7 @@
             
             //Arrange
             await this.CreateCityAsync();
-            var name = "Нов град";
+            var name = new NLipsum.Core.Word().ToString();
             await this.Service.AddAsync(name);
             
             //Act
@@ -70,7 +70,7 @@
             
             var city = new City
             {
-                Name = "New City",
+                Name = new NLipsum.Core.Word().ToString(),
             };
             
             await this.DbContext.Cities.AddAsync(city);

@@ -44,6 +44,13 @@ namespace YogaVision.Tests.UseInMemoryDatabase
             // Application services
            
             services.AddTransient<ICityService, CityService>();
+            services.AddTransient<IStudioService, StudioService>();
+            services.AddTransient<IInstructorService, InstructorService>();
+            services.AddTransient<IBlogPostService, BlogPostService>();
+            services.AddTransient<IFoodRecipeService, FoodRecipeService>();
+            services.AddTransient<ITagService, TagService>();
+            services.AddTransient<ITagBlogPostService, TagBlogPostService>();
+
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
             return services;

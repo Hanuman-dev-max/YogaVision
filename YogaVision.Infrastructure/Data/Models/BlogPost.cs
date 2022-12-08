@@ -6,32 +6,39 @@ namespace YogaVision.Infrastructure.Data.Models
     using System.ComponentModel.DataAnnotations;
     using YogaVision.Common;
     using YogaVision.Infrastructure.Data.Common.Models;
+    /// <summary>
+    /// BlogPost model
+    /// </summary>
     public class BlogPost : BaseDeletableModel<int>
     {
+        /// <summary>
+        /// Constructor of BlogPost
+        /// </summary>
         public BlogPost()
         {
             Tags = new HashSet<TagBlogPost>();
         }
+        
         [Required]
         [MaxLength(GlobalConstants.DataValidations.TitleMaxLength)]
-        public string Title { get; set; }
+        public string Title { get; set; } = null!;
 
         [Required]
         [MaxLength(GlobalConstants.DataValidations.ContentMaxLength)]
-        public string Content { get; set; }
+        public string Content { get; set; } = null!;
 
         [Required]
         [MaxLength(GlobalConstants.DataValidations.ShortContentMaxLength)]
-        public string ShortContent { get; set; }
+        public string ShortContent { get; set; } = null!;
 
         // BlogPost can be created only in the Admin Dashboard
         // so the Author is not a User, just a string for name
         [Required]
         [MaxLength(GlobalConstants.DataValidations.NameMaxLength)]
-        public string Author { get; set; }
+        public string Author { get; set; } = null!;
 
         [Required]
-        public string ImageUrl { get; set; }
+        public string ImageUrl { get; set; } = null!;
 
         public ICollection<TagBlogPost> Tags{ get; set; }
 

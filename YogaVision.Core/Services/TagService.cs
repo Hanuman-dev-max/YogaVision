@@ -24,13 +24,21 @@
         /// <returns></returns>
         public async Task<int> AddAsync(string name)
         {
-            var tag = new Tag()
+            if (!this.tagsRepository.All().Any(t => t.Name == name))
             {
-                Name = name,
-            };
-            await this.tagsRepository.AddAsync(tag);
-            await this.tagsRepository.SaveChangesAsync();
-            return tag.Id;
+                var tag = new Tag()
+                {
+                    Name = name,
+                };
+                await this.tagsRepository.AddAsync(tag);
+                await this.tagsRepository.SaveChangesAsync();
+                return tag.Id;
+            }
+            else 
+            {
+                var tag = await GetByNameAsync<TagViewModel>(name);
+                return tag.Id;
+            }
         }
         /// <summary>
         /// Adds tags by their names

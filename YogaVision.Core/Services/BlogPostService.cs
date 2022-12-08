@@ -12,7 +12,7 @@
     public class BlogPostService : IBlogPostService
     {
         private readonly IDeletableEntityRepository<BlogPost> blogPostsRepository;
-        public BlogPostService(IDeletableEntityRepository<BlogPost> blogPostsRepository, ITagService tagService)
+        public BlogPostService(IDeletableEntityRepository<BlogPost> blogPostsRepository)
         {
             this.blogPostsRepository = blogPostsRepository;
         }
@@ -72,8 +72,6 @@
             return await this.blogPostsRepository
                 .AllAsNoTracking()
                 .CountAsync();
-
-           
         }
         /// <summary>
         /// Gets blog post by Id
@@ -139,9 +137,8 @@
         /// <param name="tags">List of tags</param>
         /// <param name="blogId">BlogId which will not be included in the result</param>
         /// <returns></returns>
-        public async Task<IEnumerable<T>> GetSimilarByTagAsync<T>(List<string> tags , int blogId)
+        public async Task<IEnumerable<T>> GetSimilarByTagAsync<T>(ICollection<string> tags , int blogId)
         {
-            
             var blogPosts =
                 await this.blogPostsRepository
                 .All()
