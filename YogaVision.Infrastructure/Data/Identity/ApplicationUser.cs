@@ -11,7 +11,7 @@
         {
             this.Id = Guid.NewGuid().ToString();
             this.Roles = new HashSet<IdentityUserRole<string>>();
-            YogaEvents = new HashSet<YogaEventApplicationsUser>();
+            YogaEvents = new HashSet<YogaEventApplicationUser>();
 
         }
 
@@ -27,7 +27,7 @@
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
-        public ICollection<YogaEventApplicationsUser> YogaEvents { get; set; }
+        public ICollection<YogaEventApplicationUser> YogaEvents { get; set; }
     }
        
 }

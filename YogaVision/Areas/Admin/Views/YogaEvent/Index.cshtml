@@ -27,7 +27,7 @@
         @foreach (var yogaEvent in this.Model.YogaEvents)
         {
             <tr>
-                <th scope="row">@yogaEvent.DateTime</th>
+                <th scope="row">@yogaEvent.DateTime.ToString("dd.MM.yyyy HH:mm")</th>
                 <td>@yogaEvent.Duration</td>
                 <td>@yogaEvent.Description</td>
                 <td>@yogaEvent.Seats</td>

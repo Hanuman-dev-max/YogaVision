@@ -154,6 +154,11 @@ namespace YogaVision.Core.Services
                 .All()
                 .Where(x => x.Id == yogaEventId).
                 FirstOrDefaultAsync();
+            if (yogaEvent.Seats == 0)
+            {
+                throw new Exception("Seats cannot be negative");
+            }
+
 
             yogaEvent.Seats -= 1;
             await this.yogaEventsRepository.SaveChangesAsync();

@@ -18,7 +18,7 @@
         /// <param name="yogaEventId">The Id of YogaEvent</param>
         /// <param name="ApplicationUserId">The Id of ApplicationUser</param>
         /// <returns></returns>
-        bool CheckUserInEvent(string yogaEventId, string ApplicationUserId);
+        Task<bool> CheckUserInEvent(string yogaEventId, string ApplicationUserId);
         /// <summary>
         /// Deletes  YogaEventApplicationUser
         /// </summary>

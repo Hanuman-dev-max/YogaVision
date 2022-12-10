@@ -21,6 +21,8 @@
         public DbSet<YogaEvent> YogaEvents { get; set; }
         public DbSet<Tag> Tags { get; set; }
 
+        public DbSet<YogaEventApplicationUser> YogaEventApplicationUsers { get; set; }
+
         public DbSet<TagBlogPost> TagBlogPosts { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

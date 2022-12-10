@@ -9,9 +9,9 @@
     /// </summary>
     public class YogaEventApplicationUserService : IYogaEventApplicationUserService
     {
-        private readonly IDeletableEntityRepository<YogaEventApplicationsUser> yogaEventApplicationUserRepository;
+        private readonly IDeletableEntityRepository<YogaEventApplicationUser> yogaEventApplicationUserRepository;
 
-        public YogaEventApplicationUserService(IDeletableEntityRepository<YogaEventApplicationsUser> yogaEventApplicationUserRepository)
+        public YogaEventApplicationUserService(IDeletableEntityRepository<YogaEventApplicationUser> yogaEventApplicationUserRepository)
         {
             this.yogaEventApplicationUserRepository = yogaEventApplicationUserRepository;
         }
@@ -30,7 +30,7 @@
                 .FirstOrDefaultAsync();
             if (yogaEventApplicationsUser == null)
             {
-                await this.yogaEventApplicationUserRepository.AddAsync(new YogaEventApplicationsUser
+                await this.yogaEventApplicationUserRepository.AddAsync(new YogaEventApplicationUser
                 {
                     ApplicationUserId = applicationUserId,
                     YogaEventId = yogaEventId,
@@ -51,11 +51,10 @@
         /// <param name="yogaEventId">The Id of YogaEvent</param>
         /// <param name="ApplicationUserId">The Id of ApplicationUser</param>
         /// <returns></returns>
-        public bool CheckUserInEvent(string yogaEventId, string ApplicationUserId)
+        public async Task<bool> CheckUserInEvent(string yogaEventId, string ApplicationUserId)
         {
-            bool result = this.yogaEventApplicationUserRepository
-                .All()
-                .Any(x => x.YogaEventId == yogaEventId && x.ApplicationUserId == ApplicationUserId);
+            bool result = await this.yogaEventApplicationUserRepository
+                .All().AnyAsync(x => x.YogaEventId == yogaEventId && x.ApplicationUserId == ApplicationUserId);
 
             return result;
         }

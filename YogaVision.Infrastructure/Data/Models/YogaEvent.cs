@@ -14,7 +14,7 @@ namespace YogaVision.Infrastructure.Data.Models
     {
         public YogaEvent()
         {
-            Users = new HashSet<YogaEventApplicationsUser>(); 
+            Users = new HashSet<YogaEventApplicationUser>(); 
         }
         
         [Required]
@@ -32,6 +32,6 @@ namespace YogaVision.Infrastructure.Data.Models
 
         public int Seats { get; set; }
 
-        public ICollection<YogaEventApplicationsUser> Users { get; set; } 
+        public ICollection<YogaEventApplicationUser> Users { get; set; } 
     }
 }

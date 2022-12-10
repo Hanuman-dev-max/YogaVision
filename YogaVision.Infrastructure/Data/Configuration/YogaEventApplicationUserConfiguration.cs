@@ -4,9 +4,9 @@
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using YogaVision.Infrastructure.Data.Models;
 
-    public class YogaEventApplicationUserConfiguration : IEntityTypeConfiguration<YogaEventApplicationsUser>
+    public class YogaEventApplicationUserConfiguration : IEntityTypeConfiguration<YogaEventApplicationUser>
     {
-        public void Configure(EntityTypeBuilder<YogaEventApplicationsUser> yogaEventApplicationsUser)
+        public void Configure(EntityTypeBuilder<YogaEventApplicationUser> yogaEventApplicationsUser)
         {
             yogaEventApplicationsUser.HasKey(ya => new { ya.YogaEventId, ya.ApplicationUserId });
         }
