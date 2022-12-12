@@ -21,7 +21,7 @@ input {
     border-radius: 10px;
     box-sizing: border-box;
     background-color: #fff !important;
-    color: #BA55D3 !important;
+    color: #000000 !important;
     font-size: 16px;
     letter-spacing: 1px;
     width: 180px
@@ -47,7 +47,7 @@ button:focus {
 }
 
 .datepicker {
-    background-color: rgba(186, 85, 211, 0.7) !important;
+    background-color: rgba(63, 81, 181, 0.7) !important;
     color: #fff !important;
     border: none;
     padding: 10px !important
@@ -114,17 +114,17 @@ thead tr:nth-child(3) th {
     }
 
 .cell {
-    border: 1px solid #BDBDBD;
+    border: 1px solid #87CEFA;
     margin: 2px;
     cursor: pointer
 }
 
     .cell:hover {
-        border: 1px solid #BA55D3
+        border: 1px solid #87CEFA
     }
 
     .cell.select {
-        background-color: #BA55D3;
+        background-color: #87CEFA;
         color: #fff
     }
 

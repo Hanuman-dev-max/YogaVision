@@ -33,5 +33,11 @@
         /// <param name="id">The Id the studio</param>
         /// <returns></returns>
         Task DeleteAsync(int id);
+        /// <summary>
+        /// Get studio Id by Name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        Task<int> GetIdByNameAsync(string name);
     }
 }

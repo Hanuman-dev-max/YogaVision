@@ -63,7 +63,8 @@
         /// <param name="id">The Id of the YogaEvent</param>
         /// <returns></returns>
         Task DeleteAsync(string id);
-
+        Task<IEnumerable<T>> GetAllByDateAndUserIdAsync<T>(DateTime dateTime, string userId);
+        Task EditAsync(string yogaEventId, int studioId, int instructorId, DateTime datetime, string description, string duration, int seats);
 
     }
 }

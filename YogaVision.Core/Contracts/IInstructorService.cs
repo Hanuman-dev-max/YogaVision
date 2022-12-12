@@ -13,7 +13,7 @@
         /// <returns>Collection of type T</returns>
         Task<IEnumerable<T>> GetAllAsync<T>(int? count = null);
         /// <summary>
-        /// 
+        /// Get instructor by Id
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="id"></param>
@@ -40,6 +40,12 @@
         /// <param name="id">The Id of the Instructor</param>
         /// <returns></returns>
         Task DeleteAsync(int id);
+        /// <summary>
+        /// Get instructor by NickName
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>The Id of the instructor</returns>
+        Task<int> GetIdByNickNameAsync(string nickName);
 
 
     }

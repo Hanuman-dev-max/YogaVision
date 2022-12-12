@@ -20,6 +20,8 @@ namespace YogaVision.Core.Models.BlogPost
 
         public DateTime CreatedOn { get; set; }
 
+        public int Likes { get; set; }
+
        
     }
 }

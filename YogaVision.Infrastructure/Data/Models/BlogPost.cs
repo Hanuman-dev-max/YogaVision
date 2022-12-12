@@ -34,6 +34,7 @@ namespace YogaVision.Infrastructure.Data.Models
 
         [Required]
         public string ImageUrl { get; set; } = null!;
+        public int Likes { get; set; } = 0;
 
         public ICollection<TagBlogPost> Tags{ get; set; }
 

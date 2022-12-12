@@ -1,4 +1,4 @@
-﻿namespace YogaVision.Core.Services
+namespace YogaVision.Core.Services
 {
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
@@ -146,6 +146,22 @@
                 .OrderByDescending(x => x.CreatedOn)
                 .To<T>().ToListAsync();
             return blogPosts;
+        }
+        /// <summary>
+        /// Add user's like to the BlogPost
+        /// </summary>
+        /// <param name="id">BlogPost Id</param>
+        /// <param name="userId">User Id</param>
+        /// <returns></returns>
+        public async  Task AddLikeAsync(int id, string userId)
+        {
+            var blogPost =
+               await this.blogPostsRepository
+               .All()
+               .Where(x => x.Id == id)
+              .FirstOrDefaultAsync();
+            blogPost.Likes++;
+            await this.blogPostsRepository.SaveChangesAsync();
         }
     }
 }

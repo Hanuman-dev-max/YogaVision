@@ -7,6 +7,7 @@ namespace YogaVision.Core.Models.BlogPost
     using YogaVision.Core.Models.Common;
     public class BlogPostInputModel
     {
+        public string Id { get; set;}
         [Required]
         [StringLength(
             GlobalConstants.DataValidations.TitleMaxLength,

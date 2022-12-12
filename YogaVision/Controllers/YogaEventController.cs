@@ -56,6 +56,14 @@
             }
 
         }
+        public async Task<IActionResult> MyYogaEvents()
+        {
+            var model = new YogaEventsListViewModel()
+            {
+                YogaEvents = await this.yogaEventService.GetAllByDateAndUserIdAsync<YogaEventViewModel>(DateTime.Now, User.Id())
+            };
+            return View(model);
+        }
         /// <summary>
         /// Reserve a seat of YogaEvent for the ApplicationUser
         /// </summary>
@@ -70,6 +78,10 @@
             await yogaEventApplicationUserService.AddAsync(yogaEventId, userid);
 
             await yogaEventService.SubstarctSeat(yogaEventId);
+            if (sortId == -1)
+            {
+                return RedirectToAction("MyYogaEvents");
+            }
 
             return RedirectToAction("Index", new { sortId = sortId });
         }
@@ -89,6 +101,11 @@
 
             await yogaEventService.AddSeat(yogaEventId);
 
+            if (sortId == -1)
+            {
+                return RedirectToAction("MyYogaEvents");
+            }
+            
             return RedirectToAction("Index", new { sortId = sortId });
         }
     }

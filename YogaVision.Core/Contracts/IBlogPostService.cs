@@ -1,4 +1,4 @@
-﻿namespace YogaVision.Core.Contracts
+namespace YogaVision.Core.Contracts
 {
     using System;
     using System.Collections.Generic;
@@ -68,6 +68,14 @@
         /// <param name="id">The Id of the blog post</param>
         /// <returns></returns>
         Task DeleteAsync(int id);
-        
+        /// <summary>
+        /// Add user's like to the BlogPost
+        /// </summary>
+        /// <param name="id">BlogPost Id</param>
+        /// <param name="userId">User Id</param>
+        /// <returns></returns>
+        Task AddLikeAsync(int id, string userId);
+       
+
     }
 }

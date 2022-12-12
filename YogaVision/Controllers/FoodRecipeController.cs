@@ -49,13 +49,15 @@
 
             var foodRecipes = await this.foodRecipesService
                 .GetAllWithPagingAsync<FoodRecipeViewModel>(sortId, pageSize, pageIndex);
-            var foodRecipesList = foodRecipes.ToList();
+            var firstRowfoodRecipesList = foodRecipes.Take(3).ToList();
+            var secondRowfoodRecipesList = foodRecipes.Skip(3).ToList();
 
             var count = await this.foodRecipesService.GetCountForPaginationAsync();
 
             var viewModel = new FoodRecipesPaginatedListViewModel
             {
-                FoodRecipes = new PaginatedList<FoodRecipeViewModel>(foodRecipesList, count, pageIndex, pageSize),
+               FirstRowFoodRecipes = new PaginatedList<FoodRecipeViewModel>(firstRowfoodRecipesList, count, pageIndex, pageSize),
+               SecondRowFoodRecipes = new PaginatedList<FoodRecipeViewModel>(secondRowfoodRecipesList, count, pageIndex, pageSize),
             };
 
             return this.View(viewModel);

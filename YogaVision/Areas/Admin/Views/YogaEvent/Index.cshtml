@@ -7,7 +7,7 @@
 <h2>
     Всички Блог Статии (@Model.YogaEvents.Count())
     <span>
-        <a class="btn btn-info" asp-area="Admin" asp-controller="YogaEvents" asp-action="AddYogaEvent">Добави Новo Йога Събитие</a>
+        <a class="btn btn-info" asp-area="Admin" asp-controller="YogaEvent" asp-action="AddYogaEvent">Добави Новo Йога Събитие</a>
     </span>
 </h2>
 
@@ -20,7 +20,7 @@
             <th scope="col">Места</th>
             <th scope="col">Водещ</th>
             <th scope="col">Студио</th>
-            <th scope="col">Бутон за изтриване</th>
+            <th scope="col">Бутон за изтриване/редактиране</th>
         </tr>
     </thead>
     <tbody>
@@ -38,6 +38,12 @@
                         <button type="submit" class="btn btn-danger btn-sm"
                             asp-area="Admin" asp-controller="YogaEvent" asp-action="DeleteYogaEvent" asp-route-id="@yogaEvent.Id">
                             Изтрий
+                        </button>
+                    </form>
+                    <form method="get">
+                        <button type="submit" class="btn btn-warning btn-sm"
+                            asp-area="Admin" asp-controller="YogaEvent" asp-action="EditYogaEvent" asp-route-id="@yogaEvent.Id">
+                            Редактирай
                         </button>
                     </form>
                 </td>

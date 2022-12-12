@@ -79,6 +79,28 @@ namespace YogaVision.Core.Services
             await this.yogaEventsRepository.SaveChangesAsync();
         }
 
+        public async Task EditAsync(string yogaEventId, int studioId, int instructorId, DateTime datetime, string description, string duration, int seats)
+        {
+            var yogaEvent =
+               await this.yogaEventsRepository
+               .All()
+               .Where(x => x.Id == yogaEventId)
+               .FirstOrDefaultAsync();
+
+            if (yogaEvent == null)
+            {
+                throw new Exception($"Не съществува събитиес с Id{yogaEventId}");
+            }
+            yogaEvent.StudioId = studioId;
+            yogaEvent.InstructorId = instructorId;
+            yogaEvent.DateTime = datetime;
+            yogaEvent.Description = description;
+            yogaEvent.Duration = duration;
+            yogaEvent.Seats = seats;
+
+            await this.yogaEventsRepository.SaveChangesAsync();
+        }
+
         /// <summary>
         /// Gets all Yoga Events
         /// </summary>
@@ -94,6 +116,18 @@ namespace YogaVision.Core.Services
                .To<T>().ToListAsync();
             return yogaEvent;
         }
+
+        public async Task<IEnumerable<T>> GetAllByDateAndUserIdAsync<T>(DateTime dateTime, string userId)
+        {
+            var yogaEvent =
+                           await this.yogaEventsRepository
+                           .All()
+                           .Where(x => x.DateTime >= dateTime && x.Users.Any(u => u.ApplicationUserId == userId))
+                           .OrderBy(x => x.DateTime)
+                           .To<T>().ToListAsync();
+            return yogaEvent;
+        }
+
         /// <summary>
         /// Gets all YogaEvent after a given date
         /// </summary>

@@ -6,6 +6,8 @@ namespace YogaVision.Core.Models.YogaEvent
     using YogaVision.Core.Models.Common;
     public class YogaEventInputModel
     {
+        
+        public string Id { get; set; }
         [Required]
         public int StudioId { get; set; }
 
@@ -23,7 +25,7 @@ namespace YogaVision.Core.Models.YogaEvent
         [Required]
         [StringLength(
            GlobalConstants.DataValidations.EventDescriptionMaxLength,
-           ErrorMessage = GlobalConstants.ErrorMessages.Description,
+           ErrorMessage = GlobalConstants.ErrorMessages.YogaEventDescription,
            MinimumLength = GlobalConstants.DataValidations.EventDescriptionMinLength)]
         public string Description { get; set; }
         [Required]

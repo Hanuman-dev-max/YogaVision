@@ -1,5 +1,3 @@
-﻿
-
 namespace YogaVision.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
@@ -7,7 +5,8 @@ namespace YogaVision.Controllers
     using YogaVision.Core.Contracts;
     using YogaVision.Core.Models.BlogPost;
     using YogaVision.Core.Models.Pagination;
-    
+    using YogaVision.Extensions;
+
     /// <summary>
     /// Controller which handles BlogPost model 
     /// </summary>
@@ -92,5 +91,17 @@ namespace YogaVision.Controllers
 
             return View(model);
         }
+        public async Task<IActionResult> AddLike(int Id)
+        {
+            var userid = User.Id();
+
+            await blogPostService.AddLikeAsync(Id, userid);
+          
+
+            return RedirectToAction("Details", new { Id = Id });
+
+        }
+    
+    
     }
 }

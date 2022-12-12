@@ -163,9 +163,8 @@ h6::selection
 {
 	
 }
-.form-control 
-{
-	color: #BA55D3;
+.form-control {
+	color: #000000;
 }
 section
 {
@@ -497,8 +496,7 @@ section
 {
 	width: 100%;
 }
-.header_nav_container
-{
+.header_nav_container {
 	z-index: 1;
 	background: #BA55D3;
 }

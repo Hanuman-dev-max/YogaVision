@@ -89,6 +89,25 @@
             this.instructorRepository.Delete(instructor);
             await this.instructorRepository.SaveChangesAsync();
         }
+        /// <summary>
+        /// Get instructor by NickName
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<int> GetIdByNickNameAsync(string nickName)
+        {
+            var instructor =
+              await this.instructorRepository
+              .All()
+              .Where(x => x.Nickname == nickName)
+               .FirstOrDefaultAsync();
+            if (instructor == null)
+            {
+                return -1;
+            }
+            return instructor.Id;
+        }
     }
 }
 

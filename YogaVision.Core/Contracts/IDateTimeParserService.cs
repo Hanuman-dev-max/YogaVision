@@ -17,5 +17,6 @@ namespace YogaVision.Core.Contracts
         /// <returns></returns>
         DateTime ConvertStrings(string date, string time);
 
+        string ConvertToString(int hours, int minutes);
     }
 }

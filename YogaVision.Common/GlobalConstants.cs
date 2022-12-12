@@ -87,6 +87,8 @@ namespace YogaVision.Common
             public const string DateTime = "Моля, избере валиден Дата and Час от календара";
 
             public const string Rating = "Моля изберете звезда между 1 и 5.";
+
+            public const string YogaEventDescription = "Описанието трябва да е между 10 и 50 символа";
         }
 
         public static class DateTimeFormats

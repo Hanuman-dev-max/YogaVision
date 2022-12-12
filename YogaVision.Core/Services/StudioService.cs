@@ -82,5 +82,25 @@ namespace YogaVision.Core.Services
             this.studiosRepository.Delete(studio);
             await this.studiosRepository.SaveChangesAsync();
         }
+        /// <summary>
+        /// Get studio Id by Name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public async Task<int> GetIdByNameAsync(string name)
+        {
+            var studio =
+             await this.studiosRepository
+             .All()
+             .Where(x => x.Name == name)
+              .FirstOrDefaultAsync();
+            if (studio == null)
+            {
+                return -1;
+            }
+            return studio.Id;
+        }
+
     }
+    
 }

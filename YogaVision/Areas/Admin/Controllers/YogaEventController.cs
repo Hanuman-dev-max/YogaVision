@@ -86,6 +86,52 @@
             await this.yogaEventService.AddAsync(input.StudioId, input.InstructorId, dateTime, input.Description, input.Duration, input.Seats);
             return this.RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> EditYogaEvent(YogaEventInputModel input)
+        {
+            
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+            DateTime dateTime;
+            try
+            {
+                dateTime = this.dateTimeParserService.ConvertStrings(input.Date, input.Time);
+            }
+            catch (System.Exception)
+            {
+                return this.RedirectToAction("EditYogaEvent");
+            }
+            await this.yogaEventService.EditAsync(input.Id,input.StudioId, input.InstructorId, dateTime, input.Description, input.Duration, input.Seats);
+            return this.RedirectToAction("Index");
+        }
+
+
+        public async Task<IActionResult> EditYogaEvent(string Id)
+        {
+            var yogaEvent = await yogaEventService.GetByIdAsync<YogaEventViewModel>(Id);
+
+            var instructors = await this.instructorService.GetAllAsync<InstructorSelectListViewModel>();
+            var studios = await this.studioService.GetAllAsync<StudioSelectListViewModel>();
+            this.ViewData["Instructors"] = new SelectList(instructors, "Id", "Nickname");
+            this.ViewData["Studios"] = new SelectList(studios, "Id", "Name");
+            var model = new YogaEventInputModel()
+            {
+                Date = yogaEvent.DateTime.ToString("dd-MM-yyyy"),
+                Time = dateTimeParserService.ConvertToString(yogaEvent.DateTime.Hour, yogaEvent.DateTime.Minute),
+                Duration = yogaEvent.Duration,
+                Seats = yogaEvent.Seats,
+                Description = yogaEvent.Description,
+                InstructorId = await instructorService.GetIdByNickNameAsync(yogaEvent.InstructorNickname),
+                StudioId = await studioService.GetIdByNameAsync(yogaEvent.StudioName),
+                
+            };
+            return this.View(model);
+
+           
+        }
         /// <summary>
         /// HttpPost Method which handles deleting of YogaEvent
         /// </summary>

@@ -11,6 +11,40 @@ namespace YogaVision.Core.Services.DateTimeParser
     /// </summary>
     public class DateTimeParserService : IDateTimeParserService
     {
+        public string ConvertToString(int hours, int minutes)
+        {
+           
+           
+            var minutesToString = String.Empty;
+           
+            if (minutes < 10)
+            {
+                minutesToString = "0" + minutes.ToString();
+            }
+            else
+            {
+                minutesToString = minutes.ToString();
+            }
+           
+
+            if (hours <= 11)
+            {
+               return $"{hours.ToString()}:{minutesToString}AM";
+            }
+            if (hours == 12)
+            {
+                return $"{hours.ToString()}:{minutesToString}PM";
+            }
+
+            else 
+            {
+                hours = hours - 12;
+                return $"{hours.ToString()}:{minutesToString}PM";
+            }   
+            
+
+        }
+
         /// <summary>
         /// Converts the strings to data
         /// </summary>

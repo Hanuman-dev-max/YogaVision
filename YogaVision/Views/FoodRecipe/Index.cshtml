@@ -4,14 +4,14 @@
 }
 
 <section class="page-section bg-light" id="team">
-    <div class="container">
+   
 
-        <div class="card-deck">
-            
-            @foreach (var foodRecipe in Model.FoodRecipes)
+        <div class="container">
+            <div class="row">
+            @foreach (var foodRecipe in Model.FirstRowFoodRecipes)
             {
-                 
-                <div class="card" style="width: 25rem;">
+                 <div class="col-4">
+                <div class="card" >
                     <img class="card-img-top" src="@foodRecipe.ImageUrl" alt="Card image cap">
                     <h5 class="card-header"><strong>@foodRecipe.Title</strong></h5>
 
@@ -19,16 +19,31 @@
                         <a asp-controller="FoodRecipe" asp-action="Details" asp-route-id="@foodRecipe.Id" class="btn btn-info">Прочети</a>
                     </div>
                 </div>
+                </div>
             }
         </div>
-       
+        <div class="row">
 
-    </div>
+            @foreach (var foodRecipe in Model.SecondRowFoodRecipes)
+            {
+                  <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" src="@foodRecipe.ImageUrl" alt="Card image cap">
+                    <h5 class="card-header"><strong>@foodRecipe.Title</strong></h5>
+
+                    <div class="card-body">
+                        <a asp-controller="FoodRecipe" asp-action="Details" asp-route-id="@foodRecipe.Id" class="btn btn-info">Прочети</a>
+                    </div>
+                </div>
+                </div>
+            }
+        </div>
+        </div>
 </section>
 
 @{
-    var prevDisabled = !Model.FoodRecipes.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.FoodRecipes.HasNextPage ? "disabled" : "";
+    var prevDisabled = !Model.FirstRowFoodRecipes.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.FirstRowFoodRecipes.HasNextPage ? "disabled" : "";
 }
 
 @if (ViewData["CurrentSort"] == null)
@@ -36,14 +51,14 @@
     <div class="row ml-5">
         <div class="m-5">
             <a asp-action="Index"
-           asp-route-pageNumber="@(Model.FoodRecipes.PageIndex - 1)"
+           asp-route-pageNumber="@(Model.FirstRowFoodRecipes.PageIndex - 1)"
            style="color: #BA55D3" class="btn btn-outline-secondary btn-lg @prevDisabled">
                 <i class="fa fa-arrow-left"></i>
             </a>
         </div>
         <div class="m-5">
             <a asp-action="Index"
-           asp-route-pageNumber="@(Model.FoodRecipes.PageIndex + 1)"
+           asp-route-pageNumber="@(Model.FirstRowFoodRecipes.PageIndex + 1)"
            style="color: #BA55D3" class="btn btn-outline-secondary btn-lg @nextDisabled">
                 <i class="fa fa-arrow-right"></i>
             </a>
