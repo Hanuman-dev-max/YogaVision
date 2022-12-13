@@ -1,13 +1,14 @@
 ﻿
+
 namespace YogaVision.Core.Models.YogaEvent
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
     using YogaVision.Common;
     using YogaVision.Core.Models.Common;
-    public class YogaEventInputModel
+    public class YogaEventEditModel
     {
-        
-        
+        public string Id { get; set; }
         [Required]
         public int StudioId { get; set; }
 
@@ -21,7 +22,7 @@ namespace YogaVision.Core.Models.YogaEvent
         [Required]
         [ValidateTimeString(ErrorMessage = GlobalConstants.ErrorMessages.DateTime)]
         public string Time { get; set; }
-        
+
         [Required]
         [StringLength(
            GlobalConstants.DataValidations.EventDescriptionMaxLength,
@@ -34,6 +35,7 @@ namespace YogaVision.Core.Models.YogaEvent
         [Required]
         [Range(GlobalConstants.DataValidations.SeatMinLength, GlobalConstants.DataValidations.SeatMaxLength)]
         public int Seats { get; set; }
+
 
 
 

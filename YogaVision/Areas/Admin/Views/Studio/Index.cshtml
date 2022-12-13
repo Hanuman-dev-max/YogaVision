@@ -17,27 +17,33 @@
             <th scope="col">Изображение</th>
             <th scope="col">Град</th>
             <th scope="col">Адрес</th>
-            <th scope="col">Бутон за Изтриване</th>
+            <th scope="col">Бутон за Изтриване/Редактиране</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var salon in this.Model.Studios)
+        @foreach (var studio in this.Model.Studios)
         {
             <tr>
-                <th scope="row">@salon.Name</th>
+                <th scope="row">@studio.Name</th>
                 <td>
-                    <img class="align-self-center" src="@salon.ImageUrl" style="width:180px;height:120px;">
+                    <img class="align-self-center" src="@studio.ImageUrl" style="width:180px;height:120px;">
                 </td>
 
-                <td>@salon.CityName</td>
-                <td>@salon.Address</td>
+                <td>@studio.CityName</td>
+                <td>@studio.Address</td>
 
 
                 <td>
                     <form method="post">
                         <button type="submit" class="btn btn-danger btn-sm"
-                            asp-area="Admin" asp-controller="Studio" asp-action="DeleteStudio" asp-route-id="@salon.Id">
+                            asp-area="Admin" asp-controller="Studio" asp-action="DeleteStudio" asp-route-id="@studio.Id">
                             Изтриване
+                        </button>
+                    </form>
+                    <form method="get">
+                        <button type="submit" class="btn btn-warning btn-sm"
+                            asp-area="Admin" asp-controller="Studio" asp-action="EditStudio" asp-route-id="@studio.Id">
+                            Редактиране
                         </button>
                     </form>
 

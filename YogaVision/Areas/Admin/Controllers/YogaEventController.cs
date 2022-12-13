@@ -88,7 +88,7 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditYogaEvent(YogaEventInputModel input)
+        public async Task<IActionResult> EditYogaEvent(YogaEventEditModel input)
         {
             
             if (!this.ModelState.IsValid)
@@ -117,7 +117,7 @@
             var studios = await this.studioService.GetAllAsync<StudioSelectListViewModel>();
             this.ViewData["Instructors"] = new SelectList(instructors, "Id", "Nickname");
             this.ViewData["Studios"] = new SelectList(studios, "Id", "Name");
-            var model = new YogaEventInputModel()
+            var model = new YogaEventEditModel()
             {
                 Date = yogaEvent.DateTime.ToString("dd-MM-yyyy"),
                 Time = dateTimeParserService.ConvertToString(yogaEvent.DateTime.Hour, yogaEvent.DateTime.Minute),

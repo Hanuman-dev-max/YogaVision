@@ -32,5 +32,11 @@ namespace YogaVision.Core.Contracts
         /// <param name="id"></param>
         /// <returns></returns>
         Task<T> GetByIdAsync<T>(int id);
+        /// <summary>
+        /// Get City Id by Name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        Task<int> GetIdByNameAsync(string name);
     }
 }

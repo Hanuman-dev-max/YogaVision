@@ -100,7 +100,33 @@ namespace YogaVision.Core.Services
             }
             return studio.Id;
         }
-
+        
+        /// <summary>
+        /// Edit Studio
+        /// </summary>
+        /// <param name="id">The id of the studio</param>
+        /// <param name="name">The name of the studio</param>
+        /// <param name="cityId">The City Id of the studio</param>
+        /// <param name="address">The address of the studio</param>
+        /// <param name="imageUrl">ImageUrl of the studio </param>
+        /// <returns></returns>
+        public async Task EditAsync(int id, string name, int cityId, string address, string imageUrl)
+        {
+            var studio =
+                await this.studiosRepository
+                .All()
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+                if (studio == null)
+                {
+                    throw new Exception($"Не същетвува студио с Id:{id}");
+                }
+            studio.ImageUrl = imageUrl;
+            studio.Name = name;
+            studio.CityId = cityId;
+            studio.Address = address;
+            await this.studiosRepository.SaveChangesAsync();
+        }
     }
     
 }

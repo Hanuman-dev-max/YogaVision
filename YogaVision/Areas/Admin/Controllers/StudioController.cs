@@ -105,5 +105,51 @@ namespace YogaVision.Areas.Admin.Controllers
             await this.studioService.DeleteAsync(id);
             return this.RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> EditStudio(int id)
+        {
+
+            var cities = await this.cityService.GetAllAsync<CitySelectListViewModel>();
+            this.ViewData["Cities"] = new SelectList(cities, "Id", "Name");
+            var studio = await studioService.GetByIdAsync<StudioViewModel>(id);
+            var model = new StudioEditModel()
+            {
+                Id = id,
+                Address = studio.Address,
+                Name = studio.Name,
+                CityId = await cityService.GetIdByNameAsync(studio.CityName),
+                OldImage = studio.ImageUrl,
+             
+                 
+            };
+            return this.View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditStudio(StudioEditModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
+            string imageUrl;
+            try
+            {
+                imageUrl = await this.cloudinaryService.UploadPictureAsync(input.Image, input.Name);
+            }
+            catch (System.Exception)
+            {
+
+                imageUrl = input.OldImage;
+            }
+
+            // Edit Studio
+            await this.studioService.EditAsync(input.Id, input.Name, input.CityId, input.Address, imageUrl);
+
+
+
+            return this.RedirectToAction("Index");
+        }
     }
 }

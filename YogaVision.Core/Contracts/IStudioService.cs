@@ -39,5 +39,15 @@
         /// <param name="name"></param>
         /// <returns></returns>
         Task<int> GetIdByNameAsync(string name);
+        /// <summary>
+        /// Edit Studio
+        /// </summary>
+        /// <param name="id">The id of the studio</param>
+        /// <param name="name">The name of the studio</param>
+        /// <param name="cityId">The City Id of the studio</param>
+        /// <param name="address">The address of the studio</param>
+        /// <param name="imageUrl">ImageUrl of the studio </param>
+        /// <returns></returns>
+        Task EditAsync(int id, string name, int cityId, string address, string imageUrl);
     }
 }

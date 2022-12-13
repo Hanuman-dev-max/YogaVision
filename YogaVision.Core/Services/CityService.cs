@@ -73,5 +73,23 @@
                 .To<T>().FirstOrDefaultAsync();
             return city;
         }
+        /// <summary>
+        /// Get City Id by Name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public async Task<int> GetIdByNameAsync(string name)
+        {
+            var city =
+             await this.citiesRepository
+             .All()
+             .Where(x => x.Name == name)
+              .FirstOrDefaultAsync();
+            if (city == null)
+            {
+                return -1;
+            }
+            return city.Id;
+        }
     }
 }
