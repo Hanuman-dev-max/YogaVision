@@ -1,6 +1,4 @@
-﻿
-
-namespace YogaVision.Core.Models.Studio
+﻿namespace YogaVision.Core.Models.Studio
 {
     using Microsoft.AspNetCore.Http;
     using System.ComponentModel.DataAnnotations;
@@ -28,10 +26,7 @@ namespace YogaVision.Core.Models.Studio
 
 
         [DataType(DataType.Upload)]
-       
-        public IFormFile Image { get; set; } 
-
-        
+        public IFormFile? Image { get; set; } 
         public string OldImage { get;set;}
 
 

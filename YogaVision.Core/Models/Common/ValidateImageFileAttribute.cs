@@ -16,7 +16,7 @@ namespace YogaVision.Core.Models.Common
 
             if (file == null)
             {
-                return false;
+                return true;
             }
 
             if (file.Length > MaxFileLengthInBytes)

@@ -27,7 +27,7 @@
             <label class="col-sm-2 col-form-label">Ново Изображение</label>
             <div class="col-sm-10">
                 <div class="col-sm-10">
-                    <input type="file" asp-for="@Model.Image" class="form-control-file image-upload">
+                    <input type="file" asp-for="@Model.Image" class="form-control-file " >
                     <span asp-validation-for="Image" class="text-danger"></span>
                 </div>
             </div>
@@ -51,7 +51,7 @@
         <div class="form-group row">
             <div class="col-sm-6 text-right">
                 <button type="submit" asp-area="Admin" asp-controller="Studio" asp-action="EditStudio" class="btn btn-success">
-                    Редактирай Студио
+                    Запази промените
                 </button>
             </div>
             <div class="col-sm-6">

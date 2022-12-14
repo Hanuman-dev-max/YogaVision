@@ -79,6 +79,12 @@
                              Изтрий
                         </button>
                     </form>
+                    <form method="get">
+                        <button type="submit" class="btn btn-warning btn-sm"
+                            asp-area="Admin" asp-controller="Instructor" asp-action="EditInstructor" asp-route-id="@instructor.Id">
+                            Редактиране
+                        </button>
+                    </form>
                 </td>
             </tr>
         }
