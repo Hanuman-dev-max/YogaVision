@@ -24,6 +24,9 @@
         /// <returns></returns>
         public async Task AddAsync(int blogPostId, ICollection<int> tagIds)
         {
+           
+           
+
             foreach (var tagId in tagIds)
             {
                 var tagBlogPost = new TagBlogPost
@@ -33,6 +36,20 @@
                 };
 
                 await this.tagBlogPostRepository.AddAsync(tagBlogPost);
+            }
+            await this.tagBlogPostRepository.SaveChangesAsync();
+        }
+
+        public async Task ClearBlogTags(int blogId)
+        {
+            var tagsBlogPosts =
+                await this.tagBlogPostRepository
+                .All()
+                .Where(tb => tb.BlogPostId == blogId)
+                .ToListAsync();
+            foreach (var tagBlogPost in tagsBlogPosts)
+            {
+                tagBlogPost.IsDeleted = true;
             }
             await this.tagBlogPostRepository.SaveChangesAsync();
         }

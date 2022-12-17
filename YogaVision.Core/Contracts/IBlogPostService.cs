@@ -55,7 +55,7 @@ namespace YogaVision.Core.Contracts
         /// Adds blog post in the database
         /// </summary>
         /// <param name="title">The title of the blog post</param>
-        /// <param name="s0hortContent">The Short content of the blog post</param>
+        /// <param name="shortContent">The Short content of the blog post</param>
         /// <param name="content">The Content of the blog post</param>
         /// <param name="author">The author of the blog post</param>
         /// <param name="imageUrl">The ImageUrl of the blog post</param>
@@ -75,7 +75,17 @@ namespace YogaVision.Core.Contracts
         /// <param name="userId">User Id</param>
         /// <returns></returns>
         Task AddLikeAsync(int id, string userId);
+        /// <summary>
+        /// Edit BlogPost
+        /// </summary>
+        /// <param name="Id">The Id of the Blog</param>
+        /// <param name="title">The title of the blog post</param>
+        /// <param name="shortContent">The Short content of the blog post</param>
+        /// <param name="content">The Content of the blog post</param>
+        /// <param name="author">The author of the blog post</param>
+        /// <param name="imageUrl">The ImageUrl of the blog post</param>
+        /// <returns></returns>
        
-
+        Task EditAsync(int id, string title, string shortContent, string content, string author, string imageUrl, ICollection<int> tagIds);
     }
 }

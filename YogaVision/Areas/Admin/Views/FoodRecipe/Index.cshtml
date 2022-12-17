@@ -92,6 +92,12 @@
                              Изтрий
                         </button>
                     </form>
+                    <form method="get">
+                        <button type="submit" class="btn btn-warning btn-sm"
+                            asp-area="Admin" asp-controller="FoodRecipe" asp-action="EditFoodRecipe" asp-route-id="@foodRecipe.Id">
+                            Редактиране
+                        </button>
+                    </form>
                 </td>
             </tr>
         }

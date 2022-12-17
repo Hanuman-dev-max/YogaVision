@@ -50,7 +50,8 @@
             var tagIds = new List<int>();
             foreach (var tag in tags)
             {
-                if (!this.tagsRepository.All().Any(t => t.Name == tag))
+               
+                if (!this.tagsRepository.All().Any(t => t.Name == tag.ToLower()))
                 {
                     var tagId = await AddAsync(tag);
                     tagIds.Add(tagId);
@@ -123,7 +124,22 @@
                 .To<T>().FirstOrDefaultAsync();
             return tag;
         }
+        /// <summary>
+        /// Gets the tags of the Post
+        /// </summary>
+        /// <param name="postId">Post Id</param>
+        /// <returns>the names of the tags</returns>
+        public async Task<ICollection<string>> GetAllByPostId(int postId)
+        {
+            var tags =
+                await this.tagsRepository
+                .All()
+                .Where(t => t.BlogPosts.Any(b => b.BlogPostId == postId))
+                .Select(t => t.Name)
+                .ToListAsync();
+            return tags;
+        }
 
-        
+
     }
 }

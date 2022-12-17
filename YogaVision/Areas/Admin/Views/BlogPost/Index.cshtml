@@ -92,6 +92,12 @@
                              Изтрий
                         </button>
                     </form>
+                    <form method="get">
+                        <button type="submit" class="btn btn-warning btn-sm"
+                            asp-area="Admin" asp-controller="BlogPost" asp-action="EditBlogPost" asp-route-id="@blogPost.Id">
+                             Редактирай
+                        </button>
+                    </form>
                 </td>
             </tr>
         }

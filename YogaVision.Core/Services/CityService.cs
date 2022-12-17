@@ -1,5 +1,6 @@
 ﻿namespace YogaVision.Core.Services
 {
+    using CloudinaryDotNet.Actions;
     using Microsoft.EntityFrameworkCore;
     using YogaVision.Core.Contracts;
     using YogaVision.Infrastructure.Data.Common;
@@ -90,6 +91,27 @@
                 return -1;
             }
             return city.Id;
+        }
+        /// <summary>
+        /// Edits City
+        /// </summary>
+        /// <param name="id">The Id of the City</param>
+        /// <param name="name"The Name of the City></param>
+        /// <returns></returns>
+        public async Task EditAsync(int id, string name)
+        {
+            var city =
+                await this.citiesRepository
+                .All()
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+            if (city == null)
+            {
+                throw new Exception($"Не същетвува студио с Id:{id}");
+            }
+            city.Name = name;
+            await this.citiesRepository.SaveChangesAsync();
+
         }
     }
 }

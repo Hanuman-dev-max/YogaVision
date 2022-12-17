@@ -1,11 +1,13 @@
 ﻿namespace YogaVision.Core.Models.FoodRecipe
 {
     using Microsoft.AspNetCore.Http;
+    using static YogaVision.Common.GlobalConstants;
     using System.ComponentModel.DataAnnotations;
     using YogaVision.Common;
     using YogaVision.Core.Models.Common;
-    public class FoodRecipeInputModel
+    public class FoodRecipeEditModel
     {
+        public int Id { get; set; }
         [Required]
         [StringLength(
             GlobalConstants.DataValidations.TitleMaxLength,
@@ -36,7 +38,8 @@
 
        
         [DataType(DataType.Upload)]
-        [ValidateImageFile(ErrorMessage = GlobalConstants.ErrorMessages.Image)]
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
+        public string OldImage { get; set; }
     }
 }
+

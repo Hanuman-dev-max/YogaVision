@@ -44,5 +44,11 @@
         /// <param name="Id">The Id of the tag</param>
         /// <returns></returns>
         Task DeleteAsync(int Id);
+        /// <summary>
+        /// Gets the tags of the Post
+        /// </summary>
+        /// <param name="postId">Post Id</param>
+        /// <returns>the names of the tags</returns>
+        Task<ICollection<string>> GetAllByPostId(int postId);
     }
 }

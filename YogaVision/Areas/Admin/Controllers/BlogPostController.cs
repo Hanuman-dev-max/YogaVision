@@ -7,6 +7,10 @@ namespace YogaVision.Areas.Admin.Controllers
     using YogaVision.Common;
     using YogaVision.Core.Contracts;
     using YogaVision.Core.Models.BlogPost;
+    using YogaVision.Core.Models.FoodRecipe;
+
+    using YogaVision.Core.Services;
+
     /// <summary>
     /// Controller which will handles BlogPosts in AdminArea 
     /// </summary>
@@ -52,7 +56,8 @@ namespace YogaVision.Areas.Admin.Controllers
         /// <returns></returns>
         public IActionResult AddBlogPost()
         {
-            return this.View();
+            var model = new BlogPostInputModel();
+            return this.View(model);
         }
         /// <summary>
         /// HttpPost Method which handles adding a BlogPost
@@ -94,6 +99,53 @@ namespace YogaVision.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteBlogPost(int id)
         {
             await this.blogPostService.DeleteAsync(id);
+            return this.RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> EditBlogPost(int id)
+        {
+            var blogPost = await blogPostService.GetByIdAsync<BlogPostViewModel>(id);
+            var model = new BlogPostEditModel()
+            {
+                Id = id,
+                Title = blogPost.Title,
+                Author = blogPost.Author,
+                ShortContent = blogPost.ShortContent,
+                Content = blogPost.Content,
+                OldImage = blogPost.ImageUrl,
+                Tags = await tagService.GetAllByPostId(id)
+            };
+            return this.View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditBlogPost(BlogPostEditModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+            string imageUrl;
+            if (input.Image == null)
+            {
+                imageUrl = input.OldImage;
+            }
+            else
+            {
+                try
+                {
+                    imageUrl = await this.cloudinaryService.UploadPictureAsync(input.Image, input.Title);
+                }
+                catch (System.Exception)
+                {
+
+                    imageUrl = input.OldImage;
+                }
+            }
+            // Edit BlogPost
+            await tagBlogPostService.ClearBlogTags(input.Id);
+            
+            var tagIds = await this.tagService.AddRangeAsync(input.Tags);
+            await this.blogPostService.EditAsync(input.Id, input.Title, input.ShortContent, input.Content, input.Author, imageUrl, tagIds);
             return this.RedirectToAction("Index");
         }
     }

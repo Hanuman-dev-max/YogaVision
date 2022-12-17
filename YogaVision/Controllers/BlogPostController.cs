@@ -97,7 +97,6 @@ namespace YogaVision.Controllers
 
             await blogPostService.AddLikeAsync(Id, userid);
           
-
             return RedirectToAction("Details", new { Id = Id });
 
         }

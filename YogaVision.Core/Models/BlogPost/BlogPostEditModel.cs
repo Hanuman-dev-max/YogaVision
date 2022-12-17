@@ -1,18 +1,21 @@
 ﻿
+
 namespace YogaVision.Core.Models.BlogPost
 {
     using Microsoft.AspNetCore.Http;
+   
     using System.ComponentModel.DataAnnotations;
     using YogaVision.Common;
-    using YogaVision.Core.Models.Common;
-    public class BlogPostInputModel
+   
+    public class BlogPostEditModel
     {
-     
+
+        public int Id { get; set; }
         [Required]
         [StringLength(
-            GlobalConstants.DataValidations.TitleMaxLength,
-            ErrorMessage = GlobalConstants.ErrorMessages.Title,
-            MinimumLength = GlobalConstants.DataValidations.TitleMinLength)]
+           GlobalConstants.DataValidations.TitleMaxLength,
+           ErrorMessage = GlobalConstants.ErrorMessages.Title,
+           MinimumLength = GlobalConstants.DataValidations.TitleMinLength)]
         public string Title { get; set; }
 
         [Required]
@@ -37,9 +40,11 @@ namespace YogaVision.Core.Models.BlogPost
         public string Author { get; set; }
         public ICollection<string> Tags { get; set; } = new List<string>();
 
-        [Required]
+        
         [DataType(DataType.Upload)]
-        [ValidateImageFile(ErrorMessage = GlobalConstants.ErrorMessages.Image)]
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
+        public string OldImage { get; set; }
+
+       
     }
 }

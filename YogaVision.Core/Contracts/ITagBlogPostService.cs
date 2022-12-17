@@ -13,6 +13,13 @@
         /// <returns></returns>
         Task AddAsync(int blogPostId, ICollection<int> tagsId);
         /// <summary>
+        /// Clear all BlogPost tags
+        /// </summary>
+        /// <param name="blogId">The Id of the blog</param>
+        /// <returns></returns>
+        Task ClearBlogTags(int blogId);
+
+        /// <summary>
         /// Gets the tags of BlogPost
         /// </summary>
         /// <param name="postId">The Id of BlogPost</param>

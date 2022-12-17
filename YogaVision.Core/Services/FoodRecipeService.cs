@@ -6,6 +6,7 @@
     using YogaVision.Infrastructure.Data.Models;
     using YogaVision.Core.Contracts;
     using Microsoft.EntityFrameworkCore;
+    using CloudinaryDotNet.Actions;
 
     /// <summary>
     /// Service FoodRecipe  
@@ -123,6 +124,34 @@
                 .Where(x => x.Id == id)
                 .FirstOrDefaultAsync();
             this.foodRecipesRepository.Delete(foodRecipe);
+            await this.foodRecipesRepository.SaveChangesAsync();
+        }
+        /// <summary>
+        /// Edits FoodRecipe
+        /// </summary>
+        /// <param name="id">The Id of the FoodRecipe</param>
+        /// <param name="title">The Title of the food recipe</param>
+        /// <param name="requiredProducts">The Required products for the food recipe</param>
+        /// <param name="content">The Content of the food recipe </param>
+        /// <param name="author">The Author of the food recipe</param>
+        /// <param name="imageUrl">The imageUrl of the food recipe</param>
+        /// <returns></returns>
+        public async Task EditAsync(int id, string title, string requiredProducts, string content, string author, string imageUrl)
+        {
+            var foodRecipe =
+                 await this.foodRecipesRepository
+                 .All()
+                 .Where(x => x.Id == id)
+                 .FirstOrDefaultAsync();
+            if (foodRecipe == null)
+            {
+                throw new Exception($"Не същетвува рецепта с Id:{id}");
+            }
+            foodRecipe.Author = author;
+            foodRecipe.Title = title;
+            foodRecipe.RequiredProducts = requiredProducts;
+            foodRecipe.Content = content;
+            foodRecipe.ImageUrl = imageUrl;
             await this.foodRecipesRepository.SaveChangesAsync();
         }
     }

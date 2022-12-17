@@ -1,9 +1,16 @@
 ﻿namespace YogaVision.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using Microsoft.CodeAnalysis.VisualBasic.Syntax;
     using YogaVision.Common;
     using YogaVision.Core.Contracts;
+    using YogaVision.Core.Models.City;
     using YogaVision.Core.Models.FoodRecipe;
+    using YogaVision.Core.Models.Studio;
+
+    using YogaVision.Core.Services;
+
     /// <summary>
     /// Contoller responsible for FoodRecipe model in Admin Area
     /// </summary>
@@ -82,6 +89,56 @@
         public async Task<IActionResult> DeleteFoodRecipe(int id)
         {
             await this.foodRecipeService.DeleteAsync(id);
+
+            return this.RedirectToAction("Index");
+        }
+        /// <summary>
+        /// Displays EditFoodRecipe View
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> EditFoodRecipe(int id)
+        {
+            var foodRecipe = await foodRecipeService.GetByIdAsync<FoodRecipeViewModel>(id);
+            var model = new FoodRecipeEditModel()
+            {
+                Id = id,
+                Title = foodRecipe.Title,
+                Author = foodRecipe.Author,
+                RequiredProducts = foodRecipe.RequiredProducts,
+                Content = foodRecipe.Content,
+                OldImage = foodRecipe.ImageUrl,
+            };
+            return this.View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditFoodRecipe(FoodRecipeEditModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+            string imageUrl;
+            if (input.Image == null)
+            {
+                imageUrl = input.OldImage;
+            }
+            else
+            {
+                try
+                {
+                    imageUrl = await this.cloudinaryService.UploadPictureAsync(input.Image, input.Title);
+                }
+                catch (System.Exception)
+                {
+
+                    imageUrl = input.OldImage;
+                }
+            }
+            // Edit FoodRecipe
+            await this.foodRecipeService.EditAsync(input.Id,input.Title, input.RequiredProducts, input.Content, input.Author, imageUrl);
+
+
 
             return this.RedirectToAction("Index");
         }

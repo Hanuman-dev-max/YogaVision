@@ -13,9 +13,6 @@
 4. Menu
 5. Home
 6. Info Boxes
-7. Call To Action
-8. Services
-9. Departments
 10. FAQ
 11. Latest News
 12. Footer
@@ -35,20 +32,14 @@
 
 18. News
 
-	CONTACT
 
-19. Contact
-20. Google Map
 
 	ELEMENTS
 
 21. Elements
 	21.1 Buttons
 	21.2 Accordions
-	21.3 Tabs
-	21.4 Loaders
-	21.5 Milestones
-	21.6 Icon Boxes
+  21.6 Icon Boxes
 
 ******************************/
 
@@ -1058,212 +1049,7 @@ section
 	cursor: pointer;
 }
 
-/*********************************
-7. Call To Action
-*********************************/
 
-.cta
-{
-	width: 100%;
-	padding-top: 77px;
-	padding-bottom: 74px;
-}
-.cta_content
-{
-	width: 100%;
-}
-.cta_title
-{
-	font-size: 30px;
-	font-weight: 600;
-	color: #FFFFFF;
-	line-height: 1.2;
-}
-.cta_subtitle
-{
-	font-size: 14px;
-	font-weight: 500;
-	color: rgba(255,255,255,0.76);
-	line-height: 1.5;
-	margin-top: 14px;
-}
-.cta_button
-{
-	width: 141px;
-	margin-top: 7px;
-}
-
-/*********************************
-8. Services
-*********************************/
-
-.services
-{
-	width: 100%;
-	background: #f4f8fb;
-	padding-top: 99px;
-	padding-bottom: 102px;
-}
-.icon_boxes_row
-{
-	margin-top: 100px;
-}
-.icon_box
-{
-	margin-bottom: 85px;
-}
-.icon_box_icon
-{
-	width: 49px;
-	height: 49px;
-}
-.icon_box_icon img
-{
-	max-width: 100%;
-}
-.icon_box_title
-{
-	font-size: 20px;
-	font-weight: 600;
-	color: #404040;
-	padding-left: 25px;
-}
-.icon_box_text
-{
-	font-size: 14px;
-	font-weight: 500;
-	color: #838383;
-	line-height: 2.14;
-	margin-top: 21px;
-}
-.services_button
-{
-	margin-top: 4px;
-}
-
-/*********************************
-9. Departments
-*********************************/
-
-.departments
-{
-	width: 100%;
-	background: #FFFFFF;
-	padding-top: 99px;
-	padding-bottom: 52px;
-}
-.dept_row
-{
-	margin-top: 100px;
-}
-.owl-carousel .owl-stage-outer
-{
-	overflow: visible;
-}
-.dept_slider_container
-{
-	overflow: hidden;
-    width: calc(100% + 60px);
-    left: -30px;
-    padding-bottom: 50px;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-.dept_item
-{
-	background: #FFFFFF;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.dept_item:hover
-{
-	box-shadow: 0px 20px 46px rgba(0,0,0,0.1);
-	background: #f4f8fb;
-}
-.dept_image::after
-{
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	content: '';
-	background: rgba(0,0,0,0);
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.dept_item:hover .dept_image::after
-{
-	background: rgba(0,0,0,0.49);
-}
-.dept_content
-{
-	padding-left: 28px;
-	padding-top: 21px;
-	padding-bottom: 23px;
-}
-.dept_content::after
-{
-	display: block;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 4px;
-	background: #BA55D3;
-	content: '';
-}
-.dept_title
-{
-	font-size: 20px;
-	font-weight: 600;
-	color: #404040;
-}
-.dept_link
-{
-	margin-top: 4px;
-}
-.dept_link a
-{
-	font-size: 12px;
-	font-weight: 500;
-	color: #838383;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.dept_link a:hover
-{
-	color: #BA55D3;
-}
-.dept_slider_nav
-{
-	position: absolute;
-	top: calc(50% - 25px);
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	transform: translateY(-50%);
-	right: -106px;
-	width: 42px;
-	height: 42px;
-	background: #BA55D3;
-	text-align: center;
-	cursor: pointer;
-}
-.dept_slider_nav i
-{
-	font-size: 16px;
-	color: #FFFFFF;
-	line-height: 42px;
-}
 
 /*********************************
 10. FAQ
@@ -1743,90 +1529,8 @@ section
 	color: #BA55D3;
 }
 
-/*********************************
-13. About
-*********************************/
 
-.about {
-	width: 100%;
-	background: #FFFFFF;
-	padding-top: 100px;
-	padding-bottom: 113px;
-}
 
-.about_row {
-	margin-top: 89px;
-}
-
-.about_text_highlight {
-	font-size: 16px;
-	font-weight: 700;
-	color: #404040;
-	margin-top: 28px;
-}
-
-.about_text {
-	margin-top: 13px;
-}
-
-.about_image {
-	position: absolute;
-	top: 50%;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	transform: translateY(-50%);
-	right: 25px;
-}
-
-.about_button {
-	margin-top: 49px;
-}
-
-/*********************************
-14. Milestones
-*********************************/
-
-.milestones {
-	width: 100%;
-	background: #f5f6f8;
-	padding-top: 88px;
-	padding-bottom: 93px;
-}
-
-.milestone {
-	width: 100%;
-}
-
-.milestone_icon {
-	display: inline-block;
-	height: 65px;
-	width: 65px;
-}
-
-	.milestone_icon img {
-		max-width: 100%;
-	}
-
-.milestone_content {
-	padding-left: 29px;
-}
-
-.milestone_counter {
-	font-size: 48px;
-	font-weight: 600;
-	color: #404040;
-	line-height: 0.75;
-}
-
-.milestone_text {
-	font-size: 16px;
-	font-weight: 600;
-	color: #c1c1c1;
-	margin-top: 12px;
-	line-height: 1.2;
-}
 
 /*********************************
 15. Doctors
@@ -3290,18 +2994,6 @@ section
 	margin-top: 21px;
 }
 
-/*********************************
-STAR RATING
-*********************************/
-
-.star-rating {
-	line-height: 32px;
-	font-size: 1.25em;
-}
-
-	.star-rating .fa-star {
-		color: #BA55D3;
-	}
 
 
 

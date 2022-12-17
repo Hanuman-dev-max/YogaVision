@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Views\FoodRecipe\" />
     <Folder Include="wwwroot\img\" />
     <Folder Include="wwwroot\lib\select2\" />
     <Folder Include="wwwroot\plugins\" />

@@ -3,9 +3,14 @@
 namespace YogaVision.Areas.Admin.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using YogaVision.Common;
     using YogaVision.Core.Contracts;
     using YogaVision.Core.Models.City;
+    using YogaVision.Core.Models.Studio;
+
+    using YogaVision.Core.Services;
+
     /// <summary>
     /// Controller which will handles Cities in AdminArea 
     /// </summary>
@@ -72,5 +77,32 @@ namespace YogaVision.Areas.Admin.Controllers
 
             return this.RedirectToAction("Index");
         }
+        /// <summary>
+        /// Displays EditCityView 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> EditCity(int id)
+        {
+            var city = await cityService.GetByIdAsync<CityViewModel>(id);
+            var model = new CityEditModel()
+            {
+                Id = id,
+                Name = city.Name,
+            };
+            return this.View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditCity(CityEditModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+            // Edit City
+            await this.cityService.EditAsync(input.Id, input.Name);
+            return this.RedirectToAction("Index");
+        }
+
     }
 }

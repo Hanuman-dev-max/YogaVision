@@ -6,6 +6,8 @@ namespace YogaVision.Core.Services
     using YogaVision.Infrastructure.Data.Common;
     using YogaVision.Infrastructure.Data.Common.Mapping;
     using YogaVision.Infrastructure.Data.Models;
+    using YogaVision.Infrastructure.Migrations;
+
     /// <summary>
     /// Interface Service for Blog Posts
     /// </summary>
@@ -162,6 +164,42 @@ namespace YogaVision.Core.Services
               .FirstOrDefaultAsync();
             blogPost.Likes++;
             await this.blogPostsRepository.SaveChangesAsync();
+        }
+        /// <summary>
+        /// Edit BlogPost
+        /// </summary>
+        /// <param name="id">The Id of the Blog</param>
+        /// <param name="title">The title of the blog post</param>
+        /// <param name="shortContent">The Short content of the blog post</param>
+        /// <param name="content">The Content of the blog post</param>
+        /// <param name="author">The author of the blog post</param>
+        /// <param name="imageUrl">The ImageUrl of the blog post</param>
+        /// <returns></returns>
+       public async Task   EditAsync(int id, string title, string shortContent, string content, string author, string imageUrl, ICollection<int> tagIds)
+        {
+            var blogPost =
+                await this.blogPostsRepository
+                .All()
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
+            if (blogPost == null)
+            {
+                throw new Exception($" Id:{id}");
+            }
+            blogPost.Author = author;
+            blogPost.Title = title;
+            blogPost.ShortContent = shortContent;
+            blogPost.Content = content;
+            blogPost.ImageUrl = imageUrl;
+            var tagBlogPosts = new List<TagBlogPost>();
+            foreach (var tagId in tagIds)
+            {
+                var tagBlogPost = new TagBlogPost() { TagId = tagId };
+                tagBlogPosts.Add(tagBlogPost);
+            }
+            blogPost.Tags = tagBlogPosts;
+            await this.blogPostsRepository.SaveChangesAsync();
+            
         }
     }
 }
