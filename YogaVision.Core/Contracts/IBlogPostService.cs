@@ -5,7 +5,8 @@ namespace YogaVision.Core.Contracts
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    
+    using YogaVision.Infrastructure.Data.Models;
+
     /// <summary>
     /// Interface Service for Blog Posts
     /// </summary>
@@ -86,5 +87,7 @@ namespace YogaVision.Core.Contracts
         /// <returns></returns>
        
         Task EditAsync(int id, string title, string shortContent, string content, string author, string imageUrl, ICollection<int> tagIds);
+
+        Task AddCommentToBlog(int Id, Comment comment);
     }
 }

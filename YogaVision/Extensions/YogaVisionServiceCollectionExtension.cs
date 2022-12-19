@@ -39,6 +39,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 services.AddScoped<ITagService, TagService>();
                 services.AddScoped<ITagBlogPostService, TagBlogPostService>();
                 services.AddScoped<ICloudinaryService, CloudinaryService>();
+                services.AddScoped<ICommentService, CommentService>();
             
                 AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 

@@ -15,6 +15,7 @@ namespace YogaVision.Infrastructure.Data.Models
         {
             Tags = new HashSet<TagBlogPost>();
             Users = new HashSet<BlogPostApplicationUser>();
+            Comments = new HashSet<Comment>();
         }
         
         [Required]
@@ -40,6 +41,12 @@ namespace YogaVision.Infrastructure.Data.Models
 
         public ICollection<TagBlogPost> Tags{ get; set; }
         public ICollection<BlogPostApplicationUser> Users { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
+       
+        
+
+
 
 
     }

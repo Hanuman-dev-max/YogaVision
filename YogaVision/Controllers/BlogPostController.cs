@@ -4,8 +4,10 @@ namespace YogaVision.Controllers
  
     using YogaVision.Core.Contracts;
     using YogaVision.Core.Models.BlogPost;
+    using YogaVision.Core.Models.Comment;
     using YogaVision.Core.Models.Pagination;
     using YogaVision.Extensions;
+    using YogaVision.Infrastructure.Data.Models;
 
     /// <summary>
     /// Controller which handles BlogPost model 
@@ -14,15 +16,17 @@ namespace YogaVision.Controllers
     {
         private readonly IBlogPostService blogPostService;
         private readonly ITagBlogPostService tagBlogPostService;
+        private readonly ICommentService commentService;
         /// <summary>
         /// Constructor for BlogPostController
         /// </summary>
         /// <param name="blogPostService"></param>
         /// <param name="tagBlogPostService"></param>
-        public BlogPostController(IBlogPostService blogPostService, ITagBlogPostService tagBlogPostService)
+        public BlogPostController(IBlogPostService blogPostService, ITagBlogPostService tagBlogPostService, ICommentService commentService)
         {
             this.blogPostService = blogPostService;
             this.tagBlogPostService = tagBlogPostService;
+            this.commentService = commentService;
         }
         /// <summary>
         /// Display Index View
@@ -78,15 +82,14 @@ namespace YogaVision.Controllers
             }
 
             var tags = await tagBlogPostService.GetTagByPostId(id);
-            if (tags == null)
-            {
-                return new StatusCodeResult(404);
-            }
-            
+
+            var comments = await commentService.GetAllByBlogPostAsync<CommentViewModel>(id);
+
             var model = new BlogDetailViewModel()
             {
                 blog = blog,
-                tags = tags
+                tags = tags,
+                comments = comments      
             };
 
             return View(model);
@@ -98,7 +101,20 @@ namespace YogaVision.Controllers
             return RedirectToAction("Details", new { Id = Id });
 
         }
-    
+        [HttpPost]
+        public async Task<IActionResult> AddComment(string UserComment, int blogId)
+        {
+            var comment = new Comment
+            {
+                ApplicationUserId = User.Id(),
+                BlogPostId = blogId,
+                Content = UserComment
+            };
+
+            await blogPostService.AddCommentToBlog(blogId, comment);
+
+            return RedirectToAction("Details", new {id = blogId});
+        }
     
     }
 }

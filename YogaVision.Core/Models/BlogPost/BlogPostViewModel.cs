@@ -19,9 +19,6 @@ namespace YogaVision.Core.Models.BlogPost
         public string ImageUrl { get; set; }
 
         public DateTime CreatedOn { get; set; }
-
-        public ICollection<string> TagNames { get; set; } = new List<string>();
-
         public int Likes { get; set; }
 
        

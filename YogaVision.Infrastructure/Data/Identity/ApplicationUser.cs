@@ -13,6 +13,7 @@
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.YogaEvents = new HashSet<YogaEventApplicationUser>();
             this.LikedPosts = new HashSet<BlogPostApplicationUser>();
+            this.Comments = new HashSet<Comment>();
 
         
         }
@@ -32,6 +33,8 @@
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
         public ICollection<YogaEventApplicationUser> YogaEvents { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
     }
        
 }

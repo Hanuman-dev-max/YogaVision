@@ -19,6 +19,8 @@ namespace YogaVision.Common
 
         public static class DataValidations
         {
+            public const int CommentContentMaxLength = 500;
+
             public const int TitleMaxLength = 150;
 
             public const int TitleMinLength = 5;

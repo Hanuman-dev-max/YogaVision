@@ -25,6 +25,7 @@
 
         public DbSet<BlogPostApplicationUser> BlogPostApplicationUsers { get; set; }
 
+        public DbSet<Comment> Comments { get; set; }
         public DbSet<TagBlogPost> TagBlogPosts { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

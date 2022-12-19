@@ -66,3 +66,38 @@
         </div>
     </div>
 </div>
+@if (User.Id() == null)
+{
+    <h4>Моля, регистрирайте се за да пишете коментари</h4>
+}
+else
+{
+    <h4>Напишете коментар:</h4>
+<form role="form" method="post">
+    @Html.HiddenFor(model => model.blog.Id)
+    <div class="form-group">
+        <textarea asp-for="@Model.UserComment" class="form-control" rows="3" required></textarea>
+        <span asp-validation-for="UserComment" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success" asp-controller="BlogPost" asp-action="AddComment" asp-route-blogId="@Model.blog.Id">Публикувай</button>
+</form>
+<br>
+<br>
+}
+@if (@Model.comments.Any())
+{
+    <p><span class="badge">@Model.comments.Count()</span> Коментари:</p>
+    <br>
+
+    <div class="row">
+
+        @foreach (var comment in Model.comments)
+        {
+            <div class="col-sm-10">
+                <h4>@comment.ApplicationUserUserName <small>@comment.CreatedOn.ToString("D",CultureInfo.CreateSpecificCulture("bg-BG"))</small></h4>
+                <p>@comment.Content</p>
+                <br>
+            </div>
+        }
+    </div>
+}

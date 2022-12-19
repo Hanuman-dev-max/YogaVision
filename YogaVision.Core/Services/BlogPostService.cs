@@ -1,4 +1,4 @@
-namespace YogaVision.Core.Services
+﻿namespace YogaVision.Core.Services
 {
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
@@ -185,7 +185,7 @@ namespace YogaVision.Core.Services
                 .FirstOrDefaultAsync();
             if (blogPost == null)
             {
-                throw new Exception($" Id:{id}");
+                throw new Exception($"Не съществува блог с Id:{id}");
             }
             blogPost.Author = author;
             blogPost.Title = title;
@@ -201,6 +201,21 @@ namespace YogaVision.Core.Services
             blogPost.Tags = tagBlogPosts;
             await this.blogPostsRepository.SaveChangesAsync();
             
+        }
+
+        public async Task AddCommentToBlog(int Id, Comment comment)
+        {
+            var blogPost =
+                 await this.blogPostsRepository
+                 .All()
+                 .Where(x => x.Id == Id)
+                 .FirstOrDefaultAsync();
+            if (blogPost == null)
+            {
+                throw new Exception($"Не съществува блог с Id:{Id}");
+            }
+            blogPost.Comments.Add(comment);
+            await this.blogPostsRepository.SaveChangesAsync();
         }
     }
 }
