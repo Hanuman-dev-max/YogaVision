@@ -155,7 +155,7 @@ namespace YogaVision.Core.Services
         /// <param name="id">BlogPost Id</param>
         /// <param name="userId">User Id</param>
         /// <returns></returns>
-        public async  Task AddLikeAsync(int id, string userId)
+        public async  Task AddLikeAsync(int id, string UserId)
         {
             var blogPost =
                await this.blogPostsRepository
@@ -163,6 +163,7 @@ namespace YogaVision.Core.Services
                .Where(x => x.Id == id)
               .FirstOrDefaultAsync();
             blogPost.Likes++;
+            blogPost.Users.Add(new BlogPostApplicationUser() { ApplicationUserId = UserId });
             await this.blogPostsRepository.SaveChangesAsync();
         }
         /// <summary>

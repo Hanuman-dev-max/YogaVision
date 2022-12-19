@@ -11,8 +11,10 @@
         {
             this.Id = Guid.NewGuid().ToString();
             this.Roles = new HashSet<IdentityUserRole<string>>();
-            YogaEvents = new HashSet<YogaEventApplicationUser>();
+            this.YogaEvents = new HashSet<YogaEventApplicationUser>();
+            this.LikedPosts = new HashSet<BlogPostApplicationUser>();
 
+        
         }
 
         // Audit info
@@ -24,6 +26,8 @@
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public ICollection<BlogPostApplicationUser> LikedPosts { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

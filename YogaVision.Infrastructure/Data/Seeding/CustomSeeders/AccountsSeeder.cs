@@ -15,6 +15,13 @@
             var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
 
+
+            // Create User
+            await CreateUser(
+                userManager,
+                roleManager,
+                GlobalConstants.AccountsSeeding.UserEmail);
+
             // Create Admin
             await CreateUser(
                 userManager,
@@ -24,11 +31,7 @@
 
            
 
-            // Create User
-            await CreateUser(
-                userManager,
-                roleManager,
-                GlobalConstants.AccountsSeeding.UserEmail);
+            
         }
 
         private static async Task CreateUser(
@@ -38,6 +41,7 @@
             {
                 UserName = email,
                 Email = email,
+            
             };
 
             var password = GlobalConstants.AccountsSeeding.Password;

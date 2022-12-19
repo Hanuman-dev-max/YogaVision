@@ -5,5 +5,6 @@
     {
         public BlogPostViewModel blog = new BlogPostViewModel();
         public ICollection<string> tags = new List<string>();
+    
     }
 }

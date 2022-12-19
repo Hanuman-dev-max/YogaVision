@@ -91,12 +91,10 @@ namespace YogaVision.Controllers
 
             return View(model);
         }
-        public async Task<IActionResult> AddLike(int Id)
+        public async Task<IActionResult> Like(int Id)
         {
-            var userid = User.Id();
-
-            await blogPostService.AddLikeAsync(Id, userid);
-          
+            var userId = User.Id();
+            await blogPostService.AddLikeAsync(Id, userId);
             return RedirectToAction("Details", new { Id = Id });
 
         }

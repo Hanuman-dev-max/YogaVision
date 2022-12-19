@@ -72,7 +72,6 @@ namespace YogaVision.Core.Contracts
         /// Add user's like to the BlogPost
         /// </summary>
         /// <param name="id">BlogPost Id</param>
-        /// <param name="userId">User Id</param>
         /// <returns></returns>
         Task AddLikeAsync(int id, string userId);
         /// <summary>

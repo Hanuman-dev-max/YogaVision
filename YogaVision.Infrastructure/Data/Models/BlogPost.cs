@@ -6,13 +6,15 @@ namespace YogaVision.Infrastructure.Data.Models
     using System.ComponentModel.DataAnnotations;
     using YogaVision.Common;
     using YogaVision.Infrastructure.Data.Common.Models;
-    
+    using YogaVision.Infrastructure.Data.Identity;
+
     public class BlogPost : BaseDeletableModel<int>
     {
      
         public BlogPost()
         {
             Tags = new HashSet<TagBlogPost>();
+            Users = new HashSet<BlogPostApplicationUser>();
         }
         
         [Required]
@@ -37,6 +39,7 @@ namespace YogaVision.Infrastructure.Data.Models
         public int Likes { get; set; } = 0;
 
         public ICollection<TagBlogPost> Tags{ get; set; }
+        public ICollection<BlogPostApplicationUser> Users { get; set; }
 
 
     }
