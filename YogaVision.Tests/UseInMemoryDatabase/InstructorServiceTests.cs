@@ -1,6 +1,7 @@
 ﻿namespace YogaVision.Tests.UseInMemoryDatabase
 {
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
     using Microsoft.Extensions.DependencyInjection;
     using Xunit;
     using YogaVision.Core.Contracts;
@@ -67,10 +68,31 @@
         {
             //Arrange
             var instructor = await this.CreateInstructorAsync();
-            //q
+            //Act
             var ActualInstructors = await this.Service.GetAllAsync<InstructorViewModel>();
             //Assert
             Assert.Equal(1, ActualInstructors.Count());
+        }
+        [Fact]
+        public async Task EditAsyncShouldReturnCorrectly()
+        {
+            //Arrange
+            var instructor = await this.CreateInstructorAsync();
+
+            //Act
+            await this.Service.EditAsync(instructor.Id, "TestFirstName","TestLastName", "TestDescription", "TestNickName", "TestImageUrl", "TestImageUrlFirst", "TestImageUrlSecond", "TestImageUrlThird", "TestFacebookLink");
+            var actualInstructor = await this.Service.GetByIdAsync<InstructorViewModel>(instructor.Id);
+
+            //Assert
+            Assert.Equal("TestFirstName", actualInstructor.FirstName);
+            Assert.Equal("TestLastName", actualInstructor.LastName);
+            Assert.Equal("TestDescription", actualInstructor.Description);
+            Assert.Equal("TestNickName", actualInstructor.NickName);
+            Assert.Equal("TestImageUrl", actualInstructor.ImageUrl);
+            Assert.Equal("TestImageUrlFirst", actualInstructor.ImageUrlFirst);
+            Assert.Equal("TestImageUrlSecond", actualInstructor.ImageUrlSecond);
+            Assert.Equal("TestImageUrlThird", actualInstructor.ImageUrlThird);
+            Assert.Equal("TestFacebookLink", actualInstructor.FacebookLink);
         }
 
 

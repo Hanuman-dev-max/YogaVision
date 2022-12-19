@@ -63,7 +63,20 @@
             //Assert
             Assert.Equal(1, ActualCities.Count());
         }
+        [Fact]
+        public async Task EditAsyncShouldReturnCorrectly()
+        {
+            //Arrange
+            var city = await this.CreateCityAsync();
+            //Act
+            await this.Service.EditAsync(city.Id, "Test");
+           var actualCity = await this.Service.GetByIdAsync<CityViewModel>(city.Id);
 
+            //Assert
+            Assert.Equal("Test", actualCity.Name );
+        
+        
+        }
 
         private async Task<City> CreateCityAsync()
         {

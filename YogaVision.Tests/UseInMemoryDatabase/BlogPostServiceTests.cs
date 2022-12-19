@@ -93,6 +93,8 @@
             Assert.Equal(blogPost.Title, actualBlogPost.Title);
         }
 
+
+
         [Fact]
         public async Task GetSimilarByTagAsyncShouldReturnCorrectly()
         {
@@ -138,7 +140,22 @@
             Assert.Equal(0, actualBlogPostWithoutSimilartag.Count());
         }
 
+        [Fact]
+        public async Task EditAsyncShouldReturnCorrectly()
+        { 
+            //Arrange
+            var blog = await this.CreateBlogPostAsync();
+            //Act
+            await Service.EditAsync(blog.Id, "TestTitle","TestShortContent", "TestContent","TestAuthor", "TestImageUrl", new List<int>());
+           var actualBlog = await Service.GetByIdAsync<BlogPostViewModel>(blog.Id);
+            //Assert
+            Assert.Equal("TestTitle", actualBlog.Title);
+            Assert.Equal("TestShortContent", actualBlog.ShortContent);
+            Assert.Equal("TestContent", actualBlog.Content);
+            Assert.Equal("TestAuthor", actualBlog.Author);
+            Assert.Equal("TestImageUrl", actualBlog.ImageUrl);
 
+        }
 
 
 

@@ -41,15 +41,7 @@
                                 <p>@string.Join(" ",Model.tags)</p>
                                 </li>
                         </ul>
-                        <ul class="d-flex flex-row align-items-center justify-content-start">
-                            <li>
-                                <p>@Model.blog.Likes<i class="fa fa-heart"></i></p>
-
-                            </li>
-                            <li>
-                                <a asp-area="" asp-controller="BlogPost" asp-route-id=@Model.blog.Id asp-action="Like">Харасай <i class="fa fa-heart-o"></i></a>
-                            </li>
-                        </ul>
+                        
                     </div>
 
                 </div>

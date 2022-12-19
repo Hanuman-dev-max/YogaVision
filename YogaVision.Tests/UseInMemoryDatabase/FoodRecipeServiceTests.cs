@@ -80,6 +80,24 @@
             var actual = await this.Service.GetAllWithPagingAsync<FoodRecipeViewModel>(null, 3, 1);
             Assert.Equal(3, actual.Count());
         }
+        [Fact]
+        public async Task EditAsyncShouldReturnCorrectly()
+        {
+            //Arrange
+            var foodRecipe = await this.CreateFoodRecipeAsync();
+            //Act
+            await Service.EditAsync(foodRecipe.Id, "TestTitle", "TestRequiredProducts", "TestContent", "TestAuthor", "TestImageUrl");
+            var actualBlog = await Service.GetByIdAsync<FoodRecipeViewModel>(foodRecipe.Id);
+            //Assert
+            Assert.Equal("TestTitle", actualBlog.Title);
+            Assert.Equal("TestRequiredProducts", actualBlog.RequiredProducts);
+            Assert.Equal("TestContent", actualBlog.Content);
+            Assert.Equal("TestAuthor", actualBlog.Author);
+            Assert.Equal("TestImageUrl", actualBlog.ImageUrl);
+
+
+
+        }
         private async Task<FoodRecipe> CreateFoodRecipeAsync()
         {
             var foodRecipe = new FoodRecipe

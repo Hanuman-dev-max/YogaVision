@@ -9,7 +9,7 @@ using Assert = Xunit.Assert;
 
 namespace YogaVision.Tests.UseInMemoryDatabase
 {
-    public class StudioServiceTests :BaseServiceTests
+    public class StudioServiceTests : BaseServiceTests
     {
         private IStudioService Service => this.ServiceProvider.GetRequiredService<IStudioService>();
 
@@ -61,17 +61,34 @@ namespace YogaVision.Tests.UseInMemoryDatabase
             //Arrange
             var studio = await this.CreateStudioAsync();
             //Act
-            var ActualCities = await this.Service.GetAllAsync<StudioSimpleViewModel>();
+            var ActualStudios = await this.Service.GetAllAsync<StudioSimpleViewModel>();
             //Assert
-            Assert.Equal(1, ActualCities.Count());
+            Assert.Equal(1, ActualStudios.Count());
         }
 
+        [Fact]
+        public async Task EditAsyncShouldReturnCorrectly()
+        {
+            //Act
+            var studio = await this.CreateStudioAsync();
+            //Arrange
+           await  this.Service.EditAsync(studio.Id,"TestName", 1, "TestAddress", "TestImageUrl");
+            var actualStudio = await this.Service.GetByIdAsync<StudioSimpleViewModel>(studio.Id);
+            //Assert
+            Assert.Equal("TestName", actualStudio.Name);
+            
+        
+        
+        
+        
+        }
 
         private async Task<Studio> CreateStudioAsync()
         {
 
             var studio = new Studio
             {
+                
                 Address = new NLipsum.Core.Word().ToString(),
                 Name = new NLipsum.Core.Word().ToString(),
                  ImageUrl = new NLipsum.Core.Word().ToString(),

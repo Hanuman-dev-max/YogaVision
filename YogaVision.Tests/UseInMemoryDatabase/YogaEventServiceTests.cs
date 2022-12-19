@@ -117,7 +117,20 @@
             //Assert
             Assert.Equal(11, actualYogaEvent.Seats);
         }
-
+        [Fact]
+        public async Task EditAsyncShouldReturnCorrectly()
+        {
+            //Arrange
+            var yogaEvent = await this.CreateYogaEventAsync();
+            //Act
+            await this.Service.EditAsync(yogaEvent.Id,1,1, new DateTime(2022,10,1), "TestDescription","2:00",8);
+            var actualYogaEvent = await this.Service.GetByIdAsync<YogaEventTestModel>(yogaEvent.Id);
+            //Assert
+            Assert.Equal("TestDescription", actualYogaEvent.Description);
+            Assert.Equal("2:00", actualYogaEvent.Duration);
+          
+            Assert.Equal(8, actualYogaEvent.Seats);
+        }
 
         private async Task<YogaEvent> CreateYogaEventAsync()
         {
