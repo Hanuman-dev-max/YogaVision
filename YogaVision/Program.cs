@@ -3,6 +3,7 @@ using YogaVision.Data;
 using YogaVision.Infrastructure.Data.Identity;
 using YogaVision.Infrastructure.Data.Seeding;
 using CloudinaryDotNet;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +28,11 @@ Cloudinary cloudinary = new Cloudinary(new Account(builder.Configuration["Cloudi
                builder.Configuration["Cloudinary:ApiSecret"]));
 builder.Services.AddSingleton(cloudinary);
 builder.Services.AddApplicationServices();
-
+builder.Services.AddControllersWithViews()
+    .AddMvcOptions(options =>
+    {
+        options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+    });
 var app = builder.Build();
 
 using (var serviceScope = app.Services.CreateScope())

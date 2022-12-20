@@ -11,6 +11,7 @@
 
             @foreach (var instructor in Model.Instructors)
             {
+             
                 <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="team-member">
                         <a asp-area="" asp-controller="Instructor" asp-action="Details" asp-route-id="@instructor.Id">  <img class="mx-auto rounded-circle" src="@instructor.ImageUrl" alt="..." /></a>
@@ -19,8 +20,8 @@
                         <a class="btn btn-dark btn-social mx-2" href=@instructor.FacebookLink><i class="fa fa-facebook"></i></a>
 
                 </div>
-
-            </div>
+                </div>
+                
             }
 
         </div>
@@ -36,18 +37,3 @@
 
 
 
-
-@*<div class="row row-eq-height">
-    @foreach (var instructor in Model.Instructors)
-    {
-        <div class="col-xl-3 col-md-6">
-            <div class="doctor">
-                <div class="doctor_image"><a asp-area="" asp-controller="Instructors" asp-action="Details" asp-route-id="@instructor.Id"><img src="@instructor.ImageUrl" alt=""></a></div>
-                <div class="doctor_content">
-                    <div class="doctor_title"><strong>@instructor.NickName</strong></div>
-                    
-                </div>
-            </div>
-        </div>
-    }
-</div>*@

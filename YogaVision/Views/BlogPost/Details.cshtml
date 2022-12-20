@@ -72,17 +72,19 @@
 }
 else
 {
-    <h4>Напишете коментар:</h4>
-<form role="form" method="post">
-    @Html.HiddenFor(model => model.blog.Id)
-    <div class="form-group">
+    <div class="col-lg-8">
+        <h4>Напишете коментар:</h4>
+    <form role="form" method="post">
+        @Html.HiddenFor(model => model.blog.Id)
+        <div class="form-group">
         <textarea asp-for="@Model.UserComment" class="form-control" rows="3" required></textarea>
         <span asp-validation-for="UserComment" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success" asp-controller="BlogPost" asp-action="AddComment" asp-route-blogId="@Model.blog.Id">Публикувай</button>
+        </form>
+        <br>
+        <br>
     </div>
-    <button type="submit" class="btn btn-success" asp-controller="BlogPost" asp-action="AddComment" asp-route-blogId="@Model.blog.Id">Публикувай</button>
-</form>
-<br>
-<br>
 }
 @if (@Model.comments.Any())
 {

@@ -2,70 +2,81 @@
 @{
     this.ViewData["Title"] = "Кулинарни рецепти";
 }
+@{
+    int count = Model.FoodRecipes.Count();
+    if (count > 3)
+    {
+        count = 3;
+    }
 
+}
 <section class="page-section bg-light" id="team">
    
 
         <div class="container">
-            <div class="row">
-            @foreach (var foodRecipe in Model.FirstRowFoodRecipes)
+         <div class="row">
+            
+            @for (int i = 0; i< count; i++)
             {
-                 <div class="col-4">
+                <div class="col-4">
                 <div class="card" >
-                    <img class="card-img-top" src="@foodRecipe.ImageUrl" alt="Card image cap">
-                    <h5 class="card-header"><strong>@foodRecipe.Title</strong></h5>
+                    <img class="card-img-top" src="@Model.FoodRecipes[i].ImageUrl" alt="Card image cap">
+                        <h5 class="card-header"><strong>@Model.FoodRecipes[i].Title</strong></h5>
 
                     <div class="card-body">
-                        <a asp-controller="FoodRecipe" asp-action="Details" asp-route-id="@foodRecipe.Id" class="btn btn-info">Прочети</a>
+                            <a asp-controller="FoodRecipe" asp-action="Details" asp-route-id="@Model.FoodRecipes[i].Id" class="btn btn-info">Прочети</a>
                     </div>
                 </div>
                 </div>
             }
         </div>
         <div class="row">
-
-            @foreach (var foodRecipe in Model.SecondRowFoodRecipes)
+            @for (int i = 3; i < Model.FoodRecipes.Count; i++)
             {
-                  <div class="col-4">
-                <div class="card">
-                    <img class="card-img-top" src="@foodRecipe.ImageUrl" alt="Card image cap">
-                    <h5 class="card-header"><strong>@foodRecipe.Title</strong></h5>
+                <div class="col-4">
+                    <div class="card">
+                        <img class="card-img-top" src="@Model.FoodRecipes[i].ImageUrl" alt="Card image cap">
+                        <h5 class="card-header"><strong>@Model.FoodRecipes[i].Title</strong></h5>
 
-                    <div class="card-body">
-                        <a asp-controller="FoodRecipe" asp-action="Details" asp-route-id="@foodRecipe.Id" class="btn btn-info">Прочети</a>
+                        <div class="card-body">
+                            <a asp-controller="FoodRecipe" asp-action="Details" asp-route-id="@Model.FoodRecipes[i].Id" class="btn btn-info">Прочети</a>
+                        </div>
                     </div>
                 </div>
-                </div>
             }
+           
         </div>
         </div>
 </section>
 
 @{
-    var prevDisabled = !Model.FirstRowFoodRecipes.HasPreviousPage ? "disabled" : "";
-    var nextDisabled = !Model.FirstRowFoodRecipes.HasNextPage ? "disabled" : "";
+    var prevDisabled = !Model.FoodRecipes.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.FoodRecipes.HasNextPage ? "disabled" : "";
 }
 
 @if (ViewData["CurrentSort"] == null)
 {
-    <div class="row ml-5">
-        <div class="m-5">
-            <a asp-action="Index"
-           asp-route-pageNumber="@(Model.FirstRowFoodRecipes.PageIndex - 1)"
-           style="color: #87CEFA" class="btn btn-outline-secondary btn-lg @prevDisabled">
-                <i class="fa fa-arrow-left"></i>
-            </a>
-        </div>
-        <div class="m-5">
-            <a asp-action="Index"
-           asp-route-pageNumber="@(Model.FirstRowFoodRecipes.PageIndex + 1)"
-           style="color: #87CEFA" class="btn btn-outline-secondary btn-lg @nextDisabled">
-                <i class="fa fa-arrow-right"></i>
-            </a>
-        </div>
-    </div>
-}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item "><a class="btn btn-info @prevDisabled" asp-action="Index" asp-route-pageNumber="@(Model.FoodRecipes.PageIndex - 1)">Назад</a></li>
+            @for (int i = 1; i <= @Model.FoodRecipes.TotalPages; i++)
+            {
+                @if (i != @Model.FoodRecipes.PageIndex)
+                {
+                    <li class="page-item"><a asp-action="Index" asp-route-pageNumber="@i" class="page-link">@i</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link"> @i</a></li>
+                }
+            }
 
+            <li class="page-item ">
+                <a class="btn btn-info @nextDisabled asp-action="Index" asp-route-pageNumber="@(Model.FoodRecipes.PageIndex + 1)">Напред</a>
+            </li>
+        </ul>
+    </nav>
+}
 
 
 
