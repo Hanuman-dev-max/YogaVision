@@ -92,6 +92,12 @@ namespace YogaVision.Areas.Admin.Controllers
             };
             return this.View(model);
         }
+        
+        /// <summary>
+        /// Edits City 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> EditCity(CityEditModel input)
         {

@@ -15,35 +15,35 @@ namespace YogaVision.Core.Models.Instructor
             GlobalConstants.DataValidations.NameMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Name,
             MinimumLength = GlobalConstants.DataValidations.NameMinLength)]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         [Required]
         [StringLength(
             GlobalConstants.DataValidations.NameMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Name,
             MinimumLength = GlobalConstants.DataValidations.NameMinLength)]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
 
         [Required]
         [StringLength(
             GlobalConstants.DataValidations.DescriptionMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Description,
             MinimumLength = GlobalConstants.DataValidations.DescriptionMinLength)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [Required]
         [StringLength(
             GlobalConstants.DataValidations.FacebookLinkMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Facebook,
             MinimumLength = GlobalConstants.DataValidations.FacebookLinkMinLength)]
-        public string FacebookLink { get; set; }
+        public string? FacebookLink { get; set; }
 
         [Required]
         [StringLength(
             GlobalConstants.DataValidations.NameMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Name,
             MinimumLength = GlobalConstants.DataValidations.NameMinLength)]
-        public string Nickname { get; set; }
+        public string? Nickname { get; set; }
 
        
         [DataType(DataType.Upload)]
@@ -65,10 +65,10 @@ namespace YogaVision.Core.Models.Instructor
       
         public IFormFile? ImageThird { get; set; }
 
-        public string OldImage { get; set; }
-        public string OldImageFirst { get; set; }
-        public string OldImageSecond { get; set; }
-        public string OldImageThird { get; set; }
+        public string? OldImage { get; set; }
+        public string? OldImageFirst { get; set; }
+        public string? OldImageSecond { get; set; }
+        public string? OldImageThird { get; set; }
 
 
 

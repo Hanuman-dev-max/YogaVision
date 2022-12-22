@@ -6,6 +6,6 @@ namespace YogaVision.Core.Models.TagBlogPost
     public class TagBlogPostViewModel :IMapFrom<TagBlogPost>
     {
         public int TagId { get; set; }
-        public string TagName { get; set;}
+        public string? TagName { get; set;}
     }
 }

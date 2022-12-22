@@ -11,7 +11,7 @@
             GlobalConstants.DataValidations.NameMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Name,
             MinimumLength = GlobalConstants.DataValidations.NameMinLength)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [Required]
         public int CityId { get; set; }
@@ -21,10 +21,10 @@
             GlobalConstants.DataValidations.AddressMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Address,
             MinimumLength = GlobalConstants.DataValidations.AddressMinLength)]
-        public string Address { get; set; }
+        public string? Address { get; set; }
 
         [DataType(DataType.Upload)]
         [ValidateImageFile(ErrorMessage = GlobalConstants.ErrorMessages.Image)]
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
     }
 }

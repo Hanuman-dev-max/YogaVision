@@ -111,6 +111,11 @@
             };
             return this.View(model);
         }
+        /// <summary>
+        /// Edits Food Recipe
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> EditFoodRecipe(FoodRecipeEditModel input)
         {

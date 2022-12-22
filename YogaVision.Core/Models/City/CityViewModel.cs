@@ -9,7 +9,7 @@ namespace YogaVision.Core.Models.City
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         public int StudiosCount { get; set; }
     }

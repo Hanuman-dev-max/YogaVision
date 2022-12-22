@@ -13,33 +13,33 @@
             GlobalConstants.DataValidations.TitleMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Title,
             MinimumLength = GlobalConstants.DataValidations.TitleMinLength)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [Required]
         [StringLength(
             GlobalConstants.DataValidations.RequiredProductsMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Content,
             MinimumLength = GlobalConstants.DataValidations.RequiredProductsMinLength)]
-        public string RequiredProducts { get; set; }
+        public string? RequiredProducts { get; set; }
 
         [Required]
         [StringLength(
             GlobalConstants.DataValidations.FoodContentMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Content,
             MinimumLength = GlobalConstants.DataValidations.FoodContentMinLength)]
-        public string Content { get; set; }
+        public string? Content { get; set; }
 
         [Required]
         [StringLength(
             GlobalConstants.DataValidations.NameMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Author,
             MinimumLength = GlobalConstants.DataValidations.NameMinLength)]
-        public string Author { get; set; }
+        public string? Author { get; set; }
 
        
         [DataType(DataType.Upload)]
         public IFormFile? Image { get; set; }
-        public string OldImage { get; set; }
+        public string? OldImage { get; set; }
     }
 }
 

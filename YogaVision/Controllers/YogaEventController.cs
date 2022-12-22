@@ -13,7 +13,7 @@
     {
         private readonly IYogaEventService yogaEventService;
         private readonly IYogaEventApplicationUserService yogaEventApplicationUserService;
-        private readonly IDateTimeParserService dateTimeParserService;
+      
         /// <summary>
         /// Contructor for YogaEventController
         /// </summary>
@@ -27,7 +27,7 @@
         {
             this.yogaEventService = yogaEventService;
             this.yogaEventApplicationUserService = yogaEventApplicationUserService;
-            this.dateTimeParserService = dateTimeParserService;
+           
         }
         /// <summary>
         /// Displays Index View
@@ -56,6 +56,10 @@
             }
 
         }
+        /// <summary>
+        /// Display the enrolled events for the spacific user
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> MyYogaEvents()
         {
             var model = new YogaEventsListViewModel()

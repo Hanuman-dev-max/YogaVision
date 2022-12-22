@@ -4,6 +4,6 @@
     using YogaVision.Core.Models.Pagination;
     public class YogaEventsPaginatedListViewModel
     {
-        public PaginatedList<YogaEventViewModel> YogaEvents { get; set; }
+        public PaginatedList<YogaEventViewModel>? YogaEvents { get; set; }
     }
 }

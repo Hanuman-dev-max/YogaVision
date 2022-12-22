@@ -122,6 +122,11 @@
             await this.instructorService.DeleteAsync(id);
             return this.RedirectToAction("Index");
         }
+        /// <summary>
+        /// Edit Instructor View
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> EditInstructor(int id)
         {
             var instructor = await instructorService.GetByIdAsync<InstructorViewModel>(id);
@@ -140,6 +145,11 @@
             };
             return this.View(model);
         }
+        /// <summary>
+        /// Method which handles Edit Insuctor
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> EditInstructor(InstructorEditModel input)
         {

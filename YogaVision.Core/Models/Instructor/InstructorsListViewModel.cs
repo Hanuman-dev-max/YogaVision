@@ -5,7 +5,7 @@
  
     public class InstructorsListViewModel
     {
-        public IEnumerable<InstructorViewModel> Instructors { get; set; }
+        public IEnumerable<InstructorViewModel>? Instructors { get; set; }
 
     }
 }

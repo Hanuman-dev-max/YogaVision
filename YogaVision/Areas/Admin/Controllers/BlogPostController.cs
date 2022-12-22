@@ -102,6 +102,11 @@ namespace YogaVision.Areas.Admin.Controllers
             return this.RedirectToAction("Index");
         }
 
+        /// <summary>
+        /// Edit BlogPost View
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> EditBlogPost(int id)
         {
             var blogPost = await blogPostService.GetByIdAsync<BlogPostViewModel>(id);

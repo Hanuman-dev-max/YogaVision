@@ -94,6 +94,11 @@ namespace YogaVision.Controllers
 
             return View(model);
         }
+        /// <summary>
+        /// Adds Like to BlogPost
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Like(int Id)
         {
             var userId = User.Id();
@@ -101,6 +106,12 @@ namespace YogaVision.Controllers
             return RedirectToAction("Details", new { Id = Id });
 
         }
+        /// <summary>
+        /// Adds Comment to BlogPost
+        /// </summary>
+        /// <param name="UserComment"></param>
+        /// <param name="blogId"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> AddComment(string UserComment, int blogId)
         {

@@ -13,6 +13,6 @@ namespace YogaVision.Core.Models.City
             GlobalConstants.DataValidations.NameMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Name,
             MinimumLength = GlobalConstants.DataValidations.NameMinLength)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }

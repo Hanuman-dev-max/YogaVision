@@ -15,6 +15,14 @@ namespace YogaVision.Core.Services
         {
             this.commentsRepository = commentsRepository;
         }
+        
+        /// <summary>
+        /// Adds 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="blogId"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public async  Task AddAsync(string content, int blogId, string userId)
         {
             await this.commentsRepository.AddAsync(new Comment
@@ -27,7 +35,12 @@ namespace YogaVision.Core.Services
             });
             await this.commentsRepository.SaveChangesAsync();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="blogPostID"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<T>> GetAllByBlogPostAsync<T>(int blogPostID)
         {
             var comments =

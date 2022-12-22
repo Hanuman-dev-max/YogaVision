@@ -17,20 +17,20 @@ namespace YogaVision.Core.Models.YogaEvent
 
         [Required]
         [ValidateDateString(ErrorMessage = GlobalConstants.ErrorMessages.DateTime)]
-        public string Date { get; set; }
+        public string? Date { get; set; }
 
         [Required]
         [ValidateTimeString(ErrorMessage = GlobalConstants.ErrorMessages.DateTime)]
-        public string Time { get; set; }
+        public string? Time { get; set; }
 
         [Required]
         [StringLength(
            GlobalConstants.DataValidations.EventDescriptionMaxLength,
            ErrorMessage = GlobalConstants.ErrorMessages.YogaEventDescription,
            MinimumLength = GlobalConstants.DataValidations.EventDescriptionMinLength)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
         [Required]
-        public string Duration { get; set; }
+        public string? Duration { get; set; }
 
         [Required]
         [Range(GlobalConstants.DataValidations.SeatMinLength, GlobalConstants.DataValidations.SeatMaxLength)]

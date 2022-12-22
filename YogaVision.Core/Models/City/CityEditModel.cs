@@ -11,7 +11,7 @@
             GlobalConstants.DataValidations.NameMaxLength,
             ErrorMessage = GlobalConstants.ErrorMessages.Name,
             MinimumLength = GlobalConstants.DataValidations.NameMinLength)]
-        public string Name { get; set; } = null!;
+        public string? Name { get; set; }
 
     }
 }

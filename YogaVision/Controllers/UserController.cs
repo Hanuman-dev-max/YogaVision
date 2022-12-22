@@ -19,8 +19,8 @@ namespace YogaVision.Controllers
         /// <summary>
         /// Constructor for UserController
         /// </summary>
-        /// <param name="_userManager">Interface for UserManager<ApplicationUser> </param>
-        /// <param name="_signInManager">Interface for SignInManager<ApplicationUser></param>
+        /// <param name="_userManager">Interface for UserManager - ApplicationUser</param>
+        /// <param name="_signInManager">Interface for SignInManager -ApplicationUser</param>
         public UserController(
             UserManager<ApplicationUser> _userManager,
             SignInManager<ApplicationUser> _signInManager)

@@ -19,6 +19,9 @@ namespace YogaVision.Common
 
         public static class DataValidations
         {
+            public const int CommentMinLength = 3;
+            public const int CommentMaxLength = 500;
+
             public const int CommentContentMaxLength = 500;
 
             public const int TitleMaxLength = 150;
@@ -68,6 +71,8 @@ namespace YogaVision.Common
 
         public static class ErrorMessages
         {
+
+            public const string Comment = "Коментарът трябва да е между 3 и 500 символа";
             public const string Facebook = "Facebook линкът трябва да е между 10 и 60 символа";
 
             public const string Title = "Заглавието трябва да е между 5 и 60 символа";
